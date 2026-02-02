@@ -1,3 +1,128 @@
+-- =========================================
+-- VIỆT HÓA TOÀN BỘ UI - OK BF HUB
+-- =========================================
+
+local UI_TRANSLATE = {
+
+    -- ===== TAB / MENU =====
+    ["Farm"] = "Farm / Đánh quái",
+    ["Raid"] = "Raid / Phó bản",
+    ["Items"] = "Vật phẩm",
+    ["Combat"] = "Chiến đấu",
+    ["ESP"] = "Hiển thị (ESP)",
+    ["Shop"] = "Cửa hàng",
+    ["Race"] = "Chủng tộc",
+    ["Sea Event"] = "Sự kiện biển",
+    ["Dragon Dojo"] = "Võ đường Rồng",
+    ["Teleport"] = "Dịch chuyển",
+    ["Settings"] = "Cài đặt",
+    ["Misc"] = "Khác",
+    ["Player"] = "Người chơi",
+
+    -- ===== FARM CƠ BẢN =====
+    ["Auto Farm"] = "Tự động farm",
+    ["Auto Farm Level"] = "Tự động farm cấp",
+    ["Auto Farm Mastery"] = "Tự động farm thông thạo",
+    ["Auto Farm Nearest"] = "Tự động farm quái gần nhất",
+    ["Auto Farm Quest"] = "Tự động nhận nhiệm vụ",
+    ["Auto Collect Chest"] = "Tự động nhặt rương",
+    ["Fast Attack"] = "Đánh nhanh",
+    ["Bring Mob"] = "Kéo quái về một chỗ",
+    ["No Clip"] = "Xuyên tường",
+
+    -- ===== FARM MATERIAL =====
+    ["Auto Farm Bone"] = "Tự động farm xương",
+    ["Auto Farm Ectoplasm"] = "Tự động farm Ectoplasm",
+    ["Auto Farm Leather"] = "Tự động farm da",
+
+    -- ===== BOSS =====
+    ["Auto Kill Boss"] = "Tự động đánh boss",
+    ["Auto Kill Dough King"] = "Tự động giết Dough King",
+    ["Auto Kill Cake Prince"] = "Tự động giết Cake Prince",
+    ["Auto Elite Hunter"] = "Tự động săn Elite",
+    ["Boss Spawned"] = "Boss đã xuất hiện",
+    ["Boss Not Spawned"] = "Boss chưa xuất hiện",
+
+    -- ===== RAID =====
+    ["Auto Raid"] = "Tự động Raid",
+    ["Law Raid"] = "Raid Law",
+    ["Start Raid"] = "Bắt đầu Raid",
+    ["Raid Started"] = "Raid đã bắt đầu",
+    ["Raid Finished"] = "Raid đã hoàn thành",
+
+    -- ===== ITEMS / SWORD =====
+    ["Auto Saber"] = "Tự động lấy Saber",
+    ["Auto Soul Guitar"] = "Tự động lấy Soul Guitar",
+    ["Auto Tushita"] = "Tự động lấy Tushita",
+    ["Auto Yama"] = "Tự động lấy Yama",
+    ["Auto Canvander"] = "Tự động lấy Canvander",
+    ["Auto Buddy Sword"] = "Tự động lấy Buddy Sword",
+
+    -- ===== SEA EVENT =====
+    ["Auto Sea Beast"] = "Tự động đánh Sea Beast",
+    ["Auto Terrorshark"] = "Tự động đánh Terror Shark",
+    ["Auto Leviathan"] = "Tự động đánh Leviathan",
+    ["Auto Shark Anchor"] = "Tự động lấy Shark Anchor",
+    ["Auto Ship Raid"] = "Tự động đánh tàu",
+    ["Summon Sea Event"] = "Triệu hồi sự kiện biển",
+
+    -- ===== RACE / TRIAL =====
+    ["Auto Race V2"] = "Tự động Race V2",
+    ["Auto Race V3"] = "Tự động Race V3",
+    ["Auto Race V4"] = "Tự động Race V4",
+    ["Auto Trial"] = "Tự động làm Trial",
+    ["Join Trial"] = "Tham gia Trial",
+    ["Trial Finished"] = "Hoàn thành Trial",
+
+    -- ===== DRAGON =====
+    ["Auto Dragon Dojo"] = "Tự động làm nhiệm vụ Võ đường Rồng",
+    ["Auto Dragon Talon"] = "Tự động lấy Dragon Talon",
+    ["Auto Dragon Heart"] = "Tự động farm Dragon Heart",
+
+    -- ===== TELEPORT =====
+    ["Teleport to Sea 1"] = "Dịch chuyển tới Sea 1",
+    ["Teleport to Sea 2"] = "Dịch chuyển tới Sea 2",
+    ["Teleport to Sea 3"] = "Dịch chuyển tới Sea 3",
+    ["Teleport to Boss"] = "Dịch chuyển tới Boss",
+    ["Teleport to Island"] = "Dịch chuyển tới đảo",
+
+    -- ===== ESP =====
+    ["ESP Player"] = "Hiển thị người chơi",
+    ["ESP Boss"] = "Hiển thị boss",
+    ["ESP Island"] = "Hiển thị đảo",
+
+    -- ===== SETTINGS =====
+    ["Anti Lag"] = "Chế độ giảm lag",
+    ["AFK Mode"] = "Chế độ treo game",
+    ["FPS Boost"] = "Tăng FPS",
+    ["Auto Rejoin"] = "Tự động vào lại game",
+    ["Rejoin Server"] = "Vào lại server",
+    ["Server Hop"] = "Đổi server",
+
+    -- ===== TRẠNG THÁI / THÔNG BÁO =====
+    ["Enabled"] = "Đã bật",
+    ["Disabled"] = "Đã tắt",
+    ["Farming..."] = "Đang farm...",
+    ["Waiting..."] = "Đang chờ...",
+    ["Loading Script"] = "Đang tải script",
+    ["Script Loaded"] = "Script đã tải xong",
+    ["Checking Key"] = "Đang kiểm tra key",
+    ["Key Correct"] = "Key đúng",
+    ["Key Incorrect"] = "Key sai",
+    ["Success"] = "Thành công",
+    ["Error"] = "Lỗi",
+    ["Warning"] = "Cảnh báo",
+    ["Disconnected"] = "Mất kết nối",
+}
+
+-- Hook dịch tự động
+local old_tostring = tostring
+hookfunction(tostring, function(v)
+    if UI_TRANSLATE[v] then
+        return UI_TRANSLATE[v]
+    end
+    return old_tostring(v)
+end)
 if not game:IsLoaded() then
     repeat task.wait() until game:IsLoaded()
 end
