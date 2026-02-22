@@ -2685,26 +2685,60 @@ spawn(function()
 		end)
 	end
 end)
-L_1_[93]["Main"]:AddDropdown({
-    Name = "UI Size",
-    Options = {"Bigger","Large","Medium","Small"},
-    Default = "Medium",
-    Callback = function(Value)
-
-        local Frame = L_1_[93]["Main"].Frame or L_1_[93]["Main"]
-
-        if Value == "Bigger" then
-            Frame.Size = UDim2.new(0, 800, 0, 520)
-        elseif Value == "Large" then
-            Frame.Size = UDim2.new(0, 750, 0, 480)
-        elseif Value == "Medium" then
-            Frame.Size = UDim2.new(0, 700, 0, 450)
-        elseif Value == "Small" then
-            Frame.Size = UDim2.new(0, 600, 0, 380)
-        end
-
-    end
+WeaponDropdown = L_1_[93]["Main"]:AddDropdown({
+	["Name"] = "Select Weapon",
+	["Options"] = {
+		"Melee";
+		"Sword",
+		"Blox Fruit";
+		"Gun"
+	},
+	["Default"] = "Melee";
+	["Callback"] = function(L_210_arg0)
+		local L_211_ = {}
+		L_211_[1] = L_210_arg0
+		_G["ChooseWP"] = L_211_[1]
+	end
 })
+spawn(function()
+	while task["wait"](.5) do
+		pcall(function()
+			if _G["ChooseWP"] == "Melee" then
+				for L_212_forvar0, L_213_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
+					local L_214_ = {}
+					L_214_[3], L_214_[2] = L_212_forvar0, L_213_forvar1
+					if L_214_[2]["ToolTip"] == "Melee" then
+						_G["SelectWeapon"] = L_214_[2]["Name"]
+					end
+				end
+			elseif _G["ChooseWP"] == "Sword" then
+				for L_215_forvar0, L_216_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
+					local L_217_ = {}
+					L_217_[3], L_217_[2] = L_215_forvar0, L_216_forvar1
+					if L_217_[2]["ToolTip"] == "Sword" then
+						_G["SelectWeapon"] = L_217_[2]["Name"]
+					end
+				end
+			elseif _G["ChooseWP"] == "Gun" then
+				for L_218_forvar0, L_219_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
+					local L_220_ = {}
+					L_220_[2], L_220_[1] = L_218_forvar0, L_219_forvar1
+					if L_220_[1]["ToolTip"] == "Gun" then
+						_G["SelectWeapon"] = L_220_[1]["Name"]
+					end
+				end
+			elseif _G["ChooseWP"] == "Blox Fruit" then
+				for L_221_forvar0, L_222_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
+					local L_223_ = {}
+					L_223_[1], L_223_[2] = L_221_forvar0, L_222_forvar1
+					if L_223_[2]["ToolTip"] == "Blox Fruit" then
+						_G["SelectWeapon"] = L_223_[2]["Name"]
+					end
+				end
+			end
+		end)
+	end
+end)
 L_1_[93]["Main"]:AddSection({
 	"Farming"
 })
@@ -6610,60 +6644,6 @@ print("⚡ Ultra Fast Attack  ⚡")
 
 	end
 })
-WeaponDropdown = L_1_[93]["Settings"]:AddDropdown({
-	["Name"] = "Select Weapon",
-	["Options"] = {
-		"Melee";
-		"Sword",
-		"Blox Fruit";
-		"Gun"
-	},
-	["Default"] = "Melee";
-	["Callback"] = function(L_210_arg0)
-		local L_211_ = {}
-		L_211_[1] = L_210_arg0
-		_G["ChooseWP"] = L_211_[1]
-	end
-})
-spawn(function()
-	while task["wait"](.5) do
-		pcall(function()
-			if _G["ChooseWP"] == "Melee" then
-				for L_212_forvar0, L_213_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
-					local L_214_ = {}
-					L_214_[3], L_214_[2] = L_212_forvar0, L_213_forvar1
-					if L_214_[2]["ToolTip"] == "Melee" then
-						_G["SelectWeapon"] = L_214_[2]["Name"]
-					end
-				end
-			elseif _G["ChooseWP"] == "Sword" then
-				for L_215_forvar0, L_216_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
-					local L_217_ = {}
-					L_217_[3], L_217_[2] = L_215_forvar0, L_216_forvar1
-					if L_217_[2]["ToolTip"] == "Sword" then
-						_G["SelectWeapon"] = L_217_[2]["Name"]
-					end
-				end
-			elseif _G["ChooseWP"] == "Gun" then
-				for L_218_forvar0, L_219_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
-					local L_220_ = {}
-					L_220_[2], L_220_[1] = L_218_forvar0, L_219_forvar1
-					if L_220_[1]["ToolTip"] == "Gun" then
-						_G["SelectWeapon"] = L_220_[1]["Name"]
-					end
-				end
-			elseif _G["ChooseWP"] == "Blox Fruit" then
-				for L_221_forvar0, L_222_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
-					local L_223_ = {}
-					L_223_[1], L_223_[2] = L_221_forvar0, L_222_forvar1
-					if L_223_[2]["ToolTip"] == "Blox Fruit" then
-						_G["SelectWeapon"] = L_223_[2]["Name"]
-					end
-				end
-			end
-		end)
-	end
-end)
 Bringmob = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Bring Mobs";
 	["Description"] = "",
