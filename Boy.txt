@@ -15053,12 +15053,9 @@ StartR = L_1_[93]["Raids"]:AddToggle({
 		_G["Auto_StartRaid"] = L_1489_[1]
 	end
 })
-local Sec = 1
-
 task["spawn"](function()
 	while task["wait"](Sec) do
 		if not _G["Auto_StartRaid"] then
-		    task.wait()
 			continue
 		end
 		pcall(function()
@@ -15067,10 +15064,9 @@ task["spawn"](function()
 			L_1490_[1] = L_1490_[2]:FindFirstChild("PlayerGui")
 			L_1490_[4] = L_1490_[1] and L_1490_[1]:FindFirstChild("Main")
 			L_1490_[5] = L_1490_[4] and L_1490_[4]:FindFirstChild("TopHUDList")
-			local raidTimer = L_1490_[5] and L_1490_[5]:FindFirstChild("RaidTimer")
-            if not L_1490_[5] or (raidTimer and raidTimer.Visible) then
-          return
-     end
+			if not L_1490_[5] or L_1490_[5]["RaidTimer"]["Visible"] then
+				return
+			end
 			if not GetBP("Special Microchip") then
 				return
 			end
