@@ -1093,42 +1093,42 @@ spawn(function()
 				shouldTween = true
 				if not plr["Character"]["HumanoidRootPart"]:FindFirstChild("BodyClip") then
 					local L_166_ = {}
-					L_166_[1] = Instance["new"]("BodyVelocity")
-					L_166_[1]["Name"] = "BodyClip"
-					L_166_[1]["Parent"] = plr["Character"]["HumanoidRootPart"]
-					L_166_[1]["MaxForce"] = Vector3["new"](100000, 100000, 100000)
-					L_166_[1]["Velocity"] = Vector3["new"](0, 0, 0)
-				end
-				if not plr["Character"]:FindFirstChild("highlight") then
-					local L_167_ = {}
-					L_167_[1] = Instance["new"]("Highlight")
-					L_167_[1]["Name"] = "highlight"
-					L_167_[1]["Enabled"] = true
-					L_167_[1]["FillColor"] = Color3["fromRGB"](255, 165, 0)
-					L_167_[1]["OutlineColor"] = Color3["fromRGB"](255, 0, 0)
-					L_167_[1]["FillTransparency"] = .5
-					L_167_[1]["OutlineTransparency"] = .2
-					L_167_[1]["Parent"] = plr["Character"]
-				end
-				for L_168_forvar0, L_169_forvar1 in pairs(plr["Character"]:GetDescendants()) do
-					local L_170_ = {}
-					L_170_[2], L_170_[1] = L_168_forvar0, L_169_forvar1
-					if L_170_[1]:IsA("BasePart") then
-						L_170_[1]["CanCollide"] = false
-					end
-				end
-			else
-				shouldTween = false
-				if plr["Character"]["HumanoidRootPart"]:FindFirstChild("BodyClip") then
-					(plr["Character"]["HumanoidRootPart"]:FindFirstChild("BodyClip")):Destroy()
-				end
-				if plr["Character"]:FindFirstChild("highlight") then
-					(plr["Character"]:FindFirstChild("highlight")):Destroy()
-				end
-			end
-		end)
-	end
-end)
+L_166_[1] = Instance.new("BodyVelocity")
+L_166_[1].Name = "BodyClip"
+L_166_[1].Parent = plr.Character.HumanoidRootPart
+L_166_[1].MaxForce = Vector3.new(100000, 100000, 100000)
+L_166_[1].Velocity = Vector3.new(0, 0, 0)
+end
+
+if not plr.Character:FindFirstChild("highlight") then
+    local L_167_ = {}
+    L_167_[1] = Instance.new("Highlight")
+    L_167_[1].Name = "highlight"
+    L_167_[1].Enabled = true
+
+    -- 🤍 TRẮNG NHẸ (KHÔNG CHÓI)
+    L_167_[1].FillColor = Color3.fromRGB(245, 245, 245)
+    L_167_[1].OutlineColor = Color3.fromRGB(255, 255, 255)
+    L_167_[1].FillTransparency = 0.65
+    L_167_[1].OutlineTransparency = 0.35
+
+    L_167_[1].Parent = plr.Character
+end
+
+for _, v in pairs(plr.Character:GetDescendants()) do
+    if v:IsA("BasePart") then
+        v.CanCollide = false
+    end
+end
+else
+    shouldTween = false
+    if plr.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+        plr.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+    end
+    if plr.Character:FindFirstChild("highlight") then
+        plr.Character:FindFirstChild("highlight"):Destroy()
+    end
+end
 QuestB = function()
 	if World1 then
 		if _G["FindBoss"] == "The Gorilla King" then
@@ -2632,7 +2632,7 @@ spawn(function()
 end)
 StatusBone = L_1_[93]["Info"]:AddParagraph({
 	["Title"] = "Bone";
-	["Content"] = ""
+	["Content"] = "Status: "
 })
 spawn(function()
 	while wait(1) do
