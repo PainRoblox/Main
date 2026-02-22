@@ -501,8 +501,8 @@ BringEnemy = function()
 		end
 		if (L_48_[3]["Position"] - L_45_[5]["Position"])["Magnitude"] <= L_45_[8] then
 			local L_52_ = {}
-			R_[1] += 1
-			L_52_[2] = Vector3["zero"]
+			L_45_[1] += 1
+			L_52_[2] = Vector3.zero
 			L_52_[3] = 0
 			for L_53_forvar0, L_54_forvar1 in pairs(workspace["Enemies"]:GetChildren()) do
 				local L_55_ = {}
@@ -510,8 +510,9 @@ BringEnemy = function()
 				L_55_[4] = L_55_[5]:FindFirstChild("Humanoid")
 				L_55_[1] = L_55_[5]:FindFirstChild("HumanoidRootPart")
 				if L_55_[4] and (L_55_[1] and (L_55_[4]["Health"] > 0 and L_55_[5]["Name"] == L_48_[1]["Name"])) then
-					D_[2] += L_55_[1]["Position"]
-					D_[3] += 1
+					L_52_[2] += L_55_[1].Position
+                    L_52_[3] += 1
+					
 				end
 			end
 			L_52_[1] = L_52_[3] > 0 and L_52_[2] / L_52_[3] or L_48_[3]["Position"]
@@ -526,13 +527,14 @@ BringEnemy = function()
 			end
 			L_48_[3]["CanCollide"] = false
 			L_48_[3][L_1_[2]({
-				"AssemblyLinearVeloci";
-				"ty"
-			})] = Vector3["zero"]
-			L_48_[3][L_1_[2]({
-				"AssemblyAngularVeloc";
-				"ity"
-			})] = Vector3["zero"]
+                 "AssemblyLinearVeloci";
+                 "ty"
+            })] = Vector3["zero"]
+
+            L_48_[3][L_1_[2]({
+                  "AssemblyAngularVeloc";
+                  "ity"
+           })] = Vector3["zero"]
 			if L_48_[2]:FindFirstChild("Animator") then
 				L_48_[2]["Animator"]:Destroy()
 			end
