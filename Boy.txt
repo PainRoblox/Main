@@ -14887,6 +14887,22 @@ end)
 pcall(function()
     valentineParagraph:Set(GetValentineStatus())
 end)
+workspace.ChildAdded:Connect(function(child)
+    if child.Name == "Valentine Dealer" then
+        valentineParagraph:Set(GetValentineStatus())
+    end
+end)
+
+workspace.ChildRemoved:Connect(function(child)
+    if child.Name == "Valentine Dealer" then
+        valentineParagraph:Set(GetValentineStatus())
+    end
+end)
+
+
+
+
+
 
 L_1_[93]["Raids"]:AddSection({
 	L_1_[2]({
