@@ -6615,7 +6615,7 @@ Bringmob = L_1_[93]["Settings"]:AddToggle({
 L_1_[93]["Settings"]:AddDropdown({
 	["Name"] = "Bring Mob Mode";
 	["Description"] = "Adjust Range";
-	["Default"] = "350";
+	["Default"] = "300";
 	["Options"] = {
 		"250";
 		"300";
@@ -6651,7 +6651,7 @@ L_1_[93]["Settings"]:AddDropdown({
 L_1_[93]["Settings"]:AddDropdown({
 	["Name"] = "Bring Mob Max",
 	["Description"] = "Adjust Mob";
-	["Default"] = "6",
+	["Default"] = "4",
 	["Options"] = {
 		"2";
 		"3";
@@ -7497,13 +7497,13 @@ TravelDress = L_1_[93]["Quests"]:AddToggle({
 	["Callback"] = function(L_730_arg0)
 		local L_731_ = {}
 		L_731_[2] = L_730_arg0
-		_G["TravelDres"] = L_731_[2]
+		_G["TravelDress"] = L_731_[2]
 	end
 })
 spawn(function()
 	while wait(Sec) do
 		pcall(function()
-			if _G["TravelDres"] then
+			if _G["TravelDress"] then
 				if L_1_[45]["Data"]["Level"]["Value"] >= 700 then
 					if workspace["Map"]["Ice"]["Door"]["CanCollide"] == true and workspace["Map"]["Ice"]["Door"]["Transparency"] == 0 then
 						L_1_[18]["Remotes"]["CommF_"]:InvokeServer(L_1_[2]({
@@ -7514,7 +7514,7 @@ spawn(function()
 						repeat
 							wait()
 							_tp(CFrame["new"](1347.7124, 37.3751602, -1325.6488))
-						until not _G["TravelDres"] or Root["Position"] == (CFrame["new"](1347.7124, 37.3751602, -1325.6488))["Position"]
+						until not _G["TravelDress"] or Root["Position"] == (CFrame["new"](1347.7124, 37.3751602, -1325.6488))["Position"]
 					elseif workspace["Map"]["Ice"]["Door"]["CanCollide"] == false and workspace["Map"]["Ice"]["Door"]["Transparency"] == 1 then
 						if Enemies:FindFirstChild("Ice Admiral") then
 							for L_732_forvar0, L_733_forvar1 in pairs(Enemies:GetChildren()) do
@@ -7523,7 +7523,7 @@ spawn(function()
 								if L_734_[2]["Name"] == "Ice Admiral" and L_1_[4]["Alive"](L_734_[2]) then
 									repeat
 										task["wait"]()
-										L_1_[4]["Kill"](L_734_[2], _G["TravelDres"])
+										L_1_[4]["Kill"](L_734_[2], _G["TravelDress"])
 									until _G["TravelDres"] == false or L_734_[2]["Humanoid"]["Health"] <= 0
 									L_1_[18]["Remotes"]["CommF_"]:InvokeServer("TravelDressrosa")
 								end
@@ -7566,10 +7566,15 @@ spawn(function()
 										L_1_[4]["Kill"](L_737_[2], _G["AutoZou"])
 									until not _G["AutoZou"] or not L_737_[2]["Parent"] or L_737_[2]["Humanoid"]["Health"] <= 0
 									Check = 2
-									repeat
-										wait()
-										L_1_[18]["Remotes"]["CommF_"]:InvokeServer("F_", "TravelZou")
-									until Check == 1
+                                   local timeout = 0
+
+                                   repeat
+                                  	task.wait(0.5)
+	                                timeout += 1
+	                                L_1_[18]["Remotes"]["CommF_"]:InvokeServer("F_", "TravelZou")
+                                    until not _G["AutoZou"]
+	                                or Check == 1
+	                                or timeout > 20
 								else
 									L_1_[18]["Remotes"]["CommF_"]:InvokeServer("F_", "ZQuestProgress", "Check")
 									wait(.1)
