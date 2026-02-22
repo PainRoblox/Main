@@ -6768,6 +6768,18 @@ L_1_[93]["Settings"]:AddToggle({
 		end
 	end
 })
+_G["BringRange"] = 200
+
+L_1_[93]["Settings"]:AddSlider({
+    Name = "Farm Distance",
+    Min = 50,
+    Max = 500,
+    Default = 200,
+    Increment = 10,
+    Callback = function(Value)
+        _G["BringRange"] = Value
+    end
+})
 BusuAura = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Auto Turn on Buso",
 	["Description"] = "",
