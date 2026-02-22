@@ -6478,6 +6478,34 @@ L_1_[93]["Settings"]:AddSection({
 	"Settings / Configure"
 })
 Initialize = L_1_[93]["Settings"]:AddToggle({
+	["Name"] = "Teleport Y if low hearth",
+	["Description"] = "",
+	["Default"] = false,
+	["Callback"] = function(Value)
+        _G.Safemode = Value
+    end
+})
+
+spawn(function()
+  while task.wait(Sec) do
+    pcall(function()
+	  if _G.Safemode then
+  	  local Calc_Health = plr.Character.Humanoid.Health / plr.Character.Humanoid.MaxHealth * 100
+  	  if Calc_Health < Num_self then shouldTween=true _tp(Root.CFrame * CFrame.new(0,500,0)) else shouldTween=false end
+      end
+    end)
+  end
+end)
+L_1_[93]["Settings"]:AddSlider({
+    ["Name"] = "Distance Farm Aura",
+    ["Min"] = 0,
+    ["Max"] = 500,
+    ["Default"] = 300,
+    ["Callback"] = function(Value)
+        _G.Safemode = Value
+    end
+})
+Initialize = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Fast Attack",
 	["Description"] = "",
 	["Default"] = true,
@@ -6767,18 +6795,6 @@ L_1_[93]["Settings"]:AddToggle({
 			end)
 		end
 	end
-})
-_G["BringRange"] = 200
-
-L_1_[93]["Settings"]:AddSlider({
-    Name = "Farm Distance",
-    Min = 50,
-    Max = 500,
-    Default = 200,
-    Increment = 10,
-    Callback = function(Value)
-        _G["BringRange"] = Value
-    end
 })
 BusuAura = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Auto Turn on Buso",
