@@ -6863,7 +6863,7 @@ spawn(function()
 	end
 end)
 L_1_[45] = game["Players"]["LocalPlayer"];
-(getgenv())["WalkSpeedValue"] = 30
+(getgenv())["WalkSpeedValue"] = 80
 _G["WalkSpeedEnabled"] = false
 L_1_[19] = function(L_654_arg0)
 	local L_655_ = {}
