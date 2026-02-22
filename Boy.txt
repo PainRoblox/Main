@@ -2688,22 +2688,21 @@ end)
 L_1_[93]["Main"]:AddDropdown({
     Name = "UI Size",
     Options = {"Bigger","Large","Medium","Small"},
-    Default = 3, -- Medium
+    Default = 3,
     Callback = function(Value)
-        if not UIScale then return end
+        if not MainFrame then return end
 
         if Value == "Bigger" then
-            UIScale.Scale = 1.4
+            MainFrame.Size = UDim2.new(0, 750, 0, 500)
         elseif Value == "Large" then
-            UIScale.Scale = 1.2
+            MainFrame.Size = UDim2.new(0, 700, 0, 450)
         elseif Value == "Medium" then
-            UIScale.Scale = 1
+            MainFrame.Size = UDim2.new(0, 650, 0, 420)
         elseif Value == "Small" then
-            UIScale.Scale = 0.8
+            MainFrame.Size = UDim2.new(0, 600, 0, 380)
         end
     end
 })
-
 L_1_[93]["Main"]:AddSection({
 	"Farming"
 })
