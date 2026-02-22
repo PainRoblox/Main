@@ -14841,7 +14841,7 @@ L_1_[93]["Raids"]:AddSection({
 })
 
 local function GetValentineStock()
-    local result = "Valentine Shop Stock\n"
+    local result = "Valentine Shop Stock\n\n"
     
     local success, data = pcall(function()
         return game:GetService("ReplicatedStorage")
@@ -14859,8 +14859,8 @@ local function GetValentineStock()
     for _, item in pairs(data) do
         if item.OnSale then
             found = true
-            result = result .. item.Name .. 
-                " - $" .. L_1_[88](item.Price) .. "\n"
+            result = result .. item.Name ..
+                " - $" .. tostring(item.Price) .. "\n"
         end
     end
 
@@ -14870,21 +14870,24 @@ local function GetValentineStock()
 
     return result
 end
+
 valentineParagraph = L_1_[93]["Raids"]:AddParagraph({
     Title = "Valentine Stock",
     Content = "Loading..."
 })
-task["spawn"](function()
-	while task["wait"](60) do
-		pcall(function()
-			valentineParagraph:Set(L_1_[105]())
-		end)
-	end
-end)
-pcall(function()
-	valentineParagraph:Set(L_1_[105]())
+
+-- Refresh mỗi 60 giây (test)
+task.spawn(function()
+    while task.wait(3600) do
+        pcall(function()
+            valentineParagraph:Set(GetValentineStock())
+        end)
+    end
 end)
 
+pcall(function()
+    valentineParagraph:Set(GetValentineStock())
+end)
 
 
 
