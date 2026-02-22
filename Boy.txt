@@ -14834,6 +14834,60 @@ spawn(function()
 		end
 	end)
 end)
+
+
+L_1_[93]["Raids"]:AddSection({
+	"Valentine stock"
+})
+
+local function GetValentineStock()
+    local result = "Valentine Shop Stock\n"
+    
+    local success, data = pcall(function()
+        return game:GetService("ReplicatedStorage")
+            :WaitForChild("Remotes")
+            :WaitForChild("CommF_")
+            :InvokeServer("GetValentineStock")
+    end)
+
+    if not success or not data then
+        return result .. "- Error while retrieving data.\n"
+    end
+
+    local found = false
+    
+    for _, item in pairs(data) do
+        if item.OnSale then
+            found = true
+            result = result .. item.Name .. 
+                " - $" .. L_1_[88](item.Price) .. "\n"
+        end
+    end
+
+    if not found then
+        result = result .. "- No items available.\n"
+    end
+
+    return result
+end
+valentineParagraph = L_1_[93]["Raids"]:AddParagraph({
+    Title = "Valentine Stock",
+    Content = "Loading..."
+})
+
+task.spawn(function()
+    while task.wait(60) do
+        pcall(function()
+            valentineParagraph:Set(GetValentineStock())
+        end)
+    end
+end)
+
+pcall(function()
+    valentineParagraph:Set(GetValentineStock())
+end)
+
+
 L_1_[93]["Raids"]:AddSection({
 	L_1_[2]({
 		"Dungeon Event / Raid";
@@ -17220,9 +17274,10 @@ L_1_[93]["Misc"]:AddButton({
 		end
 	end
 })
-L_1_[93]["Misc"]:AddButton({
+L_1_[93]["Misc"]:AddToggle({
 	["Name"] = "Remove Sky Fog";
 	["Description"] = "",
+	["Default"] = false,
 	["Callback"] = function()
 		if Lighting:FindFirstChild("LightingLayers") then
 			Lighting["LightingLayers"]:Destroy()
@@ -17237,32 +17292,6 @@ L_1_[93]["Misc"]:AddButton({
 })
 L_1_[93]["Misc"]:AddSection({
 	"Configure - God"
-})
-L_1_[93]["Misc"]:AddButton({
-	["Name"] = "Rain Fruits (Client)",
-	["Description"] = "",
-	["Callback"] = function()
-		for L_1715_forvar0, L_1716_forvar1 in pairs((game:GetObjects(L_1_[2]({
-			"rbxassetid://1475936",
-			"8201"
-		})))[1]:GetChildren()) do
-			local L_1717_ = {}
-			L_1717_[2], L_1717_[3] = L_1715_forvar0, L_1716_forvar1
-			L_1717_[3]["Parent"] = game["Workspace"]["Map"]
-			L_1717_[3]:MoveTo(L_1_[42]["Character"]["PrimaryPart"]["Position"] + Vector3["new"](math["random"](-50, 50), 100, math["random"](-50, 50)))
-			if L_1717_[3]["Fruit"]:FindFirstChild("AnimationController") then
-				((L_1717_[3]["Fruit"]:FindFirstChild("AnimationController")):LoadAnimation(L_1717_[3]["Fruit"]:FindFirstChild("Idle"))):Play()
-			end
-			L_1717_[3]["Handle"]["Touched"]:Connect(function(L_1718_arg0)
-				local L_1719_ = {}
-				L_1719_[1] = L_1718_arg0
-				if L_1719_[1]["Parent"] == L_1_[42]["Character"] then
-					L_1717_[3]["Parent"] = L_1_[42]["Backpack"]
-					L_1_[42]["Character"]["Humanoid"]:EquipTool(L_1717_[3])
-				end
-			end)
-		end
-	end
 })
 briggt1 = L_1_[93]["Misc"]:AddToggle({
 	["Name"] = "Turn on Full Bright";
