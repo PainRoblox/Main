@@ -6879,7 +6879,7 @@ L_1_[19] = function(L_654_arg0)
 end
 L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Auto Speed";
-	["Default"] = false,
+	["Default"] = true,
 	["Callback"] = function(L_656_arg0)
 		local L_657_ = {}
 		L_657_[2] = L_656_arg0
@@ -6892,7 +6892,7 @@ L_1_[93]["Settings"]:AddToggle({
 })
 L_1_[93]["Settings"]:AddSlider({
 	["Name"] = "Speed Value";
-	["Min"] = 26,
+	["Min"] = 80,
 	["Max"] = 300,
 	["Default"] = (getgenv())["WalkSpeedValue"];
 	["Callback"] = function(L_658_arg0)
