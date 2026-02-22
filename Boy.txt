@@ -14878,24 +14878,24 @@ valentineParagraph = L_1_[93]["Raids"]:AddParagraph({
 task.spawn(function()
     while task.wait(3600) do
         pcall(function()
-            valentineParagraph:Set(GetValentineStatus())
+            valentineParagraph:Set(GetValentineStock())
         end)
     end
 end)
 
 -- Cập nhật ngay khi load
 pcall(function()
-    valentineParagraph:Set(GetValentineStatus())
+    valentineParagraph:Set(GetValentineStock())
 end)
 workspace.ChildAdded:Connect(function(child)
     if child.Name == "Valentine Dealer" then
-        valentineParagraph:Set(GetValentineStatus())
+        valentineParagraph:Set(GetValentineStock())
     end
 end)
 
 workspace.ChildRemoved:Connect(function(child)
     if child.Name == "Valentine Dealer" then
-        valentineParagraph:Set(GetValentineStatus())
+        valentineParagraph:Set(GetValentineStock())
     end
 end)
 
