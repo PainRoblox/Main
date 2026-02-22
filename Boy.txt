@@ -2643,48 +2643,6 @@ L_1_[5] = replicated["Modules"]["Net"][L_1_[2]({
 	"RF/SubmarineWorkerSp",
 	"eak"
 })]
-AttackDropdown = L_1_[93]["Main"]:AddDropdown({
-	["Name"] = "Select Fast Delay";
-	["Options"] = {
-		"Normal Attack",
-		"Fast Attack",
-		"Super Fast Attack";
-		"ok Attack"
-	};
-	["Default"] = "Fast Attack",
-	["Callback"] = function(L_224_arg0)
-		local L_225_ = {}
-		L_225_[2] = L_224_arg0
-		_G[L_1_[2]({
-			"FastAttackGravity_Mo",
-			"de"
-		})] = L_225_[2]
-	end
-})
-L_1_[54] = {
-	["Normal Attack"] = .25,
-	["Fast Attack"] = .15;
-	["Super Fast Attack"] = .05,
-	["ok Attack"] = .1
-}
-spawn(function()
-	while task["wait"](.1) do
-		pcall(function()
-			if _G[L_1_[2]({
-				"FastAttackGravity_Mo";
-				"de"
-			})] and L_1_[54][_G[L_1_[2]({
-				"FastAttackGravity_Mo",
-				"de"
-			})]] then
-				_G["Fast_Delay"] = L_1_[54][_G[L_1_[2]({
-					"FastAttackGravity_Mo";
-					"de"
-				})]]
-			end
-		end)
-	end
-end)
 WeaponDropdown = L_1_[93]["Main"]:AddDropdown({
 	["Name"] = "Select Weapon",
 	["Options"] = {
