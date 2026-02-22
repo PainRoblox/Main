@@ -2687,17 +2687,19 @@ spawn(function()
 end)
 L_1_[93]["Main"]:AddDropdown({
     Name = "UI Size",
-    Options = {"Small","Medium","Large","Bigger"},
-    Default = 2,
+    Options = {"Bigger","Large","Medium","Small"},
+    Default = 3, -- Medium
     Callback = function(Value)
-        if Value == "Small" then
-            UIScale.Scale = 0.8
-        elseif Value == "Medium" then
-            UIScale.Scale = 1
+        if not UIScale then return end
+
+        if Value == "Bigger" then
+            UIScale.Scale = 1.4
         elseif Value == "Large" then
             UIScale.Scale = 1.2
-        elseif Value == "Bigger" then
-            UIScale.Scale = 1.4
+        elseif Value == "Medium" then
+            UIScale.Scale = 1
+        elseif Value == "Small" then
+            UIScale.Scale = 0.8
         end
     end
 })
