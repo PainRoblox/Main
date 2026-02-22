@@ -2278,86 +2278,86 @@ L_1_[41]["MouseButton1Click"]:Connect(function()
 end)
 L_1_[93] = {
 	["Info"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Home";
+		["Title"] = "Trang chủ";
 		["Icon"] = "Info"
 	});
 	["Main"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Farming";
+		["Title"] = "Farm chính";
 		["Icon"] = L_1_[2]({
 			"rbxassetid://7733960";
 			"981"
 		})
 	}),
 	["Settings"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Setting",
+		["Title"] = " Cài đặt",
 		["Icon"] = L_1_[2]({
 			"rbxassetid://7734053";
 			"495"
 		})
 	});
 	["Fish"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Fishing";
+		["Title"] = "Câu cá";
 		["Icon"] = L_1_[2]({
 			"rbxassetid://1276640";
 			"59821666"
 		})
 	}),
 	["Quests"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Quest And Item";
+		["Title"] = "Nhiệm vụ&vật phẩm";
 		["Icon"] = L_1_[2]({
 			"rbxassetid://1307562",
 			"2619"
 		})
 	}),
 	["SeaEvent"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Sea Event";
+		["Title"] = "Sự kiện biển";
 		["Icon"] = "waves"
 	});
 	["Race"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Mirage And Race",
+		["Title"] = "Mirage và Tộc",
 		["Icon"] = L_1_[2]({
 			"rbxassetid://1116288",
 			"9532"
 		})
 	}),
 	["Prehistoric"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Volcano Event";
+		["Title"] = "Sự kiện núi lửa";
 		["Icon"] = "tent"
 	}),
 	["Esp"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Stats And Esp";
+		["Title"] = "Chỉ số & ESP";
 		["Icon"] = L_1_[2]({
 			"rbxassetid://7040410";
 			"130"
 		})
 	});
 	["Raids"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Fruit And Raid";
+		["Title"] = "Fruit & Raid";
 		["Icon"] = L_1_[2]({
 			"rbxassetid://1115598";
 			"6081"
 		})
 	}),
 	["Combat"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Local Player",
+		["Title"] = "Người Chơi",
 		["Icon"] = L_1_[2]({
 			"rbxassetid://1307565",
 			"1575"
 		})
 	}),
 	["Travel"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Teleport";
+		["Title"] = "Dịch Chuyển";
 		["Icon"] = "locate"
 	});
 	["Shop"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Shopping";
+		["Title"] = "Cửa hàng";
 		["Icon"] = L_1_[2]({
 			"rbxassetid://6031265",
 			"976"
 		})
 	}),
 	["Misc"] = L_1_[38]:MakeTab({
-		["Title"] = "Tab Miscellaneous",
+		["Title"] = "Khác",
 		["Icon"] = L_1_[2]({
 			"rbxassetid://1070978",
 			"3577"
@@ -2368,8 +2368,7 @@ L_1_[93]["Info"]:AddSection("Information")
 L_1_[93]["Info"]:AddDiscordInvite({
 	["Name"] = "ok Hub",
 	["Description"] = L_1_[2]({
-		"Release Date [12/10/";
-		"2025]"
+		"Release Date [Chúc mừng năm mới 2026]";
 	}),
 	["Logo"] = L_1_[2]({
 		"rbxassetid://119980166507719",
@@ -2644,60 +2643,6 @@ L_1_[5] = replicated["Modules"]["Net"][L_1_[2]({
 	"RF/SubmarineWorkerSp",
 	"eak"
 })]
-WeaponDropdown = L_1_[93]["Main"]:AddDropdown({
-	["Name"] = "Select Weapon",
-	["Options"] = {
-		"Melee";
-		"Sword",
-		"Blox Fruit";
-		"Gun"
-	},
-	["Default"] = "Melee";
-	["Callback"] = function(L_210_arg0)
-		local L_211_ = {}
-		L_211_[1] = L_210_arg0
-		_G["ChooseWP"] = L_211_[1]
-	end
-})
-spawn(function()
-	while task["wait"](.5) do
-		pcall(function()
-			if _G["ChooseWP"] == "Melee" then
-				for L_212_forvar0, L_213_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
-					local L_214_ = {}
-					L_214_[3], L_214_[2] = L_212_forvar0, L_213_forvar1
-					if L_214_[2]["ToolTip"] == "Melee" then
-						_G["SelectWeapon"] = L_214_[2]["Name"]
-					end
-				end
-			elseif _G["ChooseWP"] == "Sword" then
-				for L_215_forvar0, L_216_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
-					local L_217_ = {}
-					L_217_[3], L_217_[2] = L_215_forvar0, L_216_forvar1
-					if L_217_[2]["ToolTip"] == "Sword" then
-						_G["SelectWeapon"] = L_217_[2]["Name"]
-					end
-				end
-			elseif _G["ChooseWP"] == "Gun" then
-				for L_218_forvar0, L_219_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
-					local L_220_ = {}
-					L_220_[2], L_220_[1] = L_218_forvar0, L_219_forvar1
-					if L_220_[1]["ToolTip"] == "Gun" then
-						_G["SelectWeapon"] = L_220_[1]["Name"]
-					end
-				end
-			elseif _G["ChooseWP"] == "Blox Fruit" then
-				for L_221_forvar0, L_222_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
-					local L_223_ = {}
-					L_223_[1], L_223_[2] = L_221_forvar0, L_222_forvar1
-					if L_223_[2]["ToolTip"] == "Blox Fruit" then
-						_G["SelectWeapon"] = L_223_[2]["Name"]
-					end
-				end
-			end
-		end)
-	end
-end)
 AttackDropdown = L_1_[93]["Main"]:AddDropdown({
 	["Name"] = "Select Fast Delay";
 	["Options"] = {
@@ -2740,6 +2685,23 @@ spawn(function()
 		end)
 	end
 end)
+L_1_[93]["Main"]:AddDropdown({
+    Name = "UI Size",
+    Options = {"Small","Medium","Large","Bigger"},
+    Default = 2,
+    Callback = function(Value)
+        if Value == "Small" then
+            UIScale.Scale = 0.8
+        elseif Value == "Medium" then
+            UIScale.Scale = 1
+        elseif Value == "Large" then
+            UIScale.Scale = 1.2
+        elseif Value == "Bigger" then
+            UIScale.Scale = 1.4
+        end
+    end
+})
+
 L_1_[93]["Main"]:AddSection({
 	"Farming"
 })
@@ -6645,6 +6607,60 @@ print("⚡ Ultra Fast Attack  ⚡")
 
 	end
 })
+WeaponDropdown = L_1_[93]["Settings"]:AddDropdown({
+	["Name"] = "Select Weapon",
+	["Options"] = {
+		"Melee";
+		"Sword",
+		"Blox Fruit";
+		"Gun"
+	},
+	["Default"] = "Melee";
+	["Callback"] = function(L_210_arg0)
+		local L_211_ = {}
+		L_211_[1] = L_210_arg0
+		_G["ChooseWP"] = L_211_[1]
+	end
+})
+spawn(function()
+	while task["wait"](.5) do
+		pcall(function()
+			if _G["ChooseWP"] == "Melee" then
+				for L_212_forvar0, L_213_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
+					local L_214_ = {}
+					L_214_[3], L_214_[2] = L_212_forvar0, L_213_forvar1
+					if L_214_[2]["ToolTip"] == "Melee" then
+						_G["SelectWeapon"] = L_214_[2]["Name"]
+					end
+				end
+			elseif _G["ChooseWP"] == "Sword" then
+				for L_215_forvar0, L_216_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
+					local L_217_ = {}
+					L_217_[3], L_217_[2] = L_215_forvar0, L_216_forvar1
+					if L_217_[2]["ToolTip"] == "Sword" then
+						_G["SelectWeapon"] = L_217_[2]["Name"]
+					end
+				end
+			elseif _G["ChooseWP"] == "Gun" then
+				for L_218_forvar0, L_219_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
+					local L_220_ = {}
+					L_220_[2], L_220_[1] = L_218_forvar0, L_219_forvar1
+					if L_220_[1]["ToolTip"] == "Gun" then
+						_G["SelectWeapon"] = L_220_[1]["Name"]
+					end
+				end
+			elseif _G["ChooseWP"] == "Blox Fruit" then
+				for L_221_forvar0, L_222_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
+					local L_223_ = {}
+					L_223_[1], L_223_[2] = L_221_forvar0, L_222_forvar1
+					if L_223_[2]["ToolTip"] == "Blox Fruit" then
+						_G["SelectWeapon"] = L_223_[2]["Name"]
+					end
+				end
+			end
+		end)
+	end
+end)
 Bringmob = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Bring Mobs";
 	["Description"] = "",
