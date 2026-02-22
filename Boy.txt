@@ -3039,6 +3039,12 @@ spawn(function()
 		end)
 	end
 end)
+
+_G.Event = _G.Event or {}
+_G.Event.Christmas = false 
+
+if _G.Event.Christmas then
+
 L_1_[93]["Main"]:AddSection({
 	"Christmas Multi"
 })
@@ -3929,6 +3935,8 @@ L_1_[93]["Main"]:AddButton({
 		end)
 	end
 })
+
+end
 L_1_[93]["Main"]:AddSection({
 	"Collect Chest"
 })
