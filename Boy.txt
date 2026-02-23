@@ -4599,7 +4599,7 @@ if World1 then
 			"Pirates",
 			"Marine",
 			"Jungle";
-			"Pirate Village",
+			"Pirate Village";
 			"Desert";
 			"Frozen Village";
 			"Marine Fortress";
@@ -4607,7 +4607,7 @@ if World1 then
 			"Prison",
 			"Colosseum",
 			"Magma Village";
-			"Underwater City",
+			"Underwater City";
 			"Skylands Upper"
 		};
 		["Callback"] = function(L_410_arg0)
@@ -16353,35 +16353,36 @@ GoIsland = L_1_[93]["Travel"]:AddToggle({
 L_1_[93]["Travel"]:AddSection({
 	"Travel - Portal"
 })
+local Location_Portal = {}
+
 if World1 then
 	Location_Portal = {
-		"Sky";
+		"Sky",
 		"UnderWater"
 	}
-end
+
 elseif World2 then
 	Location_Portal = {
-		"SwanRoom";
+		"SwanRoom",
 		"Cursed Ship"
 	}
-end
+
 elseif World3 then
 	Location_Portal = {
-		"Castle On The Sea";
-		"Mansion Cafe";
-		"Hydra Teleport";
-		"Canvendish Room",
+		"Castle On The Sea",
+		"Mansion Cafe",
+		"Hydra Teleport",
+		"Cavendish Room",
 		"Temple of Time"
 	}
 end
+
 PortalTP = L_1_[93]["Travel"]:AddDropdown({
-	["Name"] = " Chọn Cổng",
+	["Name"] = "Chọn Cổng",
 	["Options"] = Location_Portal,
-	["Default"] = false;
-	["Callback"] = function(L_1658_arg0)
-		local L_1659_ = {}
-		L_1659_[2] = L_1658_arg0
-		_G["Island_PT"] = L_1659_[2]
+	["Default"] = false,
+	["Callback"] = function(v)
+		_G["Island_PT"] = v
 	end
 })
 L_1_[93]["Travel"]:AddButton({
@@ -16409,6 +16410,46 @@ L_1_[93]["Travel"]:AddButton({
 		end
 	end
 })
+L_1_[93]["Travel"]:AddButton({
+	["Name"] = "Yêu cầu Vào",
+	["Description"] = "",
+	["Callback"] = function()
+
+		local posList = {
+			["Sky"] = Vector3.new(-7894, 5547, -380),
+			["UnderWater"] = Vector3.new(61163, 11, 1819),
+			["SwanRoom"] = Vector3.new(2285, 15, 905),
+			["Cursed Ship"] = Vector3.new(923, 126, 32852),
+			["Mansion Cafe"] = Vector3.new(-12471.1699, 374.9402, -7551.6777),
+			["Hydra Teleport"] = Vector3.new(5643.4526, 1013.0858, -340.5102),
+			["Cavendish Room"] = Vector3.new(5314.5463, 22.5622, -127.0675),
+
+			-- CFrame bắt buộc
+			["Castle On The Sea"] = CFrame.new(
+				-5097.93164, 316.447021, -3142.66602,
+				-0.405007899, -4.31682743e-08, 0.914313197,
+				-1.90943332e-08, 1, 3.8755779e-08,
+				-0.914313197, -1.76180437e-09, -0.405007899
+			),
+
+			["Temple of Time"] = CFrame.new(
+				28310.0234, 14895.1123, 109.456741,
+				-0.469690144, -2.85620132e-08, -0.882831335,
+				-3.23509219e-08, 1, -1.51411736e-08,
+				0.882831335, 2.14487486e-08, -0.469690144
+			)
+		}
+
+		local selected = _G["Island_PT"]
+
+		if selected and posList[selected] then
+			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", posList[selected])
+		end
+	end
+})
+
+
+
 L_1_[93]["Travel"]:AddSection({
 	"Di chuyển- NPCs"
 })
