@@ -16358,11 +16358,13 @@ if World1 then
 		"Sky";
 		"UnderWater"
 	}
+end
 elseif World2 then
 	Location_Portal = {
 		"SwanRoom";
 		"Cursed Ship"
 	}
+end
 elseif World3 then
 	Location_Portal = {
 		"Castle On The Sea";
@@ -16373,7 +16375,7 @@ elseif World3 then
 	}
 end
 PortalTP = L_1_[93]["Travel"]:AddDropdown({
-	["Name"] = " Chọn Cổngl",
+	["Name"] = " Chọn Cổng",
 	["Options"] = Location_Portal,
 	["Default"] = false;
 	["Callback"] = function(L_1658_arg0)
