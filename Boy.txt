@@ -13,6 +13,7 @@ task.spawn(function()
         task.wait(3)
     end
 end)
+task.wait(10) 
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
