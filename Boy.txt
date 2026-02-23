@@ -53,7 +53,7 @@ repeat
 until L_2_[2]
 World1 = game["PlaceId"] == 2753915549 or game["PlaceId"] == 85211729168715
 World2 = game["PlaceId"] == 4442272183 or game["PlaceId"] == 79091703265657
-World3 = game["PlaceId"] == 7449423635 or game["PlaceId"] == 1.0011733112309e+14
+World3 = game["PlaceId"] == 7449423635 or game["PlaceId"] == 1.0011733112309
 Marines = function()
 	replicated["Remotes"]["CommF_"]:InvokeServer("SetTeam", "Marines")
 end
@@ -2873,6 +2873,7 @@ spawn(function()
 		end)
 	end
 end)
+if World2 then
 FactoryRaids = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Đánh nhà máy";
 	["Description"] = "",
@@ -2902,6 +2903,7 @@ spawn(function()
 		end)
 	end
 end)
+if World3 then
 CastleRaids = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Đánh hải tặc",
 	["Description"] = "";
