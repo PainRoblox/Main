@@ -2212,6 +2212,11 @@ L_1_[38] = L_1_[16]:MakeWindow({
 	["SubTitle"] = "",
 	["SaveFolder"] = "redz library V5.json"
 })
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/Main/refs/heads/main/SaveManager.lua.txt"))()
+
+SaveManager:SetLibrary(L_1_[16])
+SaveManager:BuildConfigSection(L_1_[38])
+SaveManager:LoadConfig()
 L_1_[87] = Instance.new("ScreenGui")
 L_1_[87].Name = "ControlGUI"
 L_1_[87].Parent = game.CoreGui
