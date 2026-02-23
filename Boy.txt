@@ -9,14 +9,11 @@ local messages = {
 
 task.spawn(function()
     for _, msg in ipairs(messages) do
-        Notification.new("<Color=Blue>"..msg.."<Color=/>"):Display()
-        task.wait(3)
-    end
-end)
+    Notification.new("<Color=Blue>"..msg.."<Color=/>"):Display()
+    task.wait(3)
+end
 
-pcall(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDzaiScript/Setting/refs/heads/main/FastMax.lua"))()
-end)
+task.wait(10) -- đợi thêm 10 giây sau khi hiện hết chữ
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
