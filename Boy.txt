@@ -9065,7 +9065,7 @@ spawn(function()
 	end)
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Key Rengoku",
+	["Name"] = "Tự lấy chìa khóa Rengoku",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_885_arg0)
@@ -9098,53 +9098,8 @@ spawn(function()
 		end)
 	end
 end)
-
-_G.AutoRengoku = false
-
-L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Tự lấy kiếm Rengoku",
-	["Default"] = false,
-	["Callback"] = function(v)
-		_G.AutoRengoku = v
-	end
-})
-
-spawn(function()
-	while task.wait(.2) do
-		if not _G.AutoRengoku then continue end
-		
-		pcall(function()
-			local player = L_1_[45]
-
-			-- Nếu chưa có Hidden Key thì farm boss
-			if not player.Backpack:FindFirstChild("Hidden Key") 
-			and not player.Character:FindFirstChild("Hidden Key") then
-				
-				local boss = GetConnectionEnemies("Awakened Ice Admiral")
-				
-				if boss then
-					repeat
-						task.wait()
-						L_1_[4].Kill(boss, true)
-					until not _G.AutoRengoku
-						or not boss.Parent
-						or boss.Humanoid.Health <= 0
-				else
-					-- Teleport về Ice Castle
-					_tp(CFrame.new(5668, 28, -6483))
-				end
-			
-			else
-				-- Có Hidden Key → teleport mở cửa
-				_tp(CFrame.new(6571, 299, -6967))
-			end
-		end)
-	end
-end)
-
-
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Dragon Trident";
+	["Name"] = "Tự lấy Đinh ba rồng";
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_888_arg0)
@@ -9172,7 +9127,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Long Sword";
+	["Name"] = "Tự lấy Long Sword";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_891_arg0)
@@ -9200,7 +9155,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Black Spikey";
+	["Name"] = "Tự lấy áo choàng Gai đen";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_894_arg0)
@@ -9228,7 +9183,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Dark Blade V3",
+	["Name"] = "Tự nâng cấp Dark Blade V3",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_897_arg0)
@@ -9262,7 +9217,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Midnight Blade";
+	["Name"] = "Tự động lấy kiếm bóng đêm";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_899_arg0)
@@ -9318,7 +9273,7 @@ spawn(function()
 						repeat
 							wait()
 							L_1_[4]["Kill"](L_904_[1], _G["Auto_Def_DarkCoat"])
-						until _G["Auto_Def_DarkCoat"] == false or not L_904_[1]["Parent"] or L_904_[1]["Humanoid"]["Helath"] <= 0
+						until _G["Auto_Def_DarkCoat"] == false or not L_904_[1]["Parent"] or L_904_[1]["Humanoid"]["Health"] <= 0
 					end
 				elseif not GetBP("Fist of Darkness") and not GetConnectionEnemies("Darkbeard") then
 					repeat
@@ -9333,8 +9288,7 @@ spawn(function()
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Unlocked DonSwa",
-		"n"
+		"Tự mở DonSwan",
 	});
 	["Description"] = "";
 	["Default"] = false;
@@ -9398,7 +9352,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Swan Glasses",
+	["Name"] = "Tự lấy kính swan",
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_922_arg0)
@@ -9427,14 +9381,14 @@ spawn(function()
 end)
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
-		"Cavender + Twin Hook";
-		"s + Bigmom"
+		"Cavender + Song móc";
+		"+ Bigmom"
 	})
 })
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Bigmom",
+	["Name"] = "Tự kill Bigmom",
 	["Description"] = "",
-	["Default"] = false;
+	["Default"] = false,
 	["Callback"] = function(L_925_arg0)
 		local L_926_ = {}
 		L_926_[1] = L_925_arg0
@@ -9461,11 +9415,11 @@ spawn(function()
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Canvendish Swor";
-		"d"
+		"Tự lấy Canvendish Sword";
+		
 	});
 	["Description"] = "",
-	["Default"] = false;
+	["Default"] = false,
 	["Callback"] = function(L_928_arg0)
 		local L_929_ = {}
 		L_929_[1] = L_928_arg0
@@ -9491,7 +9445,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Twin Hooks",
+	["Name"] = "Tự lấy Song Móc",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_931_arg0)
@@ -9521,7 +9475,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Serpent Bow",
+	["Name"] = "Tự động lấy cung( Hydra )",
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_934_arg0)
@@ -9547,7 +9501,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Lei Accessory";
+	["Name"] = "Tự động lấy vòng hoa";
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_937_arg0)
@@ -9579,7 +9533,7 @@ L_1_[93]["Quests"]:AddSection({
 })
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Teleport Barist";
+		"Dịch chuyển đến Barist";
 		"a Cousin"
 	});
 	["Description"] = "";
@@ -9606,14 +9560,14 @@ spawn(function()
 	end
 end)
 L_1_[93]["Quests"]:AddButton({
-	["Name"] = "Buy Buso Colors",
+	["Name"] = "Mua haki vũ trang",
 	["Description"] = "",
 	["Callback"] = function()
 		L_1_[18]["Remotes"]["CommF_"]:InvokeServer("ColorsDealer", "2")
 	end
 })
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Rainbow Colors",
+	["Name"] = "Tự động lấy haki cầu vòng",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_945_arg0)
@@ -9715,8 +9669,8 @@ spawn(function()
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Accept Rainbow Quest",
-		" Faster"
+		"Nhận nhiệm vụ Rainbow nhanh",
+		
 	}),
 	["Description"] = "";
 	["Default"] = false;
@@ -9728,13 +9682,12 @@ Q = L_1_[93]["Quests"]:AddToggle({
 })
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
-		"Instinct / Observati";
-		"on"
+		"Haki quan sát";
 	})
 })
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Farm Observatio",
+		"Farm haki Quan sát",
 		"n"
 	}),
 	["Description"] = "";
@@ -9818,7 +9771,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Observation V2";
+	["Name"] = "Tự up haki quan sát V2";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_958_arg0)
@@ -9933,8 +9886,7 @@ spawn(function()
 end)
 Bartilo = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Done Bartilo Qu";
-		"est"
+		"Tự hoàn thành nhiệm vụ Bartilo";
 	});
 	["Description"] = "";
 	["Default"] = false,
@@ -10021,8 +9973,8 @@ spawn(function()
 end)
 CitizenQ = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Done Citizen Qu";
-		"est"
+		"Tự làm nhiệm vụ người dân";
+	
 	});
 	["Description"] = "";
 	["Default"] = false;
@@ -10082,7 +10034,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Training Dummy";
+	["Name"] = "Bù nhìn tập luyện";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_982_arg0)
@@ -10119,8 +10071,8 @@ spawn(function()
 end)
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
-		"Fighting Melee Style",
-		"s"
+		"Võ thuật cận chiến",
+		
 	})
 })
 SuperHuman = L_1_[93]["Quests"]:AddToggle({
@@ -10611,8 +10563,7 @@ spawn(function()
 end)
 L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Find Mirage Isl";
-		"and"
+		"Tìm đảo kì bí";
 	}),
 	["Description"] = "",
 	["Default"] = false,
@@ -10663,7 +10614,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Esp Mirage Island",
+	["Name"] = "Esp Đảo Kì Bí",
 	["Description"] = "";
 	["Value"] = false,
 	["Callback"] = function(L_1012_arg0)
@@ -10684,8 +10635,7 @@ L_1_[93]["Race"]:AddToggle({
 })
 L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Tween To Mirage";
-		" Island"
+		"Bay vô đảo kì bí";
 	}),
 	["Description"] = "";
 	["Default"] = false,
@@ -10712,8 +10662,7 @@ spawn(function()
 end)
 L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Tween To Highes",
-		"t Point"
+		"Bay lên chỗ cao",
 	});
 	["Description"] = "";
 	["Default"] = false,
@@ -10735,7 +10684,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Auto Collect Gear";
+	["Name"] = "Tự Nhặt Gear";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_1021_arg0)
@@ -10763,8 +10712,7 @@ spawn(function()
 end)
 L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Change Transparency ";
-		"can see"
+		"Xoá xương mù trong đảo";
 	}),
 	["Description"] = "";
 	["Default"] = false,
@@ -10795,8 +10743,7 @@ spawn(function()
 end)
 L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Tween Advanced ";
-		"Fruit Dealer"
+		"Bay đến NPC Bán Trái ";
 	}),
 	["Description"] = "",
 	["Default"] = false;
@@ -10826,8 +10773,7 @@ spawn(function()
 end)
 L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Collect Mirage ";
-		"Chest"
+		"Tự nhặt rương trong đảo";
 	});
 	["Description"] = "";
 	["Default"] = false;
@@ -10874,7 +10820,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Race"]:AddButton({
-	["Name"] = "Talk With Stone",
+	["Name"] = "Nói chuyện với bia đá",
 	["Description"] = "";
 	["Callback"] = function()
 		((L_1_[18]:WaitForChild("Remotes")):WaitForChild("CommF_")):InvokeServer("RaceV4Progress", "Begin");
@@ -10884,7 +10830,7 @@ L_1_[93]["Race"]:AddButton({
 	end
 })
 L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Auto Look At Moon";
+	["Name"] = "Tự nhìn trăng";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_1041_arg0)
@@ -10907,7 +10853,7 @@ task["spawn"](function()
 	end
 end)
 L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Look Moon + Auto V3";
+	["Name"] = "Nhìn trăng + bật V3";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_1043_arg0)
@@ -10935,12 +10881,11 @@ task["spawn"](function()
 end)
 L_1_[93]["Race"]:AddSection({
 	L_1_[2]({
-		"Upgrade Races V2 And";
-		" V3"
+		"Nâng cấp tộc v2 và v3";
 	})
 })
 RaceMink = L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Auto Upgrade Mink",
+	["Name"] = "Tự up tộc thỏ",
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_1046_arg0)
@@ -10988,7 +10933,7 @@ spawn(function()
 	end
 end)
 RaceHuman = L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Auto Upgrade Human",
+	["Name"] = "Tự up tộc người",
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_1049_arg0)
@@ -11061,7 +11006,7 @@ spawn(function()
 	end
 end)
 RaceSky = L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Auto Upgrade Angel",
+	["Name"] = "Tự up tộc Thiên thần",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_1053_arg0)
@@ -11116,7 +11061,7 @@ spawn(function()
 	end
 end)
 RaceFish = L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Auto Upgrade FishMan";
+	["Name"] = "Tự up tộc cá";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_1059_arg0)
@@ -11162,10 +11107,10 @@ spawn(function()
 	end
 end)
 L_1_[93]["Race"]:AddSection({
-	"Trials Quest V4"
+	"Nhiệm vụ thử thách V4"
 })
 CheckTier = L_1_[93]["Race"]:AddParagraph({
-	["Title"] = " Tiers V4 Status ";
+	["Title"] = "Trạng Thái v4",
 	["Content"] = ""
 })
 spawn(function()
@@ -11176,7 +11121,7 @@ spawn(function()
 	end)
 end)
 PullLv = L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Auto Pull Lever",
+	["Name"] = "Tự gạt cần",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_1062_arg0)
@@ -11201,7 +11146,7 @@ spawn(function()
 	end
 end)
 Train = L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Auto Train V4",
+	["Name"] = "Tự luyện V4",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_1067_arg0)
@@ -11267,8 +11212,7 @@ L_1_[93]["Race"]:AddButton({
 })
 L_1_[93]["Race"]:AddButton({
 	["Name"] = L_1_[2]({
-		"Teleport to Ancient ";
-		"One"
+		"Dịch Chuyển Đến Thực Thể Cổ Đại";
 	});
 	["Description"] = "";
 	["Callback"] = function()
@@ -11291,8 +11235,7 @@ L_1_[93]["Race"]:AddButton({
 })
 L_1_[93]["Race"]:AddButton({
 	["Name"] = L_1_[2]({
-		"Teleport to Ancient ",
-		"Clock"
+		"Dịch chuyển đến đòng hồ cổ đại",
 	}),
 	["Description"] = "";
 	["Callback"] = function()
@@ -11318,8 +11261,7 @@ L_1_[93]["Race"]:AddButton({
 })
 Doors = L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Teleport to Rac",
-		"e Doors"
+		"Bay đến cổng up",
 	}),
 	["Description"] = "",
 	["Default"] = false;
@@ -11352,8 +11294,7 @@ spawn(function()
 end)
 Trials = L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Complete Trial ";
-		"Race"
+		"Tự Hoàn Thành Trial Tộc";
 	}),
 	["Description"] = "",
 	["Default"] = false;
@@ -11471,8 +11412,7 @@ spawn(function()
 end)
 AutoKill = L_1_[93]["Race"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Kill Player Aft";
-		"er Trial"
+		"Kill Người chơi trong trial",
 	});
 	["Description"] = "",
 	["Default"] = false,
