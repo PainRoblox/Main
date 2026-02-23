@@ -2658,12 +2658,12 @@ L_1_[5] = replicated["Modules"]["Net"][L_1_[2]({
 	"eak"
 })]
 WeaponDropdown = L_1_[93]["Main"]:AddDropdown({
-	["Name"] = "Select Weapon",
+	["Name"] = "Chọn Vũ khí Farm",
 	["Options"] = {
 		"Melee";
-		"Sword",
+		"Kiếm",
 		"Blox Fruit";
-		"Gun"
+		"Súng"
 	},
 	["Default"] = "Melee";
 	["Callback"] = function(L_210_arg0)
@@ -2683,7 +2683,7 @@ spawn(function()
 						_G["SelectWeapon"] = L_214_[2]["Name"]
 					end
 				end
-			elseif _G["ChooseWP"] == "Sword" then
+			elseif _G["ChooseWP"] == "Kiếm" then
 				for L_215_forvar0, L_216_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
 					local L_217_ = {}
 					L_217_[3], L_217_[2] = L_215_forvar0, L_216_forvar1
@@ -2691,7 +2691,7 @@ spawn(function()
 						_G["SelectWeapon"] = L_217_[2]["Name"]
 					end
 				end
-			elseif _G["ChooseWP"] == "Gun" then
+			elseif _G["ChooseWP"] == "Súng" then
 				for L_218_forvar0, L_219_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
 					local L_220_ = {}
 					L_220_[2], L_220_[1] = L_218_forvar0, L_219_forvar1
@@ -2715,7 +2715,7 @@ L_1_[93]["Main"]:AddSection({
 	"Farming"
 })
 FarmLevel = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Level",
+	["Name"] = "Farm level",
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_226_arg0)
@@ -2844,7 +2844,7 @@ task["spawn"](function()
 	end
 end)
 ClosetMons = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Nearest";
+	["Name"] = "Farm Mob Gần";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_238_arg0)
@@ -2873,8 +2873,9 @@ spawn(function()
 		end)
 	end
 end)
+if World2 then
 FactoryRaids = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Factory Raid";
+	["Name"] = "Đánh nhà máy";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_243_arg0)
@@ -2902,8 +2903,9 @@ spawn(function()
 		end)
 	end
 end)
+if World3 then
 CastleRaids = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Pirate Raid",
+	["Name"] = "Đánh hải tặc",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_246_arg0)
@@ -2976,7 +2978,7 @@ spawn(function()
 	end
 end)
 Ecto = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Ectoplasm",
+	["Name"] = "Farm Vật Chất Kì dị",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_258_arg0)
@@ -3912,7 +3914,7 @@ L_1_[93]["Main"]:AddSection({
 	"Collect Chest"
 })
 ChestTW = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Chest",
+	["Name"] = "Farm Rương",
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_347_arg0)
@@ -3956,7 +3958,7 @@ spawn(function()
 	end
 end)
 ChestBP = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Chest Bypass";
+	["Name"] = "Farm Rương Bypass";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_352_arg0)
@@ -4035,7 +4037,7 @@ ChestBP = L_1_[93]["Main"]:AddToggle({
 	end
 })
 StopI = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Stop Items";
+	["Name"] = "Dừng khi nhặt được items";
 	["Description"] = "",
 	["Default"] = true,
 	["Callback"] = function(L_367_arg0)
@@ -4060,7 +4062,7 @@ L_1_[93]["Main"]:AddSection({
 	"Collect Berry"
 })
 Berry = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Berry";
+	["Name"] = "Farm Berry";
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_369_arg0)
@@ -4108,8 +4110,7 @@ spawn(function()
 end)
 BerryH = L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Farm Berry + Ho",
-		"p"
+		"Farm Berry + Hop",
 	}),
 	["Description"] = "";
 	["Default"] = false,
@@ -4185,7 +4186,7 @@ L_1_[93]["Main"]:AddSection({
 })
 if World1 then
 	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Mob",
+		["Name"] = "Chọn Mob",
 		["Default"] = false,
 		["Options"] = {
 			"Bandit";
@@ -4222,7 +4223,7 @@ if World1 then
 end
 if World2 then
 	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Mob";
+		["Name"] = "Chọn Mob";
 		["Default"] = false;
 		["Options"] = {
 			"Raider";
@@ -4257,7 +4258,7 @@ if World2 then
 end
 if World3 then
 	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Mob",
+		["Name"] = "Chọn Mob",
 		["Default"] = false,
 		["Options"] = {
 			"Pirate Millionaire";
@@ -4587,7 +4588,7 @@ L_1_[98] = {
 }
 if World1 then
 	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Island",
+		["Name"] = "Chọn Đảo",
 		["Options"] = {
 			"Pirates",
 			"Marine",
@@ -4612,7 +4613,7 @@ if World1 then
 end
 if World2 then
 	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Island",
+		["Name"] = "Chọn Đảo",
 		["Options"] = {
 			"Kingdom of Rose",
 			"Green Zone",
@@ -4633,7 +4634,7 @@ if World2 then
 end
 if World3 then
 	L_1_[93]["Main"]:AddDropdown({
-		["Name"] = "Select Island";
+		["Name"] = "Chọn Đảo";
 		["Options"] = {
 			"Port Town";
 			"Hydra Island";
@@ -4659,7 +4660,7 @@ elseif World3 then
 	L_1_[60] = L_1_[98]
 end
 L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm All Island",
+	["Name"] = "Farm Tất Cả Đảo",
 	["Default"] = false;
 	["Callback"] = function(L_416_arg0)
 		local L_417_ = {}
@@ -4724,7 +4725,7 @@ spawn(function()
 	end
 end)
 EliteHunter = L_1_[93]["Main"]:AddParagraph({
-	["Title"] = "Elite Spawn";
+	["Title"] = "Elite Xuất hiện";
 	["Content"] = "Status: "
 })
 spawn(function()
@@ -4741,7 +4742,7 @@ spawn(function()
 	end
 end)
 EliteQ = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Elite";
+	["Name"] = "Đánh Elite";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_427_arg0)
@@ -4818,8 +4819,7 @@ spawn(function()
 end)
 EliteH = L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Farm Elite + Ho";
-		"p"
+		"Farm Elite + Hop";
 	}),
 	["Description"] = "";
 	["Default"] = false;
@@ -4942,8 +4942,7 @@ L_1_[93]["Main"]:AddSection({
 })
 L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Attack Rip Indr",
-		"a"
+		"Đánh Rip Indra",
 	}),
 	["Description"] = "";
 	["Default"] = false,
@@ -4974,7 +4973,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Unlocked Haki";
+	["Name"] = "Mở khóa Haki";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_466_arg0)
@@ -5061,7 +5060,7 @@ spawn(function()
 end)
 Cake = L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Farm Cake Princ",
+		"Farm Cake Princ",
 		"e"
 	}),
 	["Description"] = "",
@@ -5505,7 +5504,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Bone";
+	["Name"] = "Farm Xương";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_512_arg0)
@@ -5582,9 +5581,9 @@ spawn(function()
 	end
 end)
 BoneQ = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Accept Quests",
+	["Name"] = "Nhận nhiệm vụ",
 	["Description"] = "",
-	["Default"] = false,
+	["Default"] = true,
 	["Callback"] = function(L_517_arg0)
 		local L_518_ = {}
 		L_518_[1] = L_517_arg0
@@ -5631,7 +5630,7 @@ spawn(function()
 	end
 end)
 RanBone = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Random Bones",
+	["Name"] = "Random Xương",
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_522_arg0)
@@ -5720,7 +5719,7 @@ spawn(function()
 	end)
 end)
 EyeStatus = L_1_[93]["Main"]:AddParagraph({
-	["Title"] = "Check Status Eyes",
+	["Title"] = "Check boss",
 	["Content"] = ""
 })
 function Check_Eye()
@@ -5758,7 +5757,7 @@ task["spawn"](function()
 	end
 end)
 FarmTyrant = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Boss";
+	["Name"] = "Farm Boss";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_536_arg0)
@@ -5844,7 +5843,7 @@ spawn(function()
 	end
 end)
 FarmPhaBinh = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Summon Boss";
+	["Name"] = "Tự Triệu Hồi Boss";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_546_arg0)
@@ -5947,10 +5946,10 @@ spawn(function()
 	end
 end)
 L_1_[93]["Main"]:AddSection({
-	"Farm Material"
+	"Farm Nguyên liệu"
 })
 Test = L_1_[93]["Main"]:AddDropdown({
-	["Name"] = "Choose Material";
+	["Name"] = "Chọn Nguyên liệu";
 	["Description"] = "",
 	["Options"] = MaterialList;
 	["Default"] = false;
@@ -5961,7 +5960,7 @@ Test = L_1_[93]["Main"]:AddDropdown({
 	end
 })
 Toggle = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Materials";
+	["Name"] = "Farm Nguyên liệu";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_564_arg0)
@@ -6024,7 +6023,7 @@ L_1_[93]["Main"]:AddSection({
 	"Farm Boss"
 })
 BossDropdown = L_1_[93]["Main"]:AddDropdown({
-	["Name"] = "Select Boss";
+	["Name"] = "Chọn Boss";
 	["Description"] = "";
 	["Options"] = BossList,
 	["Default"] = false;
@@ -6035,7 +6034,7 @@ BossDropdown = L_1_[93]["Main"]:AddDropdown({
 	end
 })
 FarmBoss = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm Boss";
+	["Name"] = "Farm Boss";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_584_arg0)
@@ -6107,7 +6106,7 @@ FarmBoss = L_1_[93]["Main"]:AddToggle({
 	end
 })
 BossQ = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Accept Quests";
+	["Name"] = "Nhận nhiệm vụ";
 	["Description"] = "",
 	["Default"] = true;
 	["Callback"] = function(L_593_arg0)
@@ -6117,7 +6116,7 @@ BossQ = L_1_[93]["Main"]:AddToggle({
 	end
 })
 FarmAllBoss = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Farm All Boss",
+	["Name"] = "Farm Tất cả Boss",
 	["Default"] = false;
 	["Callback"] = function(L_595_arg0)
 		local L_596_ = {}
@@ -6183,7 +6182,7 @@ L_1_[17] = {
 	"Bone"
 }
 L_1_[74] = L_1_[93]["Main"]:AddDropdown({
-	["Name"] = "Choose Island";
+	["Name"] = "Chọn Đảo";
 	["Description"] = "",
 	["Options"] = L_1_[17],
 	["Default"] = false;
@@ -6194,7 +6193,7 @@ L_1_[74] = L_1_[93]["Main"]:AddDropdown({
 	end
 })
 L_1_[137] = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Mastery Fruits";
+	["Name"] = "Farm Mastery Trái";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_606_arg0)
@@ -6256,7 +6255,7 @@ spawn(function()
 	end
 end)
 L_1_[46] = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Auto Mastery Gun",
+	["Name"] = "Farm Mastery Súng",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_613_arg0)
@@ -6360,8 +6359,7 @@ spawn(function()
 end)
 L_1_[29] = L_1_[93]["Main"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Mastery All Swo",
-		"rd"
+		"Farm Materys Ttas Cả kiếm",
 	}),
 	["Description"] = "",
 	["Default"] = false;
@@ -6449,11 +6447,6 @@ end)
 L_1_[93]["Settings"]:AddSection({
 	"Settings / Configure"
 })
-Initialize = L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Fast Attack",
-	["Description"] = "",
-	["Default"] = true,
-	["Callback"] = function(L_629_arg0)
 		local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -6613,11 +6606,8 @@ end)
 setreadonly(mt, true)
 
 print("⚡ Ultra Fast Attack  ⚡")
-
-	end
-})
 Bringmob = L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Bring Mobs";
+	["Name"] = "Gom Quái";
 	["Description"] = "",
 	["Default"] = true,
 	["Callback"] = function(L_631_arg0)
@@ -6680,7 +6670,7 @@ L_1_[93]["Settings"]:AddDropdown({
 	end
 })
 L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Hop Server",
+	["Name"] = "Đổi Server",
 	["Default"] = false;
 	["Callback"] = function(L_639_arg0)
 		local L_640_ = {}
@@ -6727,7 +6717,7 @@ L_1_[93]["Settings"]:AddSlider({
 	end
 })
 L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Set Spawn Point";
+	["Name"] = "Lưu điểm hồi sinh";
 	["Default"] = false,
 	["Callback"] = function(L_643_arg0)
 		local L_644_ = {}
@@ -6741,7 +6731,7 @@ L_1_[93]["Settings"]:AddToggle({
 	end
 })
 BusuAura = L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Turn on Buso",
+	["Name"] = "Bật BuSo",
 	["Description"] = "",
 	["Default"] = true;
 	["Callback"] = function(L_645_arg0)
@@ -6788,7 +6778,7 @@ spawn(function()
 	end
 end)
 RaceV3Aura = L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Turn on Race V3";
+	["Name"] = "Bật Tộc V3";
 	["Description"] = "",
 	["Default"] = false;
 	["Flag"] = "AutoTurnonRaceV3";
@@ -6811,7 +6801,7 @@ spawn(function()
 	end
 end)
 RaceV4Aura = L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Turn on Race V4",
+	["Name"] = "Bật Tộc V4",
 	["Description"] = "",
 	["Default"] = false;
 	["Flag"] = "AutoTurnonRaceV4";
@@ -6863,7 +6853,7 @@ L_1_[93]["Settings"]:AddToggle({
 	end
 })
 L_1_[93]["Settings"]:AddSlider({
-	["Name"] = "Speed Value";
+	["Name"] = "Chọn Tốc độ Chạy";
 	["Min"] = 80,
 	["Max"] = 300,
 	["Default"] = (getgenv())["WalkSpeedValue"];
@@ -6893,7 +6883,7 @@ if L_1_[45]["Character"] then
 	end
 end
 L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Auto Jump";
+	["Name"] = "Nhảy Cao";
 	["Default"] = false;
 	["Callback"] = function(L_663_arg0)
 		local L_664_ = {}
@@ -6909,7 +6899,7 @@ L_1_[93]["Settings"]:AddToggle({
 	end
 })
 L_1_[93]["Settings"]:AddSlider({
-	["Name"] = "Jump Value",
+	["Name"] = "Chọn Nhảy cao",
 	["Min"] = 50;
 	["Max"] = 500,
 	["Default"] = (getgenv())["JumpValue"],
@@ -6928,8 +6918,7 @@ L_1_[93]["Settings"]:AddSlider({
 })
 RandomAround = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Turn on Spin Po";
-		"sition"
+		"Tự Động Xoay";
 	});
 	["Description"] = "",
 	["Default"] = false;
@@ -17236,11 +17225,11 @@ briggt1 = L_1_[93]["Misc"]:AddToggle({
 	end
 })
 DayN = L_1_[93]["Misc"]:AddDropdown({
-	["Name"] = "Select Time";
+	["Name"] = "Chọn Thời Gian";
 	["Description"] = "";
 	["Options"] = {
-		"Day",
-		"Night"
+		"Sáng",
+		"Tối"
 	};
 	["Default"] = false,
 	["Callback"] = function(L_1722_arg0)
@@ -17250,7 +17239,7 @@ DayN = L_1_[93]["Misc"]:AddDropdown({
 	end
 })
 dayornight = L_1_[93]["Misc"]:AddToggle({
-	["Name"] = "Turn on Time";
+	["Name"] = "Bật Thời Gian";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_1724_arg0)
@@ -17262,9 +17251,9 @@ dayornight = L_1_[93]["Misc"]:AddToggle({
 task["spawn"](function()
 	while task["wait"]() do
 		if _G["daylightN"] then
-			if _G["SelectDN"] == "Day" then
+			if _G["SelectDN"] == "Sáng" then
 				Lighting["ClockTime"] = 12
-			elseif _G["SelectDN"] == "Night" then
+			elseif _G["SelectDN"] == "Tối" then
 				Lighting["ClockTime"] = 0
 			end
 		end
@@ -17272,8 +17261,7 @@ task["spawn"](function()
 end)
 walkWater = L_1_[93]["Misc"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Turn on Walk on Wate";
-		"r"
+		"Đi trên mặt nước";
 	});
 	["Description"] = "",
 	["Default"] = true,
@@ -17289,7 +17277,7 @@ walkWater = L_1_[93]["Misc"]:AddToggle({
 	end
 })
 iceWalk = L_1_[93]["Misc"]:AddToggle({
-	["Name"] = "Turn on Ice Walk",
+	["Name"] = "Đi trên mặt Nước [Băng]",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_1728_arg0)
