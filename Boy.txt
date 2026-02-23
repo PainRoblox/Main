@@ -10,10 +10,9 @@ local messages = {
 task.spawn(function()
     for _, msg in ipairs(messages) do
         Notification.new("<Color=Blue>"..msg.."<Color=/>"):Display()
-        task.wait(3)
+        task.wait(2)
     end
 end)
-task.wait(10) 
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
