@@ -12,8 +12,8 @@ task.spawn(function()
     Notification.new("<Color=Blue>"..msg.."<Color=/>"):Display()
     task.wait(3)
 end
+task.wait(10) 
 
-task.wait(10) -- đợi thêm 10 giây sau khi hiện hết chữ
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
