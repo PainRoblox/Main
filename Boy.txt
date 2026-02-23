@@ -2903,6 +2903,7 @@ spawn(function()
 		end)
 	end
 end)
+end
 if World3 then
 CastleRaids = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Đánh hải tặc",
@@ -2977,6 +2978,7 @@ spawn(function()
 		end
 	end
 end)
+end
 Ecto = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Farm Vật Chất Kì dị",
 	["Description"] = "",
