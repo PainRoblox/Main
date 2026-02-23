@@ -1114,20 +1114,19 @@ spawn(function()
 					L_166_[1]["Velocity"] = Vector3["new"](0, 0, 0)
 				end
 				if plr.Character:FindFirstChild("highlight") then
-    plr.Character:FindFirstChild("highlight"):Destroy()
-end
+                plr.Character:FindFirstChild("highlight"):Destroy()
+           end
 
-local highlight = Instance.new("Highlight")
-highlight.Name = "highlight"
-highlight.Enabled = true
+               local highlight = Instance.new("Highlight")
+               highlight.Name = "highlight"
+               highlight.Enabled = true
 
 -- 🤍 Trắng mờ nhẹ + viền trắng sáng
-highlight.FillColor = Color3.fromRGB(255, 255, 255)
-highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
-highlight.FillTransparency = 0.6
-highlight.OutlineTransparency = 0
-
-highlight.Parent = plr.Character
+               highlight.FillColor = Color3.fromRGB(255, 255, 255)
+               highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+               highlight.FillTransparency = 0.6
+               highlight.OutlineTransparency = 0
+               highlight.Parent = plr.Character
 				for L_168_forvar0, L_169_forvar1 in pairs(plr["Character"]:GetDescendants()) do
 					local L_170_ = {}
 					L_170_[2], L_170_[1] = L_168_forvar0, L_169_forvar1
@@ -7745,6 +7744,7 @@ spawn(function()
 		end)
 	end
 end)
+if World3 then
 L_1_[93]["Quests"]:AddSection({
 	"Tushita + Yama"
 })
@@ -8650,6 +8650,7 @@ spawn(function()
 		end)
 	end
 end)
+end
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
 		"Tam bảo kiếm";
