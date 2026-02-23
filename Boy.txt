@@ -9586,9 +9586,9 @@ Q = L_1_[93]["Quests"]:AddToggle({
 		_G["Auto_Rainbow_Haki"] = L_946_[2]
 	end
 })
-task.spawn(function()
-	  local Sec = 0.5 -- hoặc 1
-	     while task.wait(Sec) do
+spawn(function()
+	pcall(function()
+		while wait(Sec) do
 			if _G["Auto_Rainbow_Haki"] then
 				if L_1_[45]["PlayerGui"]["Main"]["Quest"]["Visible"] == false then
 					if _G["GetQFast"] then
@@ -9596,14 +9596,13 @@ task.spawn(function()
 							L_1_[18]["Remotes"]["CommF_"]:InvokeServer("HornedMan", "Bet")
 						end
 					else
-						Rainbow1 = CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875)
-                        local distance = (L_1_[45].Character.HumanoidRootPart.Position - Rainbow1.Position).Magnitude
-                        if distance > 5 then
-                          _tp(Rainbow1)
-                    else
-                          task.wait(1)
-                              L_1_[18]["Remotes"]["CommF_"]:InvokeServer("HornedMan", "Bet")
-                        end
+						Rainbow1 = CFrame["new"](-11892.0703125, 930.57672119141, -8760.1591796875)
+						if L_1_[45]["Character"]["HumanoidRootPart"]["CFrame"] ~= Rainbow1 then
+							_tp(Rainbow1)
+						elseif L_1_[45]["Character"]["HumanoidRootPart"]["CFrame"] == Rainbow1 then
+							wait(1)
+							L_1_[18]["Remotes"]["CommF_"]:InvokeServer("HornedMan", "Bet")
+						end
 					end
 				elseif L_1_[45]["PlayerGui"]["Main"]["Quest"]["Visible"] == true and string["find"](L_1_[45]["PlayerGui"]["Main"]["Quest"]["Container"]["QuestTitle"]["Title"]["Text"], "Stone") then
 					local L_947_ = {}
@@ -9629,7 +9628,7 @@ task.spawn(function()
 						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](5643.4526367188, 1013.0858154297, -340.51025390625))
 						L_949_[2] = Vector3["new"](5643.4526367188, 1013.0858154297, -340.51025390625)
 						L_949_[1] = CFrame["new"](5821.8979492188, 1019.0950927734, -73.719230651855)
-						if (L_1_[45].Character.HumanoidRootPart.Position - L_949_[2]).Magnitude < 5 then
+						if L_1_[45]["Character"]["HumanoidRootPart"]["CFrame"]["Position"] == L_949_[2] then
 							_tp(L_949_[1])
 						end
 					end
@@ -9656,16 +9655,15 @@ task.spawn(function()
 						local L_952_ = {}
 						L_952_[3] = Vector3["new"](-12471.169921875, 374.94024658203, -7551.677734375)
 						L_952_[1] = CFrame["new"](-13376.7578125, 433.28689575195, -8071.392578125)
-						local dist = (L_1_[45].Character.HumanoidRootPart.Position - L_952_[3]).Magnitude
-                       if dist > 5 then
-                       L_1_[18]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", L_952_[3])
-                   else
-                         _tp(L_952_[1])                      
+						if L_1_[45]["Character"]["HumanoidRootPart"]["CFrame"]["Position"] ~= L_952_[3] then
+							L_1_[18]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](-12471.169921875, 374.94024658203, -7551.677734375))
+						elseif L_1_[45]["Character"]["HumanoidRootPart"]["CFrame"]["Position"] == L_952_[3] then
+							_tp(L_952_[1])
 						end
 					end
 				elseif L_1_[45]["PlayerGui"]["Main"]["Quest"]["Visible"] == true and string["find"](L_1_[45]["PlayerGui"]["Main"]["Quest"]["Container"]["QuestTitle"]["Title"]["Text"], "Beautiful Pirate") then
 					local L_953_ = {}
-				    L_953_[2] = GetConnectionEnemies("Beautiful Pirate")
+					L_953_[2] = GetConnectionEnemies("Captain Elephant")
 					if L_953_[2] then
 						repeat
 							task["wait"]()
