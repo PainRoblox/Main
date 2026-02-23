@@ -17228,8 +17228,8 @@ DayN = L_1_[93]["Misc"]:AddDropdown({
 	["Name"] = "Chọn Thời Gian";
 	["Description"] = "";
 	["Options"] = {
-		"Sáng",
-		"Tối"
+		"Day",
+		"Night"
 	};
 	["Default"] = false,
 	["Callback"] = function(L_1722_arg0)
@@ -17251,9 +17251,9 @@ dayornight = L_1_[93]["Misc"]:AddToggle({
 task["spawn"](function()
 	while task["wait"]() do
 		if _G["daylightN"] then
-			if _G["SelectDN"] == "Sáng" then
+			if _G["SelectDN"] == "Day" then
 				Lighting["ClockTime"] = 12
-			elseif _G["SelectDN"] == "Tối" then
+			elseif _G["SelectDN"] == "Night" then
 				Lighting["ClockTime"] = 0
 			end
 		end
