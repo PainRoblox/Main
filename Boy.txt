@@ -2661,9 +2661,9 @@ WeaponDropdown = L_1_[93]["Main"]:AddDropdown({
 	["Name"] = "Chọn Vũ khí Farm",
 	["Options"] = {
 		"Melee";
-		"Kiếm",
+		"Sword",
 		"Blox Fruit";
-		"Súng"
+		"Gun"
 	},
 	["Default"] = "Melee";
 	["Callback"] = function(L_210_arg0)
@@ -2683,7 +2683,7 @@ spawn(function()
 						_G["SelectWeapon"] = L_214_[2]["Name"]
 					end
 				end
-			elseif _G["ChooseWP"] == "Kiếm" then
+			elseif _G["ChooseWP"] == "Sword" then
 				for L_215_forvar0, L_216_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
 					local L_217_ = {}
 					L_217_[3], L_217_[2] = L_215_forvar0, L_216_forvar1
@@ -2691,7 +2691,7 @@ spawn(function()
 						_G["SelectWeapon"] = L_217_[2]["Name"]
 					end
 				end
-			elseif _G["ChooseWP"] == "Súng" then
+			elseif _G["ChooseWP"] == "Gun" then
 				for L_218_forvar0, L_219_forvar1 in pairs(plr["Backpack"]:GetChildren()) do
 					local L_220_ = {}
 					L_220_[2], L_220_[1] = L_218_forvar0, L_219_forvar1
