@@ -10458,6 +10458,233 @@ spawn(function()
 end)
 L_1_[93]["Race"]:AddSection({
 	L_1_[2]({
+		"Nâng cấp tộc v2 và v3";
+	})
+})
+RaceMink = L_1_[93]["Race"]:AddToggle({
+	["Name"] = "Tự up tộc thỏ",
+	["Description"] = "",
+	["Default"] = false;
+	["Callback"] = function(L_1046_arg0)
+		local L_1047_ = {}
+		L_1047_[2] = L_1046_arg0
+		_G["Auto_Mink"] = L_1047_[2]
+	end
+})
+spawn(function()
+	while wait(Sec) do
+		pcall(function()
+			if _G["Auto_Mink"] then
+				if L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") ~= 2 then
+					if L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 0 then
+						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "2")
+					elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 1 then
+						if not L_1_[45]["Backpack"]:FindFirstChild("Flower 1") and not L_1_[45]["Character"]:FindFirstChild("Flower 1") then
+							_tp(workspace["Flower1"]["CFrame"])
+						elseif not L_1_[45]["Backpack"]:FindFirstChild("Flower 2") and not L_1_[45]["Character"]:FindFirstChild("Flower 2") then
+							_tp(workspace["Flower2"]["CFrame"])
+						elseif not L_1_[45]["Backpack"]:FindFirstChild("Flower 3") and not L_1_[45]["Character"]:FindFirstChild("Flower 3") then
+							local L_1048_ = {}
+							L_1048_[2] = GetConnectionEnemies("Swan Pirate")
+							if L_1048_[2] then
+								repeat
+									wait()
+									L_1_[4]["Kill"](L_1048_[2], _G["Auto_Mink"])
+								until GetBP("Flower 3") or not L_1048_[2]["Parent"] or L_1048_[2]["Humanoid"]["Health"] <= 0 or _G["Auto_Mink"] == false
+							else
+								_tp(CFrame["new"](980.09851074219, 121.33129882812, 1287.2093505859))
+							end
+						end
+					elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 2 then
+						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "3")
+					end
+				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "1") == 0 then
+					L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "2")
+				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "1") == 1 then
+					_G["AutoFarmChest"] = true
+				else
+					_G["AutoFarmChest"] = false
+				end
+			end
+		end)
+	end
+end)
+RaceHuman = L_1_[93]["Race"]:AddToggle({
+	["Name"] = "Tự up tộc người",
+	["Description"] = "",
+	["Default"] = false;
+	["Callback"] = function(L_1049_arg0)
+		local L_1050_ = {}
+		L_1050_[1] = L_1049_arg0
+		_G["Auto_Human"] = L_1050_[1]
+	end
+})
+spawn(function()
+	while wait(Sec) do
+		pcall(function()
+			if _G["Auto_Human"] then
+				if L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") ~= -2 then
+					if L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 0 then
+						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "2")
+					elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 1 then
+						if not L_1_[45]["Backpack"]:FindFirstChild("Flower 1") and not L_1_[45]["Character"]:FindFirstChild("Flower 1") then
+							_tp(workspace["Flower1"]["CFrame"])
+						elseif not L_1_[45]["Backpack"]:FindFirstChild("Flower 2") and not L_1_[45]["Character"]:FindFirstChild("Flower 2") then
+							_tp(workspace["Flower2"]["CFrame"])
+						elseif not L_1_[45]["Backpack"]:FindFirstChild("Flower 3") and not L_1_[45]["Character"]:FindFirstChild("Flower 3") then
+							local L_1051_ = {}
+							L_1051_[1] = GetConnectionEnemies("Swan Pirate")
+							if L_1051_[1] then
+								repeat
+									wait()
+									L_1_[4]["Kill"](L_1051_[1], _G["Auto_Human"])
+								until L_1_[45]["Backpack"]:FindFirstChild("Flower 3") or not L_1051_[1]["Parent"] or L_1051_[1]["Humanoid"]["Health"] <= 0 or _G["Auto_Human"] == false
+							else
+								_tp(CFrame["new"](980.09851074219, 121.33129882812, 1287.2093505859))
+							end
+						end
+					elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 2 then
+						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "3")
+					end
+				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "1") == 0 then
+					L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "2")
+				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "1") == 1 then
+					local L_1052_ = {}
+					L_1052_[1] = GetConnectionEnemies(L_1_[110][1])
+					if L_1052_[1] then
+						repeat
+							wait()
+							L_1_[4]["Kill"](L_1052_[1], _G["Auto_Human"])
+						until L_1052_[1]["Humanoid"]["Health"] <= 0 or not L_1052_[1]["Parent"] or not _G["Auto_Human"]
+					else
+						_tp(CFrame["new"](-2172.7399902344, 103.32216644287, -4015.025390625))
+					end
+					L_1052_[4] = GetConnectionEnemies(L_1_[110][2])
+					if L_1052_[4] then
+						repeat
+							wait()
+							L_1_[4]["Kill"](L_1052_[4], _G["Auto_Human"])
+						until L_1052_[4]["Humanoid"]["Health"] <= 0 or not L_1052_[4]["Parent"] or not _G["Auto_Human"]
+					else
+						_tp(CFrame["new"](2006.9261474609, 448.95666503906, 853.98284912109))
+					end
+					L_1052_[3] = GetConnectionEnemies(L_1_[110][3])
+					if L_1052_[3] then
+						repeat
+							wait()
+							L_1_[4]["Kill"](L_1052_[3], _G["Auto_Human"])
+						until L_1052_[3]["Humanoid"]["Health"] <= 0 or not L_1052_[3]["Parent"] or not _G["Auto_Human"]
+					else
+						_tp(CFrame["new"](-1576.7166748047, 198.59265136719, 13.724286079407))
+					end
+				end
+			end
+		end)
+	end
+end)
+RaceSky = L_1_[93]["Race"]:AddToggle({
+	["Name"] = "Tự up tộc Thiên thần",
+	["Description"] = "",
+	["Default"] = false,
+	["Callback"] = function(L_1053_arg0)
+		local L_1054_ = {}
+		L_1054_[2] = L_1053_arg0
+		_G["Auto_Skypiea"] = L_1054_[2]
+	end
+})
+spawn(function()
+	while wait(Sec) do
+		pcall(function()
+			if _G["Auto_Skypiea"] then
+				if L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") ~= -2 then
+					if L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 0 then
+						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "2")
+					elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 1 then
+						if not L_1_[45]["Backpack"]:FindFirstChild("Flower 1") and not L_1_[45]["Character"]:FindFirstChild("Flower 1") then
+							_tp(workspace["Flower1"]["CFrame"])
+						elseif not L_1_[45]["Backpack"]:FindFirstChild("Flower 2") and not L_1_[45]["Character"]:FindFirstChild("Flower 2") then
+							_tp(workspace["Flower2"]["CFrame"])
+						elseif not L_1_[45]["Backpack"]:FindFirstChild("Flower 3") and not L_1_[45]["Character"]:FindFirstChild("Flower 3") then
+							local L_1055_ = {}
+							L_1055_[1] = GetConnectionEnemies("Swan Pirate")
+							if L_1055_[1] then
+								repeat
+									wait()
+									L_1_[4]["Kill"](L_1055_[1], _G["Auto_Skypiea"])
+								until L_1_[45]["Backpack"]:FindFirstChild("Flower 3") or not L_1055_[1]["Parent"] or L_1055_[1]["Humanoid"]["Health"] <= 0 or _G["Auto_Skypiea"] == false
+							else
+								_tp(CFrame["new"](980.09851074219, 121.33129882812, 1287.2093505859))
+							end
+						end
+					elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 2 then
+						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "3")
+					end
+				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "1") == 0 then
+					L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "2")
+				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "1") == 1 then
+					for L_1056_forvar0, L_1057_forvar1 in pairs(game["Players"]:GetChildren()) do
+						local L_1058_ = {}
+						L_1058_[3], L_1058_[1] = L_1056_forvar0, L_1057_forvar1
+						if L_1058_[1]["Name"] ~= L_1_[45]["Name"] and tostring(L_1058_[1]["Data"]["Race"]["Value"]) == "Skypiea" then
+							repeat
+								task["wait"]()
+								_tp((L_1058_[1]["HumanoidRootPart"]["CFrame"] * CFrame["new"](0, 8, 0)) * CFrame["Angles"](math["rad"](-45), 0, 0))
+							until L_1058_[1]["Humanoid"]["Health"] <= 0 or _G["Auto_Skypiea"] == false
+						end
+					end
+				end
+			end
+		end)
+	end
+end)
+RaceFish = L_1_[93]["Race"]:AddToggle({
+	["Name"] = "Tự up tộc cá";
+	["Description"] = "",
+	["Default"] = false;
+	["Callback"] = function(L_1059_arg0)
+		local L_1060_ = {}
+		L_1060_[2] = L_1059_arg0
+		_G["Auto_Fish"] = L_1060_[2]
+	end
+})
+spawn(function()
+	while wait(Sec) do
+		pcall(function()
+			if _G["Auto_Fish"] then
+				if L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") ~= -2 then
+					if L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 0 then
+						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "2")
+					elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 1 then
+						if not L_1_[45]["Backpack"]:FindFirstChild("Flower 1") and not L_1_[45]["Character"]:FindFirstChild("Flower 1") then
+							_tp(workspace["Flower1"]["CFrame"])
+						elseif not L_1_[45]["Backpack"]:FindFirstChild("Flower 2") and not L_1_[45]["Character"]:FindFirstChild("Flower 2") then
+							_tp(workspace["Flower2"]["CFrame"])
+						elseif not L_1_[45]["Backpack"]:FindFirstChild("Flower 3") and not L_1_[45]["Character"]:FindFirstChild("Flower 3") then
+							local L_1061_ = {}
+							L_1061_[1] = GetConnectionEnemies("Swan Pirate")
+							if L_1061_[1] then
+								repeat
+									wait()
+									L_1_[4]["Kill"](L_1061_[1], _G["Auto_Fish"])
+								until L_1_[45]["Backpack"]:FindFirstChild("Flower 3") or not L_1061_[1]["Parent"] or L_1061_[1]["Humanoid"]["Health"] <= 0 or _G["Auto_Fish"] == false
+							else
+								_tp(CFrame["new"](980.09851074219, 121.33129882812, 1287.2093505859))
+							end
+						end
+					elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "1") == 2 then
+						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Alchemist", "3")
+					end
+				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "1") == 0 then
+					L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "2")
+				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Wenlocktoad", "1") == 1 then
+					warn("Sea Beast Soon")
+				end
+			end
+		end)
+	end
+end)
+L_1_[93]["Race"]:AddSection({
+	L_1_[2]({
 		"Mystic Island / Full";
 		" Moon"
 	})
