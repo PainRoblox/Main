@@ -9111,36 +9111,36 @@ L_1_[93]["Quests"]:AddToggle({
 
 spawn(function()
 	while task.wait(.2) do
+		if not _G.AutoRengoku then continue end
+		
 		pcall(function()
-			if not _G.AutoRengoku then return end
-			
+			local player = L_1_[45]
+
 			-- Nếu chưa có Hidden Key thì farm boss
-			if not L_1_[45].Backpack:FindFirstChild("Hidden Key") 
-			and not L_1_[45].Character:FindFirstChild("Hidden Key") then
+			if not player.Backpack:FindFirstChild("Hidden Key") 
+			and not player.Character:FindFirstChild("Hidden Key") then
 				
 				local boss = GetConnectionEnemies("Awakened Ice Admiral")
+				
 				if boss then
 					repeat
 						task.wait()
 						L_1_[4].Kill(boss, true)
-					until not _G.AutoRengoku 
-						or not boss.Parent 
+					until not _G.AutoRengoku
+						or not boss.Parent
 						or boss.Humanoid.Health <= 0
 				else
-					-- Teleport tới Ice Castle
+					-- Teleport về Ice Castle
 					_tp(CFrame.new(5668, 28, -6483))
 				end
-				
+			
 			else
-				-- Có Hidden Key rồi → mở phòng
-				EquipWeapon("Hidden Key")
-				task.wait(.2)
+				-- Có Hidden Key → teleport mở cửa
 				_tp(CFrame.new(6571, 299, -6967))
 			end
 		end)
 	end
 end)
-
 
 
 Q = L_1_[93]["Quests"]:AddToggle({
