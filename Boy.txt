@@ -10,7 +10,7 @@ local messages = {
 task.spawn(function()
     for _, msg in ipairs(messages) do
         Notification.new("<Color=Blue>"..msg.."<Color=/>"):Display()
-        task.wait(2)
+        task.wait(1)
     end
 end)
 local L_1_ = {}
