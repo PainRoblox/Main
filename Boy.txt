@@ -4712,13 +4712,13 @@ L_1_[93]["Main"]:AddSection({
 	"Farm Elite Hunter"
 })
 Process = L_1_[93]["Main"]:AddParagraph({
-	["Title"] = "Elites Process ";
+	["Title"] = "Tiến Trình Elite : ";
 	["Content"] = ""
 })
 spawn(function()
 	while wait(Sec) do
 		pcall(function()
-			Process:SetDesc("Elite Procress :  " .. L_1_[18]["Remotes"]["CommF_"]:InvokeServer("EliteHunter", "Progress"))
+			Process:SetDesc("Tiến Trình Elite :  " .. L_1_[18]["Remotes"]["CommF_"]:InvokeServer("EliteHunter", "Progress"))
 		end)
 	end
 end)
@@ -7257,20 +7257,34 @@ L_1_[93]["Fish"]:AddSection({
 	"Fishing"
 })
 L_1_[93]["Fish"]:AddDropdown({
-	["Name"] = "Select Fishing Rod";
+	["Name"] = "Chọn Cần Câu";
 	["Description"] = "",
 	["Options"] = {
-		"Fishing Rod";
-		"Gold Rod";
-		"Shark Rod",
-		"Shell Rod",
-		"Treasure Rod"
+		"Cần Câu Cá (Fishing Rod)";
+		"Cần Vàng (Gold Rod)";
+		"Cần Cá Mập (Shark Rod)";
+		"Cần Vỏ Sò (Shell Rod)";
+		"Cần Kho Báu (Treasure Rod)"
 	},
-	["Default"] = "Fishing Rod";
-	["Callback"] = function(L_710_arg0)
-		local L_711_ = {}
-		L_711_[2] = L_710_arg0
-		_G["SelectedRod"] = L_711_[2]
+	["Default"] = "Cần Câu Cá (Fishing Rod)";
+	["Callback"] = function(v)
+
+		if v == "Cần Câu Cá (Fishing Rod)" then
+			_G["SelectedRod"] = "Fishing Rod"
+
+		elseif v == "Cần Vàng (Gold Rod)" then
+			_G["SelectedRod"] = "Gold Rod"
+
+		elseif v == "Cần Cá Mập (Shark Rod)" then
+			_G["SelectedRod"] = "Shark Rod"
+
+		elseif v == "Cần Vỏ Sò (Shell Rod)" then
+			_G["SelectedRod"] = "Shell Rod"
+
+		elseif v == "Cần Kho Báu (Treasure Rod)" then
+			_G["SelectedRod"] = "Treasure Rod"
+		end
+
 	end
 })
 BaitDropdown = L_1_[93]["Fish"]:AddDropdown({
