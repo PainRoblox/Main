@@ -6617,8 +6617,9 @@ Bringmob = L_1_[93]["Settings"]:AddToggle({
 L_1_[93]["Settings"]:AddDropdown({
 	["Name"] = "Bring Mob Mode";
 	["Description"] = "Adjust Range";
-	["Default"] = "250";
+	["Default"] = "200";
 	["Options"] = {
+	    "200";
 		"250";
 		"300";
 		"350",
@@ -6754,6 +6755,31 @@ spawn(function()
 		end)
 	end
 end)
+Boud = true -- đảm bảo có giá trị ban đầu
+
+BusuAura = L_1_[93]["Settings"]:AddToggle({
+	["Name"] = "Bật BuSo",
+	["Default"] = true,
+	["Callback"] = function(value)
+		Boud = value
+	end
+})
+
+spawn(function()
+	while task.wait(Sec) do
+		if not Boud then continue end
+		
+		local player = game.Players.LocalPlayer
+		local character = player.Character
+		
+		if character and not character:FindFirstChild("HasBuso") then
+			game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
+		end
+	end
+end)
+
+
+
 L_1_[93]["Settings"]:AddToggle({
 	["Name"] = L_1_[2]({
 		"Auto Haki Observatio",
@@ -10560,6 +10586,7 @@ RaceMink = L_1_[93]["Race"]:AddToggle({
 	end
 })
 spawn(function()
+  local Sec = Sec or 0.5
 	while wait(Sec) do
 		pcall(function()
 			if _G["Auto_Mink"] then
@@ -10608,6 +10635,7 @@ RaceHuman = L_1_[93]["Race"]:AddToggle({
 	end
 })
 spawn(function()
+ local Sec = Sec or 0.5 
 	while wait(Sec) do
 		pcall(function()
 			if _G["Auto_Human"] then
@@ -10681,6 +10709,7 @@ RaceSky = L_1_[93]["Race"]:AddToggle({
 	end
 })
 spawn(function()
+ local Sec = Sec or 0.5
 	while wait(Sec) do
 		pcall(function()
 			if _G["Auto_Skypiea"] then
@@ -10726,7 +10755,7 @@ spawn(function()
 	end
 end)
 RaceFish = L_1_[93]["Race"]:AddToggle({
-	["Name"] = "Tự up tộc cá";
+	["Name"] = "Tự up tộc cá",
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_1059_arg0)
@@ -10736,6 +10765,7 @@ RaceFish = L_1_[93]["Race"]:AddToggle({
 	end
 })
 spawn(function()
+  local Sec = Sec or 0.5
 	while wait(Sec) do
 		pcall(function()
 			if _G["Auto_Fish"] then
@@ -16260,8 +16290,8 @@ L_1_[93]["Travel"]:AddSection({
 })
 L_1_[93]["Travel"]:AddButton({
 	["Name"] = L_1_[2]({
-		"Travel East Blue (Wo",
-		"rld 1)"
+		"TP Sea 1",
+		
 	}),
 	["Description"] = "",
 	["Callback"] = function()
@@ -16270,8 +16300,7 @@ L_1_[93]["Travel"]:AddButton({
 })
 L_1_[93]["Travel"]:AddButton({
 	["Name"] = L_1_[2]({
-		"Travel Dressrosa (Wo",
-		"rld 2)"
+		"TP Sea 2",
 	});
 	["Description"] = "",
 	["Callback"] = function()
@@ -16279,14 +16308,14 @@ L_1_[93]["Travel"]:AddButton({
 	end
 })
 L_1_[93]["Travel"]:AddButton({
-	["Name"] = "Travel Zou (World 3)",
+	["Name"] = "TP Sea 3",
 	["Description"] = "";
 	["Callback"] = function()
 		L_1_[55]["Remotes"]["CommF_"]:InvokeServer("TravelZou")
 	end
 })
 L_1_[93]["Travel"]:AddSection({
-	"Travel - Island"
+	"Chọn Đảo"
 })
 Location = {}
 for L_1648_forvar0, L_1649_forvar1 in pairs(workspace["_WorldOrigin"]["Locations"]:GetChildren()) do
@@ -16295,7 +16324,7 @@ for L_1648_forvar0, L_1649_forvar1 in pairs(workspace["_WorldOrigin"]["Locations
 	table["insert"](Location, L_1650_[1]["Name"])
 end
 Travelllll = L_1_[93]["Travel"]:AddDropdown({
-	["Name"] = "Select Travelling",
+	["Name"] = "Chọn Nơi Dịch Chuyển",
 	["Description"] = "",
 	["Options"] = Location,
 	["Default"] = false,
@@ -16306,7 +16335,7 @@ Travelllll = L_1_[93]["Travel"]:AddDropdown({
 	end
 })
 GoIsland = L_1_[93]["Travel"]:AddToggle({
-	["Name"] = "Auto Travel";
+	["Name"] = "Di chuyển Đến";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_1653_arg0)
@@ -16350,7 +16379,7 @@ elseif World3 then
 	}
 end
 PortalTP = L_1_[93]["Travel"]:AddDropdown({
-	["Name"] = "Select Portal",
+	["Name"] = " Chọn Cổngl",
 	["Options"] = Location_Portal,
 	["Default"] = false;
 	["Callback"] = function(L_1658_arg0)
@@ -16360,7 +16389,7 @@ PortalTP = L_1_[93]["Travel"]:AddDropdown({
 	end
 })
 L_1_[93]["Travel"]:AddButton({
-	["Name"] = "requestEntrance";
+	["Name"] = "Yêu cầu Vào";
 	["Description"] = "",
 	["Callback"] = function()
 		if _G["Island_PT"] == "Sky" then
@@ -16385,7 +16414,7 @@ L_1_[93]["Travel"]:AddButton({
 	end
 })
 L_1_[93]["Travel"]:AddSection({
-	"Travel - NPCs"
+	"Di chuyển- NPCs"
 })
 for L_1660_forvar0, L_1661_forvar1 in pairs(L_1_[55]["NPCs"]:GetChildren()) do
 	local L_1662_ = {}
@@ -16393,7 +16422,7 @@ for L_1660_forvar0, L_1661_forvar1 in pairs(L_1_[55]["NPCs"]:GetChildren()) do
 	table["insert"](NPCList, L_1662_[1]["Name"])
 end
 NPCsPos = L_1_[93]["Travel"]:AddDropdown({
-	["Name"] = "Select NPCs",
+	["Name"] = "Chọn NPCs",
 	["Options"] = NPCList,
 	["Default"] = false;
 	["Callback"] = function(L_1663_arg0)
@@ -16403,7 +16432,7 @@ NPCsPos = L_1_[93]["Travel"]:AddDropdown({
 	end
 })
 GoNPCs = L_1_[93]["Travel"]:AddToggle({
-	["Name"] = "Auto Tween to NPC",
+	["Name"] = "Bay đến NPC",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_1665_arg0)
