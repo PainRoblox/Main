@@ -16211,40 +16211,6 @@ elseif PlaceId == 7449423635 then
 		"Temple of Time"
 	}
 end
-
-PortalTP = L_1_[93]["Travel"]:AddDropdown({
-	["Name"] = "Chọn Cổng",
-	["Options"] = Location_Portal,
-	["Default"] = false,
-	["Callback"] = function(v)
-		_G["Island_PT"] = v
-	end
-})
-L_1_[93]["Travel"]:AddButton({
-	["Name"] = "Yêu cầu Vào";
-	["Description"] = "",
-	["Callback"] = function()
-		if _G["Island_PT"] == "Sky" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](-7894, 5547, -380))
-		elseif _G["Island_PT"] == "UnderWater" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](61163, 11, 1819))
-		elseif _G["Island_PT"] == "SwanRoom" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](2285, 15, 905))
-		elseif _G["Island_PT"] == "Cursed Ship" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](923, 126, 32852))
-		elseif _G["Island_PT"] == "Castle On The Sea" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](-5097.93164, 316.447021, -3142.66602, -0.405007899, -4.31682743e-08, .914313197, -1.90943332e-08, 1, 3.8755779e-08, -0.914313197, -1.76180437e-09, -0.405007899))
-		elseif _G["Island_PT"] == "Mansion Cafe" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](-12471.169921875, 374.94024658203, -7551.677734375))
-		elseif _G["Island_PT"] == "Hydra Teleport" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](5643.4526367188, 1013.0858154297, -340.51025390625))
-		elseif _G["Island_PT"] == "Cavendish Room" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](5314.5463867188, 22.562219619751, -127.06755065918))
-		elseif _G["Island_PT"] == "Temple of Time" then
-			L_1_[55]["Remotes"]["CommF_"]:InvokeServer("requestEntrance", Vector3["new"](28310.0234, 14895.1123, 109.456741, -0.469690144, -2.85620132e-08, -0.882831335, -3.23509219e-08, 1, -1.51411736e-08, .882831335, 2.14487486e-08, -0.469690144))
-		end
-	end
-})
 L_1_[93]["Travel"]:AddButton({
 	["Name"] = "Yêu cầu Vào",
 	["Description"] = "",
