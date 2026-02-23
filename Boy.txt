@@ -16193,24 +16193,35 @@ GoIsland = L_1_[93]["Travel"]:AddToggle({
 L_1_[93]["Travel"]:AddSection({
 	"Travel - Portal"
 })
-local PlaceId = game.PlaceId
-local Location_Portal = {}
-
-if PlaceId == 2753915549 then
-	Location_Portal = {"Sky","UnderWater"}
-
-elseif PlaceId == 4442272183 then
-	Location_Portal = {"SwanRoom","Cursed Ship"}
-
-elseif PlaceId == 7449423635 then
+if World1 then
 	Location_Portal = {
-		"Castle On The Sea",
-		"Mansion Cafe",
-		"Hydra Teleport",
+		"Sky";
+		"UnderWater"
+	}
+elseif World2 then
+	Location_Portal = {
+		"SwanRoom";
+		"Cursed Ship"
+	}
+elseif World3 then
+	Location_Portal = {
+		"Castle On The Sea";
+		"Mansion Cafe";
+		"Hydra Teleport";
 		"Cavendish Room",
 		"Temple of Time"
 	}
 end
+PortalTP = L_1_[93]["Travel"]:AddDropdown({
+	["Name"] = "Chọn Cổng vào",
+	["Options"] = Location_Portal,
+	["Default"] = false;
+	["Callback"] = function(L_1658_arg0)
+		local L_1659_ = {}
+		L_1659_[2] = L_1658_arg0
+		_G["Island_PT"] = L_1659_[2]
+	end
+})
 L_1_[93]["Travel"]:AddButton({
 	["Name"] = "Yêu cầu Vào",
 	["Description"] = "",
