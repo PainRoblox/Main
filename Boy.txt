@@ -1113,17 +1113,21 @@ spawn(function()
 					L_166_[1]["MaxForce"] = Vector3["new"](100000, 100000, 100000)
 					L_166_[1]["Velocity"] = Vector3["new"](0, 0, 0)
 				end
-				if not plr["Character"]:FindFirstChild("highlight") then
-					local L_167_ = {}
-					L_167_[1] = Instance["new"]("Highlight")
-					L_167_[1]["Name"] = "highlight"
-					L_167_[1]["Enabled"] = true
-					L_167_[1]["FillColor"] = Color3["fromRGB"](255, 255, 255)
-					L_167_[1]["OutlineColor"] = Color3["fromRGB"](250, 255, 255)
-					L_167_[1]["FillTransparency"] = 0.6
-					L_167_[1]["OutlineTransparency"] = 0
-					L_167_[1]["Parent"] = plr["Character"]
-				end
+				if plr.Character:FindFirstChild("highlight") then
+    plr.Character:FindFirstChild("highlight"):Destroy()
+end
+
+local highlight = Instance.new("Highlight")
+highlight.Name = "highlight"
+highlight.Enabled = true
+
+-- 🤍 Trắng mờ nhẹ + viền trắng sáng
+highlight.FillColor = Color3.fromRGB(255, 255, 255)
+highlight.OutlineColor = Color3.fromRGB(255, 255, 255)
+highlight.FillTransparency = 0.6
+highlight.OutlineTransparency = 0
+
+highlight.Parent = plr.Character
 				for L_168_forvar0, L_169_forvar1 in pairs(plr["Character"]:GetDescendants()) do
 					local L_170_ = {}
 					L_170_[2], L_170_[1] = L_168_forvar0, L_169_forvar1
