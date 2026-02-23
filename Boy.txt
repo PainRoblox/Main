@@ -12,8 +12,6 @@ task.spawn(function()
     Notification.new("<Color=Blue>"..msg.."<Color=/>"):Display()
     task.wait(3)
 end
-task.wait(10) 
-
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
