@@ -9386,7 +9386,6 @@ spawn(function()
 		end
 	end
 end)
-if World3 then 
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
 		"Cavender + Song móc";
@@ -9536,7 +9535,6 @@ spawn(function()
 		end
 	end
 end)
-end
 L_1_[93]["Quests"]:AddSection({
 	"Buso/Aura Colours"
 })
