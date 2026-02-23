@@ -9575,7 +9575,6 @@ L_1_[93]["Quests"]:AddButton({
 		L_1_[18]["Remotes"]["CommF_"]:InvokeServer("ColorsDealer", "2")
 	end
 })
-if World3 then 
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = "Tự động lấy haki cầu vòng",
 	["Description"] = "";
@@ -9690,7 +9689,6 @@ Q = L_1_[93]["Quests"]:AddToggle({
 		_G["GetQFast"] = L_955_[1]
 	end
 })
-end
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
 		"Haki quan sát";
