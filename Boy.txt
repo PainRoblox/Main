@@ -6474,7 +6474,7 @@ local Config = {
     AttackDistance = 60, -- Tăng nhẹ tầm đánh
     AttackMobs = true,
     AttackPlayers = true,
-    AttackCooldown = 5, -- KHÔNG CÓ COOLDOWN
+    AttackCooldown = 10, -- KHÔNG CÓ COOLDOWN
     HitboxLimbs = {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso"}, 
     AutoClickEnabled = true
 }
