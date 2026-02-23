@@ -16193,21 +16193,16 @@ GoIsland = L_1_[93]["Travel"]:AddToggle({
 L_1_[93]["Travel"]:AddSection({
 	"Travel - Portal"
 })
+local PlaceId = game.PlaceId
 local Location_Portal = {}
 
-if World1 then
-	Location_Portal = {
-		"Sky",
-		"UnderWater"
-	}
+if PlaceId == 2753915549 then
+	Location_Portal = {"Sky","UnderWater"}
 
-elseif World2 then
-	Location_Portal = {
-		"SwanRoom",
-		"Cursed Ship"
-	}
+elseif PlaceId == 4442272183 then
+	Location_Portal = {"SwanRoom","Cursed Ship"}
 
-elseif World3 then
+elseif PlaceId == 7449423635 then
 	Location_Portal = {
 		"Castle On The Sea",
 		"Mansion Cafe",
