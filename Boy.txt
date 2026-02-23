@@ -2980,7 +2980,7 @@ spawn(function()
 end)
 end
 Ecto = L_1_[93]["Main"]:AddToggle({
-	["Name"] = "Farm Vật Chất Kì dị",
+	["Name"] = "Farm Vật Chất Kì Dị",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_258_arg0)
