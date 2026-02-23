@@ -6800,6 +6800,7 @@ RaceV4Aura = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Auto Turn on Race V4",
 	["Description"] = "",
 	["Default"] = false;
+	["Flag"] = "AutoTurnonRaceV4";
 	["Callback"] = function(L_652_arg0)
 		local L_653_ = {}
 		L_653_[2] = L_652_arg0
