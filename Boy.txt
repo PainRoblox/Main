@@ -7288,22 +7288,42 @@ L_1_[93]["Fish"]:AddDropdown({
 	end
 })
 BaitDropdown = L_1_[93]["Fish"]:AddDropdown({
-	["Name"] = "Select Bait",
+	["Name"] = "Chọn Mồi Câu";
 	["Description"] = "";
 	["Options"] = {
-		"Basic Bait";
-		"Kelp Bait",
-		"Good Bait";
-		"Abyssal Bait",
-		"Frozen Bait";
-		"Epic Bait",
-		"Carnivore Bait"
+		"Mồi Cơ Bản (Basic Bait)";
+		"Mồi Rong Biển (Kelp Bait)";
+		"Mồi Tốt (Good Bait)";
+		"Mồi Vực Sâu (Abyssal Bait)";
+		"Mồi Đóng Băng (Frozen Bait)";
+		"Mồi Huyền Thoại (Epic Bait)";
+		"Mồi Ăn Thịt (Carnivore Bait)"
 	};
-	["Default"] = "Basic Bait";
-	["Callback"] = function(L_712_arg0)
-		local L_713_ = {}
-		L_713_[2] = L_712_arg0
-		_G["SelectedBait"] = L_713_[2]
+	["Default"] = "Mồi Cơ Bản (Basic Bait)";
+	["Callback"] = function(v)
+
+		if v == "Mồi Cơ Bản (Basic Bait)" then
+			_G["SelectedBait"] = "Basic Bait"
+
+		elseif v == "Mồi Rong Biển (Kelp Bait)" then
+			_G["SelectedBait"] = "Kelp Bait"
+
+		elseif v == "Mồi Tốt (Good Bait)" then
+			_G["SelectedBait"] = "Good Bait"
+
+		elseif v == "Mồi Vực Sâu (Abyssal Bait)" then
+			_G["SelectedBait"] = "Abyssal Bait"
+
+		elseif v == "Mồi Đóng Băng (Frozen Bait)" then
+			_G["SelectedBait"] = "Frozen Bait"
+
+		elseif v == "Mồi Huyền Thoại (Epic Bait)" then
+			_G["SelectedBait"] = "Epic Bait"
+
+		elseif v == "Mồi Ăn Thịt (Carnivore Bait)" then
+			_G["SelectedBait"] = "Carnivore Bait"
+		end
+
 		if _G["AutoBuyBait"] then
 			pcall(function()
 				L_1_[64]["RFCraft"]:InvokeServer("Craft", _G["SelectedBait"], {})
@@ -7312,7 +7332,7 @@ BaitDropdown = L_1_[93]["Fish"]:AddDropdown({
 	end
 })
 BuyBaitToggle = L_1_[93]["Fish"]:AddToggle({
-	["Name"] = "Auto Buy Bait",
+	["Name"] = "Tự Động Mua Mồi",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_714_arg0)
@@ -7336,7 +7356,7 @@ task["spawn"](function()
 	end
 end)
 FishingToggle = L_1_[93]["Fish"]:AddToggle({
-	["Name"] = "Auto Fishing",
+	["Name"] = "Tự Động câu cá",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_716_arg0)
@@ -7402,7 +7422,7 @@ task["spawn"](function()
 	end
 end)
 FishingQ = L_1_[93]["Fish"]:AddToggle({
-	["Name"] = "Auto Quest Fishing",
+	["Name"] = "Tự làm nhiệm vụ câu cá",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_721_arg0)
@@ -7438,7 +7458,7 @@ task["spawn"](function()
 	end
 end)
 QuestToggle = L_1_[93]["Fish"]:AddToggle({
-	["Name"] = "Auto Complete Quest";
+	["Name"] = "Tự Hoàn Thành Nhiệm Vụ";
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_724_arg0)
@@ -7462,7 +7482,7 @@ task["spawn"](function()
 	end
 end)
 SellFishToggle = L_1_[93]["Fish"]:AddToggle({
-	["Name"] = "Auto Sell Fish";
+	["Name"] = "Tự Động Bán Cá";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_726_arg0)
@@ -7486,7 +7506,7 @@ task["spawn"](function()
 	end
 end)
 SpamSkillZ = L_1_[93]["Fish"]:AddToggle({
-	["Name"] = "Auto Spam Skill Z";
+	["Name"] = "Dùng Skill [ Z ]";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_728_arg0)
@@ -7507,7 +7527,7 @@ task["spawn"](function()
 	end
 end)
 TravelDress = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Quest Sea 2";
+	["Name"] = "Làm nhiệm vụ Sea 2";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_730_arg0)
@@ -7556,7 +7576,7 @@ spawn(function()
 	end
 end)
 Zou = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Quest Sea 3";
+	["Name"] = "Làm nhiệm vụ Sea 3";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_735_arg0)
@@ -7723,7 +7743,7 @@ L_1_[93]["Quests"]:AddSection({
 	"Tushita + Yama"
 })
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Tushita Sword",
+	["Name"] = "Tự động Kiếm Tushita",
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_756_arg0)
@@ -7787,7 +7807,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Yama Sword";
+	["Name"] = "Tự động kiếm Yama";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_759_arg0)
@@ -7826,8 +7846,7 @@ L_1_[93]["Quests"]:AddSection({
 })
 CheckSoul = L_1_[93]["Quests"]:AddParagraph({
 	["Title"] = L_1_[2]({
-		" Skull Guitar Quests",
-		" "
+		" Nhiệm vụ Skull Guitar",
 	}),
 	["Content"] = ""
 })
@@ -7869,7 +7888,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Skull Guitar",
+	["Name"] = "Tự Động Skull Guitar",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_762_arg0)
@@ -8078,8 +8097,7 @@ spawn(function()
 end)
 L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Farm Material S";
-		"kull Guitar"
+		"Farm Material Skull Guitar";
 	}),
 	["Description"] = "",
 	["Default"] = false;
@@ -8164,7 +8182,7 @@ spawn(function()
 	end
 end)
 L_1_[93]["Quests"]:AddSection({
-	"Cursed Dual Katana"
+	"CDK Katana"
 })
 CheckCDK = L_1_[93]["Quests"]:AddParagraph({
 	["Title"] = L_1_[2]({
@@ -8200,10 +8218,10 @@ spawn(function()
 				" Quest Numbers : tus",
 				"hita quest 2"
 			}))
-		elseif QuestTushita_1 == true then
+		elseif QuestTushita_3 == true then
 			CheckCDK:SetDesc(L_1_[2]({
 				" Quest Numbers: tush",
-				"ita quest 2"
+				"ita quest 3"
 			}))
 		elseif GetWP("Cursed Dual Katana") then
 			CheckCDK:SetDesc(L_1_[2]({
@@ -8215,8 +8233,7 @@ spawn(function()
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Auto Get CDK [ Last ";
-		"Quest ]"
+		"Tự động lấy CDK [ Nhiệm vụ cuối ]";
 	}),
 	["Description"] = "",
 	["Default"] = false,
@@ -8255,7 +8272,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Yama CDK",
+	["Name"] = "Tự Động Yama CDK",
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_789_arg0)
@@ -8458,7 +8475,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Tushita CDK";
+	["Name"] = "Tự Động Tushita CDK";
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_820_arg0)
@@ -8629,12 +8646,12 @@ spawn(function()
 end)
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
-		"True Triple Katana S";
-		"word"
+		"Tam bảo kiếm";
+	
 	})
 })
 L_1_[93]["Quests"]:AddButton({
-	["Name"] = "Buy Legendary Sword";
+	["Name"] = "Mua kiếm Legendary";
 	["Description"] = "",
 	["Callback"] = function()
 		L_1_[18]["Remotes"]["CommF_"]:InvokeServer("LegendarySwordDealer", "1")
@@ -8644,8 +8661,8 @@ L_1_[93]["Quests"]:AddButton({
 })
 L_1_[93]["Quests"]:AddButton({
 	["Name"] = L_1_[2]({
-		"Buy True Triple Kata";
-		"na Sword"
+		"Mua kiếm True Triple Katana";
+	
 	}),
 	["Description"] = "";
 	["Callback"] = function()
@@ -8654,8 +8671,7 @@ L_1_[93]["Quests"]:AddButton({
 })
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = L_1_[2]({
-		"Tween to Legendary S";
-		"word Dealer"
+		"Di chuyển đến NPC Kiếm";
 	});
 	["Description"] = "";
 	["Default"] = false;
@@ -8684,10 +8700,10 @@ spawn(function()
 	end
 end)
 L_1_[93]["Quests"]:AddSection({
-	"Pole / God Enal's"
+	"Pole / Thần Enel"
 })
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Pole V1";
+	["Name"] = "Tự lấy Pole V1";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_845_arg0)
@@ -8714,59 +8730,8 @@ spawn(function()
 		end
 	end
 end)
-Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Pole V2 [Beta]";
-	["Description"] = "",
-	["Default"] = false;
-	["Callback"] = function(L_848_arg0)
-		local L_849_ = {}
-		L_849_[1] = L_848_arg0
-		_G["AutoPoleV2"] = L_849_[1]
-	end
-})
-spawn(function()
-	while wait(Sec) do
-		pcall(function()
-			if _G["AutoPoleV2"] then
-				if not GetBP("Pole (1st Form)") then
-					L_1_[18]["Remotes"]["CommF_"]:InvokeServer("LoadItem", "Pole (1st Form)")
-				end
-				if not GetBP("Pole (2nd Form)") then
-					L_1_[18]["Remotes"]["CommF_"]:InvokeServer("LoadItem", "Pole (2nd Form)")
-				end
-				if GetBP("Pole (1st Form)") and (GetBP("Pole (1st Form)"))["Level"]["Value"] <= 179 then
-					_G["Level"] = true
-				elseif GetBP("Pole (1st Form)") and (GetBP("Pole (1st Form)"))["Level"]["Value"] >= 180 then
-					_G["Level"] = false
-				end
-				if not GetBP("Rumble Fruit") then
-					return
-				end
-				if (GetBP("Rumble Fruit"))["AwakenedMoves"]:FindFirstChild("Z") and ((GetBP("Rumble Fruit"))["AwakenedMoves"]:FindFirstChild("X") and ((GetBP("Rumble Fruit"))["AwakenedMoves"]:FindFirstChild("C") and ((GetBP("Rumble Fruit"))["AwakenedMoves"]:FindFirstChild("V") and (GetBP("Rumble Fruit"))["AwakenedMoves"]:FindFirstChild("F")))) then
-					_G["SelectChip"] = nil
-					_G["Raiding"] = false
-					_G["Auto_Awakener"] = false
-					if L_1_[45]["Data"]["Fragments"]["Value"] >= 5000 then
-						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Thunder God", "Talk")
-						wait(Sec)
-						L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Thunder God", "Sure")
-					end
-				elseif L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Awakener", "Check") == nil or L_1_[18]["Remotes"]["CommF_"]:InvokeServer("Awakener", "Check") == 0 then
-					local L_850_ = {}
-					_G["SelectChip"] = "Rumble"
-					L_850_[1] = L_1_[18]["Remotes"]["CommF_"]:InvokeServer("RaidsNpc", "Select", _G["SelectChip"])
-					if L_850_[1] then
-						L_850_[1]:Stop()
-					end
-					_G["Raiding"] = true
-					_G["Auto_Awakener"] = true
-				end
-			end
-		end)
-	end
-end)
 L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Saw Sword";
+	["Name"] = "Tự lấy Saw Sword";
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_851_arg0)
@@ -8794,7 +8759,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Saber Sword";
+	["Name"] = "Tự lấy kiếm Saber";
 	["Description"] = "";
 	["Default"] = false,
 	["Callback"] = function(L_854_arg0)
@@ -8952,7 +8917,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Bisento V2";
+	["Name"] = "Tự Động lấy Bisento V2";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_870_arg0)
@@ -8985,7 +8950,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Warden Sword",
+	["Name"] = "Tự lấy kiếm quản ngục",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_873_arg0)
@@ -8999,7 +8964,7 @@ spawn(function()
 		if _G["WardenBoss"] then
 			pcall(function()
 				local L_875_ = {}
-				L_875_[2] = GetConnectionEnemies("Chief Warden")
+				L_875_[2] = GetConnectionEnemies("Warden")
 				if L_875_[2] then
 					repeat
 						wait()
@@ -9013,7 +8978,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Marine Coat",
+	["Name"] = "Tự lấy áo choàng Marine",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_876_arg0)
@@ -9041,7 +9006,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Swan Coat";
+	["Name"] = "Tự lấy áo choàng Swan";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_879_arg0)
@@ -9072,7 +9037,7 @@ L_1_[93]["Quests"]:AddSection({
 	"Rengoku Sword"
 })
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Rengoku Sword";
+	["Name"] = "Tự lấy kiếm Rengoku";
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_882_arg0)
@@ -9133,6 +9098,51 @@ spawn(function()
 		end)
 	end
 end)
+
+_G.AutoRengoku = false
+
+L_1_[93]["Quests"]:AddToggle({
+	["Name"] = "Tự lấy kiếm Rengoku",
+	["Default"] = false,
+	["Callback"] = function(v)
+		_G.AutoRengoku = v
+	end
+})
+
+spawn(function()
+	while task.wait(.2) do
+		pcall(function()
+			if not _G.AutoRengoku then return end
+			
+			-- Nếu chưa có Hidden Key thì farm boss
+			if not L_1_[45].Backpack:FindFirstChild("Hidden Key") 
+			and not L_1_[45].Character:FindFirstChild("Hidden Key") then
+				
+				local boss = GetConnectionEnemies("Awakened Ice Admiral")
+				if boss then
+					repeat
+						task.wait()
+						L_1_[4].Kill(boss, true)
+					until not _G.AutoRengoku 
+						or not boss.Parent 
+						or boss.Humanoid.Health <= 0
+				else
+					-- Teleport tới Ice Castle
+					_tp(CFrame.new(5668, 28, -6483))
+				end
+				
+			else
+				-- Có Hidden Key rồi → mở phòng
+				EquipWeapon("Hidden Key")
+				task.wait(.2)
+				_tp(CFrame.new(6571, 299, -6967))
+			end
+		end)
+	end
+end)
+
+
+
 Q = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = "Auto Dragon Trident";
 	["Description"] = "";
