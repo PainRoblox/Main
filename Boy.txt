@@ -7531,6 +7531,7 @@ task["spawn"](function()
 		end
 	end
 end)
+if World1 then
 TravelDress = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = "Làm nhiệm vụ Sea 2";
 	["Description"] = "",
@@ -7580,6 +7581,8 @@ spawn(function()
 		end)
 	end
 end)
+end
+if World2 then
 Zou = L_1_[93]["Quests"]:AddToggle({
 	["Name"] = "Làm nhiệm vụ Sea 3";
 	["Description"] = "",
@@ -7744,6 +7747,7 @@ spawn(function()
 		end)
 	end
 end)
+end
 if World3 then
 L_1_[93]["Quests"]:AddSection({
 	"Tushita + Yama"
@@ -8651,6 +8655,7 @@ spawn(function()
 	end
 end)
 end
+if World2 then
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
 		"Tam bảo kiếm";
@@ -8706,6 +8711,8 @@ spawn(function()
 		end
 	end
 end)
+end
+if World1 then
 L_1_[93]["Quests"]:AddSection({
 	"Pole / Thần Enel"
 })
@@ -8865,7 +8872,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Cybrog";
+	["Name"] = "Đánh bos Cybrog";
 	["Description"] = "";
 	["Default"] = false;
 	["Callback"] = function(L_862_arg0)
@@ -8893,7 +8900,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Usoap's Hat",
+	["Name"] = "Tự Lấy Mũ Usoap",
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_865_arg0)
@@ -9040,6 +9047,8 @@ spawn(function()
 		end
 	end
 end)
+end
+if World2 then
 L_1_[93]["Quests"]:AddSection({
 	"Rengoku Sword"
 })
@@ -9134,7 +9143,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Tự lấy Long Sword";
+	["Name"] = "Tự lấy Kiếm dài";
 	["Description"] = "",
 	["Default"] = false;
 	["Callback"] = function(L_891_arg0)
@@ -9258,7 +9267,7 @@ spawn(function()
 	end
 end)
 Q = L_1_[93]["Quests"]:AddToggle({
-	["Name"] = "Auto Darkbeard",
+	["Name"] = "Đánh Darkbeard",
 	["Description"] = "",
 	["Default"] = false,
 	["Callback"] = function(L_902_arg0)
@@ -9386,6 +9395,8 @@ spawn(function()
 		end
 	end
 end)
+end
+if World3 then
 L_1_[93]["Quests"]:AddSection({
 	L_1_[2]({
 		"Cavender + Song móc";
@@ -9535,6 +9546,7 @@ spawn(function()
 		end
 	end
 end)
+end
 L_1_[93]["Quests"]:AddSection({
 	"Buso/Aura Colours"
 })
