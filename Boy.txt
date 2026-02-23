@@ -6467,14 +6467,14 @@ local ShootGunEvent = Net:WaitForChild("RE/ShootGunEvent")
 
 -- Cấu hình cực đại
 getgenv().PMT_GunFast = true
-getgenv().PMT_GunFast_Delay = 0 -- Không có độ trễ súng
-getgenv().PMT_GunFast_PrimeEvery = 0 -- Prime súng liên tục
+getgenv().PMT_GunFast_Delay = 0.3 -- Không có độ trễ súng
+getgenv().PMT_GunFast_PrimeEvery = 0.5 -- Prime súng liên tục
 
 local Config = {
     AttackDistance = 60, -- Tăng nhẹ tầm đánh
     AttackMobs = true,
     AttackPlayers = true,
-    AttackCooldown = 0, -- KHÔNG CÓ COOLDOWN
+    AttackCooldown = 0.7, -- KHÔNG CÓ COOLDOWN
     HitboxLimbs = {"Head", "HumanoidRootPart", "UpperTorso", "LowerTorso"}, 
     AutoClickEnabled = true
 }
@@ -6612,6 +6612,7 @@ end)
 setreadonly(mt, true)
 
 print("⚡ Ultra Fast Attack  ⚡")
+
 Bringmob = L_1_[93]["Settings"]:AddToggle({
 	["Name"] = "Gom Quái";
 	["Description"] = "",
