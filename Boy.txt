@@ -2873,7 +2873,6 @@ spawn(function()
 		end)
 	end
 end)
-if World2 then
 FactoryRaids = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Đánh nhà máy";
 	["Description"] = "",
@@ -2903,7 +2902,6 @@ spawn(function()
 		end)
 	end
 end)
-if World3 then
 CastleRaids = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Đánh hải tặc",
 	["Description"] = "";
