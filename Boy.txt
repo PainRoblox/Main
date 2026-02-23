@@ -6729,32 +6729,6 @@ L_1_[93]["Settings"]:AddToggle({
 		end
 	end
 })
-BusuAura = L_1_[93]["Settings"]:AddToggle({
-	["Name"] = "Bật BuSo",
-	["Description"] = "",
-	["Default"] = true;
-	["Callback"] = function(L_645_arg0)
-		local L_646_ = {}
-		L_646_[1] = L_645_arg0
-		Boud = L_646_[1]
-	end
-})
-spawn(function()
-	while wait(Sec) do
-		pcall(function()
-			if Boud then
-				local L_647_ = {}
-				L_647_[2] = {
-					"HasBuso",
-					"Buso"
-				}
-				if not L_1_[136]["Character"]:FindFirstChild(L_647_[2][1]) then
-					L_1_[18]["Remotes"]["CommF_"]:InvokeServer(L_647_[2][2])
-				end
-			end
-		end)
-	end
-end)
 Boud = true -- đảm bảo có giá trị ban đầu
 
 BusuAura = L_1_[93]["Settings"]:AddToggle({
@@ -6777,9 +6751,6 @@ spawn(function()
 		end
 	end
 end)
-
-
-
 L_1_[93]["Settings"]:AddToggle({
 	["Name"] = L_1_[2]({
 		"Auto Haki Observatio",
