@@ -1,4 +1,18 @@
+local Notification = require(game:GetService("ReplicatedStorage").Notification)
 
+local messages = {
+    "Chúc Mừng Năm Mới 2026",
+    "Chúc mọi người Tết vui vẻ",
+    "An khang - Thịnh vượng",
+    "Vạn sự như ý",
+}
+
+task.spawn(function()
+    for _, msg in ipairs(messages) do
+        Notification.new("<Color=Blue>"..msg.."<Color=/>"):Display()
+        task.wait(3)
+    end
+end)
 local L_1_ = {}
 L_1_[2] = table["concat"]
 do
