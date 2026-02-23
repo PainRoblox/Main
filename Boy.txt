@@ -2979,6 +2979,7 @@ spawn(function()
 	end
 end)
 end
+if World2 then
 Ecto = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Farm Vật Chất Kì Dị",
 	["Description"] = "",
@@ -2997,7 +2998,7 @@ spawn(function()
 				L_260_[3] = {
 					"Ship Deckhand";
 					"Ship Engineer";
-					"Ship Steward",
+					"Ship Steward";
 					"Ship Officer";
 					"Arctic Warrior"
 				}
@@ -3014,6 +3015,65 @@ spawn(function()
 		end)
 	end
 end)
+end
+
+if World2 then
+
+    Ecto = L_1_[93]["Main"]:AddToggle({
+        Name = "Farm Vật Chất Kì Dị",
+        Description = "",
+        Default = false,
+        Callback = function(v)
+            _G.AutoEctoplasm = v
+        end
+    })
+
+    spawn(function()
+        while wait(Sec or 1) do
+            if _G.AutoEctoplasm then
+                pcall(function()
+
+                    local Root = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+                    local EnemyList = {
+                        "Ship Deckhand",
+                        "Ship Engineer",
+                        "Ship Steward",
+                        "Ship Officer",
+                        "Arctic Warrior"
+                    }
+
+                    local Enemy = GetConnectionEnemies(EnemyList)
+
+                    -- 📍 Nếu chưa ở gần Cursed Ship → TP vào
+                    if (Root.Position - Vector3.new(923,127,32853)).Magnitude > 3000 then
+                        replicated.Remotes.CommF_:InvokeServer(
+                            "requestEntrance",
+                            Vector3.new(923.2125,126.9760,32852.8320)
+                        )
+                        wait(2)
+                    end
+
+                    -- 🎯 Nếu tìm thấy quái thì farm
+                    if Enemy and L_1_[4]["Alive"](Enemy) then
+                        repeat
+                            wait()
+                            L_1_[4]["Kill"](Enemy, true)
+                        until not _G.AutoEctoplasm
+                            or not Enemy.Parent
+                            or Enemy.Humanoid.Health <= 0
+                    end
+
+                end)
+            end
+        end
+    end)
+
+end
+
+
+
+
 
 _G.Event = _G.Event or {}
 _G.Event.Christmas = false 
