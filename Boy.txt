@@ -17472,7 +17472,7 @@ if _G.FastAttack then
 
     local Settings = {
         AutoClick = true,
-        ClickDelay = 0.2,
+        ClickDelay = 0.1,
     }
 
     local Module = {}
@@ -17483,7 +17483,7 @@ if _G.FastAttack then
         end
 
         local FastAttack = {
-            Distance = 60,
+            Distance = 50,
             attackMobs = true,
             attackPlayers = true,
             Equipped = nil
