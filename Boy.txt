@@ -1569,7 +1569,7 @@ QuestCheck = function()
 			PosQ = CFrame["new"](5259.81982, 37.3500175, 4050.0293, .087131381, 0, .996196866, 0, 1, 0, -0.996196866, 0, .087131381)
 			PosM = CFrame["new"](5441.9516601562, 42.502059936523, 4950.09375)
 		end
-	if World2 then
+	elseif World2 then
 		if L_172_[2] == 700 or L_172_[2] <= 724 then
 			Mon = "Raider"
 			Qdata = 1
@@ -1740,7 +1740,7 @@ QuestCheck = function()
 			PosQ = CFrame["new"](-3054.44458, 235.544281, -10142.8193, .990270376, 0, -0.13915664, 0, 1, 0, .13915664, 0, .990270376)
 			PosM = CFrame["new"](-3352.9013671875, 285.01556396484, -10534.841796875)
 		end
-	if World3 then
+	elseif World3 then
 		if L_172_[2] == 1500 or L_172_[2] <= 1524 then
 			Mon = "Pirate Millionaire"
 			Qdata = 1
