@@ -1241,7 +1241,7 @@ QuestB = function()
 			PosB = CFrame["new"](-5081.3452148438, 85.221641540527, 4257.3588867188)
 		end
 	end
-	if World2 then
+	elseif World2 then
 		if _G["FindBoss"] == "Diamond" then
 			bMon = "Diamond"
 			Qname = "Area1Quest"
@@ -1298,7 +1298,7 @@ QuestB = function()
 			PosB = CFrame["new"](-6217.2021484375, 28.047645568848, -5053.1357421875)
 		end
 	end
-	if World3 then
+	elseif World3 then
 		if _G["FindBoss"] == "Stone" then
 			bMon = "Stone"
 			Qname = "PiratePortQuest"
@@ -2907,7 +2907,6 @@ spawn(function()
 	end
 end)
 end
-if World3 then
 CastleRaids = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Đánh hải tặc",
 	["Description"] = "";
@@ -2981,7 +2980,6 @@ spawn(function()
 		end
 	end
 end)
-end
 if World2 then
 Ecto = L_1_[93]["Main"]:AddToggle({
 	["Name"] = "Farm Vật Chất Kì Dị",
