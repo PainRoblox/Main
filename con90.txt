@@ -10187,9 +10187,8 @@ v495:AddButton({
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "2")
     end
-})
-
-local _ = v496:AddSection({"Server"})
+}) 
+v496:AddSection({"Server"})
 v496:AddTextBox({
         Name = "Job ID",
         PlaceholderText = "Paste the Job ID here...",
