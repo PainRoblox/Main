@@ -10204,8 +10204,7 @@ task.spawn(function()
 
             if #u17 > 0 and (_Tool and 
    (_Tool:GetAttribute('WeaponType') == 'Melee' 
-    or _Tool:GetAttribute('WeaponType') == 'Sword'
-    or _Tool:GetAttribute('WeaponType') == 'Fruit')) then
+    or _Tool:GetAttribute('WeaponType') == 'Sword' then
                 pcall(function()
                     require(game.ReplicatedStorage.Modules.Net):RemoteEvent('RegisterHit', true)
                     game.ReplicatedStorage.Modules.Net['RE/RegisterAttack']:FireServer()
