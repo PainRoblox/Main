@@ -9631,7 +9631,7 @@ if LocalPlayer.Character then
 	ApplyMovement(LocalPlayer.Character)
 end
 
-v496:AddToggle({
+v494:AddToggle({
 	Title = "Enable WalkSpeed and Jump",
 	Default = MovementEnabled,
 	Callback = function(v)
