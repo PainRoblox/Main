@@ -8746,7 +8746,7 @@ v493:AddButton({
 })
 
 
-local TyrantStatus = v499:AddParagraph({
+local TyrantStatus = v484:AddParagraph({
     Title = "Tyrant of the Skies",
     Desc = "Status: "
 })
@@ -8761,7 +8761,7 @@ spawn(function()
         end
     end)
 end)
-local CheckRip = v499:AddParagraph({
+local CheckRip = v484:AddParagraph({
     Title = "Rip_Indra",
     Desc = "Status: "
 })
@@ -8777,7 +8777,7 @@ spawn(function()
         end)
     end
 end)
-local CheckDoughKing = v499:AddParagraph({
+local CheckDoughKing = v484:AddParagraph({
     Title = "Dough King",
     Desc = "Status: "
 })
@@ -8793,7 +8793,7 @@ spawn(function()
         end)
     end
 end)
-local EliteHunter = v499:AddParagraph({
+local EliteHunter = v484:AddParagraph({
     Title = "Elite Hunter",
     Desc = "Status: "
 })
@@ -8812,7 +8812,7 @@ spawn(function()
         end)
     end
 end)
-local Pullever = v499:AddParagraph({
+local Pullever = v484:AddParagraph({
     Title = "Pull Lever",
     Desc = "Status: "
 })
@@ -8827,7 +8827,7 @@ spawn(function()
         end)
     end
 end)
-local FM = v499:AddParagraph({
+local FM = v484:AddParagraph({
     Title = "Full Moon",
     Desc = ""
 })
@@ -8851,7 +8851,7 @@ spawn(function()
         end)
     end
 end)
-local LegendarySword = v499:AddParagraph({
+local LegendarySword = v484:AddParagraph({
     Title = "Legendary Sword",
     Desc = "Status: "
 })
@@ -8871,7 +8871,7 @@ spawn(function()
         end
     end)
 end)
-local Bone = v499:AddParagraph({
+local Bone = v484:AddParagraph({
     Title = "Bone",
     Desc = ""
 })
