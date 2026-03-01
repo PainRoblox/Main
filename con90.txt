@@ -10508,7 +10508,7 @@ v496:AddToggle({
 				hum.WalkSpeed = WalkSpeedValue
 				hum.JumpPower = JumpValue
 			else
-				hum.WalkSpeed = 80
+				hum.WalkSpeed = 16
 				hum.JumpPower = 50
 			end
 		end
@@ -10531,7 +10531,6 @@ v496:AddSlider({
 		end
 	end
 })
-
 v496:AddSlider({
 	Title = "Jump",
 	Min = 50,
