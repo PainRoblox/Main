@@ -8655,9 +8655,9 @@ task.spawn(function()
     end
 end)
 v491:AddToggle({
-    Title = "Kill Aura",
-    Description = "",
-    Default = false
+    Name = "Kill aura",
+    Default = false,
+    Callback = function(v)
 })
 Q:OnChanged(function(Value)
     _G.KillH = Value
@@ -8681,7 +8681,6 @@ spawn(function()
         end
     end
 end)
-local Q = Tabs.Raids:AddToggle("Q", {
 if not World2 then
     v491:AddParagraph({
         Title = "Raid Law Only Sea 2",
