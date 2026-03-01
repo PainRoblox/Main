@@ -3745,9 +3745,9 @@ v466:AddMinimizeButton({
         Image = "rbxassetid://105823881528425", 
         BackgroundTransparency = 0
     },
-    Size = UDim2.new(0, 55, 0, 55), -- vừa phải, không quá to
+    Size = UDim2.new(0, 65, 0, 65), -- vừa phải, không quá to
     Corner = { 
-        CornerRadius = UDim.new(0.5, 0) -- bo mềm kiểu Redz
+        CornerRadius = UDim.new(0.25, 0) -- bo mềm kiểu Redz
     },
 })
 
@@ -10140,7 +10140,7 @@ while true do
 end
 
 task.spawn(function()
-    while task.wait(0.5) do
+    while task.wait(0.03) do
         -- Só executa se o toggle estiver ativado
         if _G.AutoAttack then
             local _Character = game.Players.LocalPlayer.Character
