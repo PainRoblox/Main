@@ -10073,7 +10073,7 @@ v495:AddButton({
     end
 })
 
-local _ = v496:AddSection({"Join Server"})
+local _ = v496:AddSection({"Server"})
 v496:AddTextBox({
         Name = "Job ID",
         PlaceholderText = "Paste the Job ID here...",
@@ -10100,8 +10100,80 @@ v496:AddButton({
         end
     end
 })
+v496:AddButton({
+    Title = "Rejoin Server",
+    Callback = function()
+        game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+    end
+})
+v496:AddButton({Title = "Server Hop", Callback = function()
+    Hop()
+end})
 
-local _ = v496:AddSection({"Settings"})
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+
+local Player = Players.LocalPlayer
+local PlaceId = game.PlaceId
+local JobId = game.JobId
+
+_G.AutoRejoin30m = false
+local RejoinRunning = false
+
+-- ===== PEGAR SERVIDOR DIFERENTE =====
+function GetNewServer()
+    local Servers = {}
+    
+    local req = game:HttpGet(
+        "https://games.roblox.com/v1/games/"..PlaceId.."/servers/Public?sortOrder=Asc&limit=100"
+    )
+    
+    local data = HttpService:JSONDecode(req)
+
+    for _, server in pairs(data.data) do
+        if server.playing < server.maxPlayers and server.id ~= JobId then
+            table.insert(Servers, server.id)
+        end
+    end
+
+    if #Servers > 0 then
+        return Servers[math.random(1, #Servers)]
+    end
+end
+
+-- ===== TOGGLE REDZLIB =====
+v496:AddToggle({
+    Name = "Anti-reset",
+    Description = "Server hop every 30 minutes",
+    Default = true,
+    Callback = function(Value)
+        _G.AutoRejoin30m = Value
+        
+        if Value and not RejoinRunning then
+            RejoinRunning = true
+            
+            task.spawn(function()
+                while _G.AutoRejoin30m do
+                    task.wait(1800) -- 30 minutos
+                    
+                    if not _G.AutoRejoin30m then break end
+                    
+                    local NewServer = GetNewServer()
+                    
+                    if NewServer then
+                        TeleportService:TeleportToPlaceInstance(PlaceId, NewServer, Player)
+                    else
+                        TeleportService:Teleport(PlaceId, Player)
+                    end
+                end
+                
+                RejoinRunning = false
+            end)
+        end
+    end
+})
+v496:AddSection({"Settings"})
 v496:AddToggle({
     Name = "Fast Attack",
     Description = "",
@@ -10284,82 +10356,6 @@ spawn(function()
         end)
     end
 end)
-
-v496:AddSection("Server")
-v496:AddButton({
-    Title = "Rejoin Server",
-    Callback = function()
-        game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
-    end
-})
-v496:AddButton({Title = "Server Hop", Callback = function()
-    Hop()
-end})
-
-local Players = game:GetService("Players")
-local TeleportService = game:GetService("TeleportService")
-local HttpService = game:GetService("HttpService")
-
-local Player = Players.LocalPlayer
-local PlaceId = game.PlaceId
-local JobId = game.JobId
-
-_G.AutoRejoin30m = false
-local RejoinRunning = false
-
--- ===== PEGAR SERVIDOR DIFERENTE =====
-function GetNewServer()
-    local Servers = {}
-    
-    local req = game:HttpGet(
-        "https://games.roblox.com/v1/games/"..PlaceId.."/servers/Public?sortOrder=Asc&limit=100"
-    )
-    
-    local data = HttpService:JSONDecode(req)
-
-    for _, server in pairs(data.data) do
-        if server.playing < server.maxPlayers and server.id ~= JobId then
-            table.insert(Servers, server.id)
-        end
-    end
-
-    if #Servers > 0 then
-        return Servers[math.random(1, #Servers)]
-    end
-end
-
--- ===== TOGGLE REDZLIB =====
-v496:AddToggle({
-    Name = "Anti-reset",
-    Description = "Server hop every 30 minutes",
-    Default = true,
-    Callback = function(Value)
-        _G.AutoRejoin30m = Value
-        
-        if Value and not RejoinRunning then
-            RejoinRunning = true
-            
-            task.spawn(function()
-                while _G.AutoRejoin30m do
-                    task.wait(1800) -- 30 minutos
-                    
-                    if not _G.AutoRejoin30m then break end
-                    
-                    local NewServer = GetNewServer()
-                    
-                    if NewServer then
-                        TeleportService:TeleportToPlaceInstance(PlaceId, NewServer, Player)
-                    else
-                        TeleportService:Teleport(PlaceId, Player)
-                    end
-                end
-                
-                RejoinRunning = false
-            end)
-        end
-    end
-})
-
 v496:AddSection("Team")
 v496:AddButton({
     Title = "Join Pirates Team",
