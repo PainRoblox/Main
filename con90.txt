@@ -10516,7 +10516,7 @@ v496:AddToggle({
 })
 v496:AddSlider({
 	Title = "Speed",
-	Min = 80,
+	Min = 26,
 	Max = 300,
 	Default = WalkSpeedValue,
 	Callback = function(v)
