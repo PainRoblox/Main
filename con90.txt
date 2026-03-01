@@ -1,18 +1,4 @@
-local Notification = require(game:GetService("ReplicatedStorage").Notification)
 
-local messages = {
-    "Chúc Mừng Năm Mới 2026",
-    "Chúc mọi người Tết vui vẻ",
-    "An khang - Thịnh vượng",
-    "Vạn sự như ý",
-}
-
-task.spawn(function()
-    for _, msg in ipairs(messages) do
-        Notification.new("<Color=Blue>"..msg.."<Color=/>"):Display()
-        task.wait(1)
-    end
-end)
 Settings = Settings or {}
 
 local Players = game:GetService("Players")
