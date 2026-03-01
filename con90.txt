@@ -10514,61 +10514,6 @@ v496:AddToggle({
 		end
 	end
 })
-
-local Lighting = game:GetService("Lighting")
-
-local FOG_SAVE_FILE = "remove_fog_save.txt"
-local RemoveFogEnabled = false
-
--- Load trạng thái
-if isfile(FOG_SAVE_FILE) then
-	RemoveFogEnabled = readfile(FOG_SAVE_FILE) == "true"
-else
-	writefile(FOG_SAVE_FILE, "false")
-end
-
-local function RemoveFog()
-	if Lighting:FindFirstChild("LightingLayers") then
-		Lighting.LightingLayers:Destroy()
-	end
-	if Lighting:FindFirstChild("SeaTerrorCC") then
-		Lighting.SeaTerrorCC:Destroy()
-	end
-	if Lighting:FindFirstChild("FantasySky") then
-		Lighting.FantasySky:Destroy()
-	end
-end
-
--- Nếu đã bật trước đó thì xóa ngay
-if RemoveFogEnabled then
-	RemoveFog()
-end
-
--- Theo dõi nếu game thêm lại
-Lighting.ChildAdded:Connect(function(child)
-	if RemoveFogEnabled then
-		if child.Name == "LightingLayers"
-		or child.Name == "SeaTerrorCC"
-		or child.Name == "FantasySky" then
-			child:Destroy()
-		end
-	end
-end)
-v496:AddToggle({
-	Title = "Remove Sky Fog",
-	Default = RemoveFogEnabled,
-	Callback = function(v)
-		RemoveFogEnabled = v
-		writefile(FOG_SAVE_FILE, tostring(v))
-
-		if v then
-			RemoveFog()
-		end
-	end
-})
-
-
-
 v496:AddSlider({
 	Title = "Speed",
 	Min = 80,
@@ -10664,6 +10609,56 @@ v496:AddToggle({
     if Lighting:FindFirstChild("FantasySky") then Lighting.FantasySky:Destroy() end
 end
 })
+local Lighting = game:GetService("Lighting")
+
+local FOG_SAVE_FILE = "remove_fog_save.txt"
+local RemoveFogEnabled = false
+
+if isfile(FOG_SAVE_FILE) then
+	RemoveFogEnabled = readfile(FOG_SAVE_FILE) == "true"
+else
+	writefile(FOG_SAVE_FILE, "false")
+end
+
+local function RemoveFog()
+	if Lighting:FindFirstChild("LightingLayers") then
+		Lighting.LightingLayers:Destroy()
+	end
+	if Lighting:FindFirstChild("SeaTerrorCC") then
+		Lighting.SeaTerrorCC:Destroy()
+	end
+	if Lighting:FindFirstChild("FantasySky") then
+		Lighting.FantasySky:Destroy()
+	end
+end
+
+if RemoveFogEnabled then
+	RemoveFog()
+end
+
+Lighting.ChildAdded:Connect(function(child)
+	if RemoveFogEnabled then
+		if child.Name == "LightingLayers"
+		or child.Name == "SeaTerrorCC"
+		or child.Name == "FantasySky" then
+			child:Destroy()
+		end
+	end
+end)
+v496:AddToggle({
+	Title = "Remove Sky Fog",
+	Default = RemoveFogEnabled,
+	Callback = function(v)
+		RemoveFogEnabled = v
+		writefile(FOG_SAVE_FILE, tostring(v))
+
+		if v then
+			RemoveFog()
+		end
+	end
+})
+
+
 v496:AddButton({
 	Name = "FPS Boost",
 	Callback = function()
