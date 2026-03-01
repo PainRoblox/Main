@@ -29,6 +29,12 @@ local function JoinTeam()
 end
 
 JoinTeam()
+hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Death), function()
+    -- empty block
+end)
+hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Respawn), function()
+    -- empty block
+end)
 if game.PlaceId == 2753915549 or game.PlaceId == 85211729168715 then
     World1 = true
 elseif game.PlaceId == 4442272183 or game.PlaceId == 79091703265657 then
