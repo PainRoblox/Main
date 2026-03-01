@@ -3741,9 +3741,14 @@ local v466 = vu32:MakeWindow({
 })
 
 v466:AddMinimizeButton({
-    Button = { Image = "rbxassetid://105823881528425", BackgroundTransparency = 0 },
-    Size = UDim2.new(0, 60, 0, 60),
-    Corner = { CornerRadius = UDim.new(0.25, 0) },
+    Button = { 
+        Image = "rbxassetid://105823881528425", 
+        BackgroundTransparency = 0
+    },
+    Size = UDim2.new(0, 55, 0, 55), -- vừa phải, không quá to
+    Corner = { 
+        CornerRadius = UDim.new(0.5, 0) -- bo mềm kiểu Redz
+    },
 })
 
 local v484 = v466:MakeTab({"Discord", "info"})
