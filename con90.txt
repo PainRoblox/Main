@@ -3745,7 +3745,7 @@ v466:AddMinimizeButton({
         Image = "rbxassetid://105823881528425", 
         BackgroundTransparency = 0
     },
-    Size = UDim2.new(0, 70, 0, 70), -- vừa phải, không quá to
+    Size = UDim2.new(0, 100, 0, 100), -- vừa phải, không quá to
     Corner = { 
         CornerRadius = UDim.new(0, 0) -- bo mềm kiểu Redz
     },
@@ -3758,9 +3758,9 @@ local v486 = v466:MakeTab({"Fishing", "rbxassetid://127664059821666"})
 local v487 = v466:MakeTab({"Quest/Items", "swords"})
 local v491 = v466:MakeTab({"Raid/Fruits", "cherry"})
 local v489 = v466:MakeTab({"Sea Event", "waves"})
-local v497 = v466:MakeTab({"Stats", "Signal"})
+local v497 = v466:MakeTab({"Stats/ESP", "Signal"})
 local v493 = v466:MakeTab({"Teleport", "locate"})
-local v492 = v466:MakeTab({"Trial V4", "rbxassetid://10723425539"})
+local v492 = v466:MakeTab({"Race V4", "rbxassetid://10723425539"})
 local v494 = v466:MakeTab({"Visual", "user"})
 local v495 = v466:MakeTab({"Shop", "shoppingCart"})
 local v496 = v466:MakeTab({"Misc", "settings"})
@@ -3967,7 +3967,7 @@ task.spawn(function()
             if _G.SelectWeapon ~= "Melee" then
                 if _G.SelectWeapon ~= "Sword" then
                     if _G.SelectWeapon == "Gun" then
-                        for _, v499 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                        for _ in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                             if v499.ToolTip == "Gun" then
                                 _G.SelectWeapon = v499.Name
                             end
@@ -9170,7 +9170,7 @@ v494:AddToggle({
     end
 })
 
-local _ = v494:AddSection({"Esp"})
+local _ = v497:AddSection({"Esp"})
 local ESP_SIZE_FILE = "esp_size_save.txt"
 
 if isfile(ESP_SIZE_FILE) then
@@ -9180,7 +9180,7 @@ else
 	writefile(ESP_SIZE_FILE, "24")
 end
 
-v494:AddSlider({
+v497:AddSlider({
 	Name = "ESP Size",
 	Min = 10,
 	Max = 40,
@@ -9364,7 +9364,7 @@ Players.PlayerRemoving:Connect(function(player)
 end)
 
 -- Toggle da sua lib
-v494:AddToggle({
+v497:AddToggle({
 	Title = "ESP Players",
 	Default = ESPPlayer,
 	Callback = function(v)
@@ -9382,7 +9382,7 @@ v494:AddToggle({
 		end
 	end
 })
-v494:AddToggle({
+v497:AddToggle({
     Title = "Esp Chest",
     Value = false,
     Callback = function(v1147)
@@ -9472,7 +9472,7 @@ local function StopFruitESP()
     end
 end
 
-v494:AddToggle({
+v497:AddToggle({
     Title = "ESP Fruits",
     Value = DevilFruitESP,
     Callback = function(state)
@@ -9494,7 +9494,7 @@ if DevilFruitESP then
 end
 
 
-v494:AddToggle({
+v497:AddToggle({
     Title = "Esp Berry",
     Value = false,
     Callback = function(v1149)
@@ -9511,10 +9511,10 @@ v494:AddToggle({
     end
 })
 
-    v494:AddSection("Visual")
+    v497:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
-v494:AddButton({
+v497:AddButton({
     "Meteor Rain",
     function()
         if vu14.Character and vu14.Character.PrimaryPart then
@@ -9526,7 +9526,7 @@ v494:AddButton({
 })
 local vu14 = game.Players.LocalPlayer
 
-v494:AddButton({
+v497:AddButton({
     "Remove Portal Dash Cooldown",
     function()
         local portal = vu14.Backpack:FindFirstChild("Portal-Portal") or (vu14.Character and vu14.Character:FindFirstChild("Portal-Portal"))
