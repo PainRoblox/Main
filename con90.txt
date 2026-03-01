@@ -10310,7 +10310,7 @@ end
 -- ===== TOGGLE REDZLIB =====
 v496:AddToggle({
     Name = "Anti-reset",
-    Description = "Server hop every 50 minutes",
+    Description = "Server hop every 30 minutes",
     Default = false,
     Callback = function(Value)
         _G.AutoRejoin30m = Value
