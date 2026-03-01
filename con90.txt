@@ -3757,6 +3757,7 @@ local v486 = v466:MakeTab({"Fishing", "rbxassetid://127664059821666"})
 local v487 = v466:MakeTab({"Quest/Items", "swords"})
 local v491 = v466:MakeTab({"Raid/Fruits", "cherry"})
 local v489 = v466:MakeTab({"Sea Event", "waves"})
+local v483 = v466:MakeTab({"Dragon Dojo", "rbxassetid://10734951847"})
 local v497 = v466:MakeTab({"Stats/ESP", "Signal"})
 local v493 = v466:MakeTab({"Teleport", "locate"})
 local v492 = v466:MakeTab({"Race V4", "rbxassetid://10723425539"})
@@ -7731,7 +7732,7 @@ spawn(function()
         end
     end
 end)
-v489:AddButton({
+v483:AddButton({
     Title = "Craft Volcanic Magnet",
     Value = false,
     Callback = function()
