@@ -1,0 +1,12 @@
+{
+  "DesplockHub | Community": ["DesplockHub | Cộng đồng", "Tham gia máy chủ để nhận cập nhật"],
+  "Select Tool": ["Chọn công cụ", "Chọn công cụ bạn muốn sử dụng"],
+  "UI Scale": ["Tỷ lệ giao diện", "Điều chỉnh kích thước giao diện"],
+  "Auto Farm Level": ["Tự động farm level", "Tự động farm cấp độ từ 1-2650"],
+  "Farm Level New": ["Farm level mới", "Tự động farm cấp độ từ 2650-2750"],
+  "Auto Farm Nearest": ["Farm quái gần nhất", "Tự động farm những quái gần bạn nhất"],
+  "Auto Pirates Sea": ["Tự động raid hải tặc", "Tự động farm sự kiện Raid Hải Tặc"],
+  "Unban Fast Attack - M1 Fruit": ["Mở khóa Fast Attack - M1 Trái", "Bật sửa lỗi cho tấn công nhanh bằng trái ác quỷ"],
+  "Job ID": ["ID máy chủ", "Dán Job ID vào đây..."],
+  "Join Clipboard": ["Vào bằng Clipboard", "Vào máy chủ bằng Job ID đã sao chép"]
+}
