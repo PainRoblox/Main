@@ -10108,10 +10108,6 @@ v496:AddToggle({
 	Name = "Bật BuSo",
 	Default = true,
 	Callback = function(value)
-		Boud = value
-	end
-})
-
 spawn(function()
 	while task.wait(Sec) do
 		if not Boud then continue end
@@ -10123,8 +10119,7 @@ spawn(function()
 			game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
 		end
 	end
-end)
-  
+ )}
 v496:AddToggle({
     Name = "Fast Attack",
     Description = "",
