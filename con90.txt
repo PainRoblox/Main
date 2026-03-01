@@ -10104,26 +10104,6 @@ v496:AddButton({
 local _ = v496:AddSection({"Settings"})
 v496:AddSection({"Settings"})
 v496:AddToggle({
-	Name = "Bật BuSo",
-	Default = true,
-	Callback = function(value)
-		Boud = value
-	end
-})
-
-spawn(function()
-	while task.wait(Sec) do
-		if not Boud then continue end
-		
-		local player = game.Players.LocalPlayer
-		local character = player.Character
-		
-		if character and not character:FindFirstChild("HasBuso") then
-			game.ReplicatedStorage.Remotes.CommF_:InvokeServer("Buso")
-		end
-	end
-end)
-v496:AddToggle({
     Name = "Fast Attack",
     Description = "",
     Default = true,
