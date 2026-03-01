@@ -10102,7 +10102,6 @@ v496:AddButton({
 })
 
 local _ = v496:AddSection({"Settings"})
-v496:AddSection({"Settings"})
 v496:AddToggle({
     Name = "Fast Attack",
     Description = "",
