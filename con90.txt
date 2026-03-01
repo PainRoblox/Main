@@ -10600,7 +10600,7 @@ v496:AddToggle({
 	end
 })
 
-v496:AddToggle({
+v496:AddButton({
    Title = "Remove Sky Fog",
    Description = "",
    Callback = function()
@@ -10609,37 +10609,6 @@ v496:AddToggle({
     if Lighting:FindFirstChild("FantasySky") then Lighting.FantasySky:Destroy() end
 end
 })
-local FileName = "RemoveSkyFog.json"
-
-local Settings = {
-    RemoveSkyFog = false
-}
-
-if isfile(FileName) then
-    Settings = game:GetService("HttpService"):JSONDecode(readfile(FileName))
-end
-
-v496:AddToggle({
-    Title = "Remove Sky Fog",
-    Default = Settings.RemoveSkyFog,
-    Callback = function(Value)
-        Settings.RemoveSkyFog = Value
-        writefile(FileName, game:GetService("HttpService"):JSONEncode(Settings))
-
-        if Value then
-            if Lighting:FindFirstChild("LightingLayers") then
-                Lighting.LightingLayers:Destroy()
-            end
-            if Lighting:FindFirstChild("SeaTerrorCC") then
-                Lighting.SeaTerrorCC:Destroy()
-            end
-            if Lighting:FindFirstChild("FantasySky") then
-                Lighting.FantasySky:Destroy()
-            end
-        end
-    end
-})
-
 v496:AddButton({
 	Name = "FPS Boost",
 	Callback = function()
