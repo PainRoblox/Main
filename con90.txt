@@ -8654,30 +8654,6 @@ task.spawn(function()
         end
     end
 end)
-local Sec = 0.1
-_G.KillH = false
-
-v491:AddToggle({
-    Name = "Kill aura",
-    Default = false,
-    Callback = function(Value)
-        _G.KillH = Value
-    end
-})
-
-spawn(function()
-    while wait(Sec) do
-        if _G.KillH then
-            for _, v in pairs(workspace.Enemies:GetChildren()) do
-                if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                    pcall(function()
-                        v.Humanoid.Health = 0
-                    end)
-                end
-            end
-        end
-    end
-end)
 if not World2 then
     v491:AddParagraph({
         Title = "Raid Law Only Sea 2",
