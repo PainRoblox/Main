@@ -7608,6 +7608,20 @@ v489:AddButton({
     end
 })
 
+--// Services
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local LocalPlayer = Players.LocalPlayer
+local Sec = 1
+local debugMode = false
+_G.Dojoo = false
+
+--// Remote
+local Net = ReplicatedStorage:WaitForChild("Modules"):WaitForChild("Net")
+local Remote = Net:WaitForChild("RF/InteractDragonQuest")
+
+--// Toggle
 v489:AddToggle({
 	Name = "Auto Dojo Trainer",
 	Description = "",
@@ -7617,122 +7631,76 @@ v489:AddToggle({
 	end
 })
 
-function printBeltName(data)
-	if type(data) == "table" and data.Quest and data.Quest.BeltName then
+--// Get Belt Name
+local function GetBelt(data)
+	if type(data) == "table" and data.Quest then
 		return data.Quest.BeltName
 	end
 end
 
-spawn(function()
-	while wait(Sec) do
+--// Teleport function
+local function TP(cf)
+	if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+		LocalPlayer.Character.HumanoidRootPart.CFrame = cf
+	end
+end
+
+--// Main Loop
+task.spawn(function()
+	while task.wait(Sec) do
 		if _G.Dojoo then
 			pcall(function()
 
-				local quest = L_1_[18].Modules.Net
-					:FindFirstChild(L_1_[2]({"RF/InteractDragonQue","st"}))
-					:InvokeServer({
-						NPC = "Dojo Trainer",
-						Command = "RequestQuest"
-					})
+				-- Request Quest
+				local quest = Remote:InvokeServer({
+					NPC = "Dojo Trainer",
+					Command = "RequestQuest"
+				})
 
-				local belt = printBeltName(quest)
+				local belt = GetBelt(quest)
 
-				if debug == false and (not quest and not belt) then
-					_tp(CFrame.new(5865.0234,1208.3154,871.1518))
-					debug = true
+				-- Nếu chưa có quest → teleport tới NPC
+				if not quest and not debugMode then
+					TP(CFrame.new(5865,1208,871))
+					debugMode = true
+				end
 
-				elseif debug == true and 
-					(CFrame.new(5865.0234,1208.3154,871.1518).Position -
-					L_1_[45].Character.HumanoidRootPart.Position).Magnitude <= 50 then
+				-- Nếu có belt
+				if belt then
 
 					if belt == "White" then
-						local enemy = GetConnectionEnemies("Skull Slayer")
-						if enemy then
-							repeat
-								task.wait()
-								L_1_[4].Kill(enemy, _G.Dojoo)
-							until not quest or not _G.Dojoo or not L_1_[4].Alive(enemy)
-						else
-							_tp(CFrame.new(-16759.5898,71.2837,1595.3399))
-						end
+						print("White Belt - Kill Skull Slayer")
 
 					elseif belt == "Yellow" then
-						repeat
-							task.wait()
-							_G.SeaBeast1 = true
-							_G.TerrorShark = true
-							_G.Shark = true
-							_G.Piranha = true
-							_G.MobCrew = true
-							_G.FishBoat = true
-							_G.SailBoats = true
-						until not _G.Dojoo or not quest
-
-						_G.SeaBeast1 = false
-						_G.TerrorShark = false
-						_G.Shark = false
-						_G.Piranha = false
-						_G.MobCrew = false
-						_G.FishBoat = false
-						_G.SailBoats = false
+						_G.SeaBeast1 = true
+						_G.TerrorShark = true
+						_G.Shark = true
+						_G.Piranha = true
 
 					elseif belt == "Green" then
-						repeat
-							task.wait()
-							_G.SailBoats = true
-						until not _G.Dojoo or not quest
-						_G.SailBoats = false
+						_G.SailBoats = true
 
 					elseif belt == "Purple" then
-						repeat
-							task.wait()
-							_G.FarmEliteHunt = true
-						until not _G.Dojoo or not quest
-						_G.FarmEliteHunt = false
+						_G.FarmEliteHunt = true
 
 					elseif belt == "Red" then
-						repeat
-							task.wait()
-							_G.SailBoats = true
-							_G.FishBoat = true
-						until not _G.Dojoo or not quest
-						_G.SailBoats = false
-						_G.FishBoat = false
+						_G.SailBoats = true
+						_G.FishBoat = true
 
 					elseif belt == "Black" then
-						repeat
-							task.wait()
-							if workspace.Map:FindFirstChild("PrehistoricIsland")
-								or workspace._WorldOrigin.Locations:FindFirstChild("Prehistoric Island") then
-
-								_G.Prehis_Find = true
-
-								if workspace.Map.PrehistoricIsland.Core.ActivationPrompt
-									:FindFirstChild("ProximityPrompt", true) then
-									_G.Prehis_Skills = false
-								else
-									_G.Prehis_Skills = true
-									_G.Prehis_Find = false
-								end
-							else
-								_G.Prehis_Find = true
-								_G.Prehis_Skills = false
-							end
-						until not _G.Dojoo or not quest
-
-						_G.Prehis_Find = false
-						_G.Prehis_Skills = false
+						if workspace:FindFirstChild("PrehistoricIsland") then
+							_G.Prehis_Find = true
+						end
 					end
 				end
 
+				-- Claim Quest khi xong
 				if not quest then
-					debug = false
-					L_1_[18].Modules.Net
-						:FindFirstChild(L_1_[2]({"RF/InteractDragonQue","st"}))
-						:InvokeServer({
-							NPC = "Dojo Trainer",
-							Command = "ClaimQuest"
-						})
+					debugMode = false
+					Remote:InvokeServer({
+						NPC = "Dojo Trainer",
+						Command = "ClaimQuest"
+					})
 				end
 
 			end)
