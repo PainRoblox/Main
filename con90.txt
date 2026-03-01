@@ -10303,7 +10303,7 @@ end
 v496:AddToggle({
     Name = "Anti-reset",
     Description = "Server hop every 30 minutes",
-    Default = false,
+    Default = true,
     Callback = function(Value)
         _G.AutoRejoin30m = Value
         
