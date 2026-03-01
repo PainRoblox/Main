@@ -7607,6 +7607,139 @@ v489:AddButton({
         topos(CFrame.new(5841.29, 1208.32, 884.31))
     end
 })
+
+v489:AddToggle({
+	Name = "Auto Dojo Trainer",
+	Description = "",
+	Default = false,
+	Callback = function(value)
+		_G.Dojoo = value
+	end
+})
+
+function printBeltName(data)
+	if type(data) == "table" and data.Quest and data.Quest.BeltName then
+		return data.Quest.BeltName
+	end
+end
+
+spawn(function()
+	while wait(Sec) do
+		if _G.Dojoo then
+			pcall(function()
+
+				local quest = L_1_[18].Modules.Net
+					:FindFirstChild(L_1_[2]({"RF/InteractDragonQue","st"}))
+					:InvokeServer({
+						NPC = "Dojo Trainer",
+						Command = "RequestQuest"
+					})
+
+				local belt = printBeltName(quest)
+
+				if debug == false and (not quest and not belt) then
+					_tp(CFrame.new(5865.0234,1208.3154,871.1518))
+					debug = true
+
+				elseif debug == true and 
+					(CFrame.new(5865.0234,1208.3154,871.1518).Position -
+					L_1_[45].Character.HumanoidRootPart.Position).Magnitude <= 50 then
+
+					if belt == "White" then
+						local enemy = GetConnectionEnemies("Skull Slayer")
+						if enemy then
+							repeat
+								task.wait()
+								L_1_[4].Kill(enemy, _G.Dojoo)
+							until not quest or not _G.Dojoo or not L_1_[4].Alive(enemy)
+						else
+							_tp(CFrame.new(-16759.5898,71.2837,1595.3399))
+						end
+
+					elseif belt == "Yellow" then
+						repeat
+							task.wait()
+							_G.SeaBeast1 = true
+							_G.TerrorShark = true
+							_G.Shark = true
+							_G.Piranha = true
+							_G.MobCrew = true
+							_G.FishBoat = true
+							_G.SailBoats = true
+						until not _G.Dojoo or not quest
+
+						_G.SeaBeast1 = false
+						_G.TerrorShark = false
+						_G.Shark = false
+						_G.Piranha = false
+						_G.MobCrew = false
+						_G.FishBoat = false
+						_G.SailBoats = false
+
+					elseif belt == "Green" then
+						repeat
+							task.wait()
+							_G.SailBoats = true
+						until not _G.Dojoo or not quest
+						_G.SailBoats = false
+
+					elseif belt == "Purple" then
+						repeat
+							task.wait()
+							_G.FarmEliteHunt = true
+						until not _G.Dojoo or not quest
+						_G.FarmEliteHunt = false
+
+					elseif belt == "Red" then
+						repeat
+							task.wait()
+							_G.SailBoats = true
+							_G.FishBoat = true
+						until not _G.Dojoo or not quest
+						_G.SailBoats = false
+						_G.FishBoat = false
+
+					elseif belt == "Black" then
+						repeat
+							task.wait()
+							if workspace.Map:FindFirstChild("PrehistoricIsland")
+								or workspace._WorldOrigin.Locations:FindFirstChild("Prehistoric Island") then
+
+								_G.Prehis_Find = true
+
+								if workspace.Map.PrehistoricIsland.Core.ActivationPrompt
+									:FindFirstChild("ProximityPrompt", true) then
+									_G.Prehis_Skills = false
+								else
+									_G.Prehis_Skills = true
+									_G.Prehis_Find = false
+								end
+							else
+								_G.Prehis_Find = true
+								_G.Prehis_Skills = false
+							end
+						until not _G.Dojoo or not quest
+
+						_G.Prehis_Find = false
+						_G.Prehis_Skills = false
+					end
+				end
+
+				if not quest then
+					debug = false
+					L_1_[18].Modules.Net
+						:FindFirstChild(L_1_[2]({"RF/InteractDragonQue","st"}))
+						:InvokeServer({
+							NPC = "Dojo Trainer",
+							Command = "ClaimQuest"
+						})
+				end
+
+			end)
+		end
+	end
+end)
+
 v489:AddToggle({
     Name = "Auto Dragon Huntery",
     Description = "",
