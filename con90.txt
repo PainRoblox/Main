@@ -3757,7 +3757,7 @@ local v486 = v466:MakeTab({"Fishing", "rbxassetid://127664059821666"})
 local v487 = v466:MakeTab({"Quest/Items", "swords"})
 local v491 = v466:MakeTab({"Raid/Fruits", "cherry"})
 local v489 = v466:MakeTab({"Sea Event", "waves"})
-local v483 = v466:MakeTab({"Dragon Dojo", "rbxassetid://10734951847"})
+local v488 = v466:MakeTab({"Dragon Dojo", "rbxassetid://10734951847"})
 local v497 = v466:MakeTab({"Stats/ESP", "Signal"})
 local v493 = v466:MakeTab({"Teleport", "locate"})
 local v492 = v466:MakeTab({"Race V4", "rbxassetid://10723425539"})
@@ -7600,8 +7600,8 @@ spawn(function()
     end
 end)
 
-local _ = v489:AddSection({"Volcanic Island"})
-v489:AddButton({
+local _ = v488:AddSection({"Volcanic Island"})
+v488:AddButton({
     Title = "Tween Dragon Dojo",
     Value = false,
     Callback = function()
@@ -7609,7 +7609,7 @@ v489:AddButton({
         topos(CFrame.new(5841.29, 1208.32, 884.31))
     end
 })
-v489:AddToggle({
+v488:AddToggle({
     Name = "Auto Dragon Huntery",
     Description = "",
     Default = false,
@@ -7732,7 +7732,7 @@ spawn(function()
         end
     end
 end)
-v483:AddButton({
+v488:AddButton({
     Title = "Craft Volcanic Magnet",
     Value = false,
     Callback = function()
@@ -7740,7 +7740,7 @@ v483:AddButton({
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(v849))
     end
 })
-local v850 = v489:AddParagraph({Title = "Check Prehistoric Island", Content = "Loading..."})
+local v850 = v488:AddParagraph({Title = "Check Prehistoric Island", Content = "Loading..."})
 task.spawn(function()
     while task.wait(1) do
         pcall(function()
@@ -7752,7 +7752,7 @@ task.spawn(function()
         end)
     end
 end)
-v489:AddToggle({
+v488:AddToggle({
     Name = "Auto Find Prehistoric",
     Description = "",
     Default = false,
@@ -7864,7 +7864,7 @@ l_RunService_0.RenderStepped:Connect(function()
         return 
     end
 end)
-v489:AddToggle({
+v488:AddToggle({
     Name = "Auto Tween Prehistoric Island",
     Description = "",
     Default = false,
@@ -7893,7 +7893,7 @@ spawn(function()
         end
     end
 end)
-v489:AddToggle({
+v488:AddToggle({
     Name = "Auto Defend Prehistoric",
     Description = "",
     Default = false,
@@ -7998,8 +7998,8 @@ spawn(function()
         end
     end
 end)
-local _ = v489:AddSection({"Auto Skill"})
-v489:AddToggle({
+local _ = v488:AddSection({"Auto Skill"})
+v488:AddToggle({
     Name = "Auto Use Melee",
     Description = "",
     Default = false,
@@ -8008,7 +8008,7 @@ v489:AddToggle({
         StopTween(_G.UseMelee)
     end
 })
-v489:AddToggle({
+v488:AddToggle({
     Name = "Auto Use Sword",
     Description = "",
     Default = false,
@@ -8017,7 +8017,7 @@ v489:AddToggle({
         StopTween(_G.UseSword)
     end
 })
-v489:AddToggle({
+v488:AddToggle({
     Name = "Auto Use Gun",
     Description = "",
     Default = false,
@@ -8026,8 +8026,8 @@ v489:AddToggle({
         StopTween(_G.UseGun)
     end
 })
-local _ = v489:AddSection({"Auto Kill Golem"})
-v489:AddToggle({
+local _ = v488:AddSection({"Auto Kill Golem"})
+v488:AddToggle({
     Name = "Auto Kill Golem",
     Description = "",
     Default = false,
@@ -8065,7 +8065,7 @@ spawn(function()
         end
     end
 end)
-v489:AddToggle({
+v488:AddToggle({
     Name = "Auto Kill Aura Golem",
     Description = "",
     Default = false,
@@ -8105,8 +8105,8 @@ spawn(function()
         end
     end)
 end)
-local _ = v489:AddSection({"Auto Collect Bone,Egg"})
-v489:AddToggle({
+local _ = v488:AddSection({"Auto Collect Bone,Egg"})
+v488:AddToggle({
     Name = "Auto Collect Bone",
     Description = "",
     Default = false,
@@ -8126,7 +8126,7 @@ spawn(function()
         end
     end
 end)
-v489:AddToggle({
+v488:AddToggle({
     Name = "Auto Collect Egg",
     Description = "",
     Default = false,
