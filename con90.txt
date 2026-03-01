@@ -10609,38 +10609,44 @@ v496:AddToggle({
     if Lighting:FindFirstChild("FantasySky") then Lighting.FantasySky:Destroy() end
 end
 })
+repeat task.wait() until game:IsLoaded()
+
 local Lighting = game:GetService("Lighting")
 
 local FOG_SAVE_FILE = "remove_fog_save.txt"
 local RemoveFogEnabled = false
 
-if isfile(FOG_SAVE_FILE) then
-	RemoveFogEnabled = readfile(FOG_SAVE_FILE) == "true"
-else
-	writefile(FOG_SAVE_FILE, "false")
-end
+-- Load file an toàn (không crash nếu executor không hỗ trợ)
+pcall(function()
+	if isfile and isfile(FOG_SAVE_FILE) then
+		RemoveFogEnabled = readfile(FOG_SAVE_FILE) == "true"
+	elseif writefile then
+		writefile(FOG_SAVE_FILE, "false")
+	end
+end)
 
 local function RemoveFog()
-	if Lighting:FindFirstChild("LightingLayers") then
-		Lighting.LightingLayers:Destroy()
+	-- Xóa Sky và hiệu ứng
+	for _,v in pairs(Lighting:GetChildren()) do
+		if v:IsA("Sky") or v:IsA("ColorCorrectionEffect") then
+			v:Destroy()
+		end
 	end
-	if Lighting:FindFirstChild("SeaTerrorCC") then
-		Lighting.SeaTerrorCC:Destroy()
-	end
-	if Lighting:FindFirstChild("FantasySky") then
-		Lighting.FantasySky:Destroy()
-	end
+	
+	-- Xóa fog hệ thống
+	Lighting.FogStart = 0
+	Lighting.FogEnd = 1000000
 end
 
+-- Nếu trước đó đã bật thì xóa ngay
 if RemoveFogEnabled then
 	RemoveFog()
 end
 
+-- Nếu game thêm lại thì xóa tiếp
 Lighting.ChildAdded:Connect(function(child)
 	if RemoveFogEnabled then
-		if child.Name == "LightingLayers"
-		or child.Name == "SeaTerrorCC"
-		or child.Name == "FantasySky" then
+		if child:IsA("Sky") or child:IsA("ColorCorrectionEffect") then
 			child:Destroy()
 		end
 	end
@@ -10650,7 +10656,13 @@ v496:AddToggle({
 	Default = RemoveFogEnabled,
 	Callback = function(v)
 		RemoveFogEnabled = v
-		writefile(FOG_SAVE_FILE, tostring(v))
+
+		-- Lưu file an toàn
+		pcall(function()
+			if writefile then
+				writefile(FOG_SAVE_FILE, tostring(v))
+			end
+		end)
 
 		if v then
 			RemoveFog()
