@@ -8642,7 +8642,6 @@ local function FarmRaidEnemies()
         end
     end
 end
-
 task.spawn(function()
     while task.wait() do
         if _G.Dungeon then
@@ -8654,6 +8653,7 @@ task.spawn(function()
         end
     end
 end)
+end
 if not World2 then
     v491:AddParagraph({
         Title = "Raid Law Only Sea 2",
