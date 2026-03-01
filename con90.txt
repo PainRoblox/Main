@@ -7600,6 +7600,180 @@ spawn(function()
     end
 end)
 
+v489:AddToggle({
+    Name = "Auto Tween Kitsune island",
+    Description = "",
+    Default = false,
+    Callback = function(v940)
+        _G.TweenToKitsune = v940
+        StopTween(_G.TweenToKitsune)
+    end
+})
+spawn(function()
+    local v941 = nil
+    while not v941 do
+        v941 = game:GetService("Workspace").Map:FindFirstChild("KitsuneIsland")
+        wait(1)
+    end
+    while wait() do
+        if _G.TweenToKitsune then
+            local v942 = v941.FindFirstChild(v941, "ShrineActive")
+            if v942 then
+                for _, v944 in pairs(v942:GetDescendants()) do
+                    if v944:IsA("BasePart") and v944.Name:find("NeonShrinePart") then
+                        Tween(v944.CFrame)
+                    end
+                end
+            end
+        end
+    end
+end)
+spawn(function()
+    pcall(function()
+        while wait() do
+            if _G.TweenToKitsune then
+                topos(game.Workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0, 0, 10))
+            end
+        end
+    end)
+end)
+v489:AddToggle({
+    Title = "Esp Kitsune Island",
+    Value = false,
+    Callback = function(v945)
+        KitsuneIslandEsp = v945
+        if KitsuneIslandEsp then
+            task.spawn(function()
+                while KitsuneIslandEsp do
+                    UpdateIslandKisuneESP()
+                    task.wait(1)
+                end
+            end)
+        else
+            UpdateIslandKisuneESP()
+        end
+    end
+})
+v489:AddToggle({
+    Name = "Auto Azuer Ember",
+    Description = "",
+    Default = false,
+    Callback = function(v946)
+        _G.AutoAzuerEmber = v946
+        StopTween(_G.AutoAzuerEmber)
+    end
+})
+spawn(function()
+    while wait() do
+        if _G.AutoAzuerEmber then
+            pcall(function()
+                if game:GetService("Workspace"):FindFirstChild("AttachedAzureEmber") then
+                    TP1(game.Workspace.EmberTemplate.Part.CFrame)
+                end
+            end)
+        end
+    end
+end)
+local _ = v489:AddSection({"Mirage Island"})
+local v984 = v489:AddParagraph({Title = "Check Mirage Island", Content = "Loading..."})
+task.spawn(function()
+    while task.wait(1) do
+        pcall(function()
+            if not game.Workspace._WorldOrigin.Locations:FindFirstChild("Mirage Island") then
+                v984:Set("Mirage Island Not Spawn    ")
+            else
+                v984:Set("Mirage Island Spawning    ")
+            end
+        end)
+    end
+end)
+v489:AddToggle({
+    Name = "Tween Mirage Island",
+    Description = "",
+    Default = false,
+    Callback = function(v985)
+        _G.AutoMysticIsland = v985
+        StopTween(_G.AutoMysticIsland)
+    end
+})
+spawn(function()
+    while task.wait(0.1) do
+        pcall(function()
+            if _G.AutoMysticIsland then
+                for _, v987 in pairs(game:GetService("Workspace")._WorldOrigin.Locations:GetChildren()) do
+                    if v987.Name == "Mirage Island" then
+                        topos(v987.CFrame * CFrame.new(0, 333, 0))
+                    end
+                end
+            end
+        end)
+    end
+end)
+v489:AddToggle({
+    Title = "Esp Mirage Island",
+    Description = "",
+    Value = false,
+    Callback = function(v988)
+        MirageIslandESP = v988
+        if MirageIslandESP then
+            task.spawn(function()
+                while MirageIslandESP do
+                    UpdateIslandMirageESP()
+                    task.wait(1)
+                end
+            end)
+        else
+            UpdateIslandMirageESP()
+        end
+    end
+})
+v489:AddToggle({
+    Name = "Look Moon + Auto V3",
+    Description = "",
+    Default = false,
+    Callback = function(v989)
+        _G.AutoDooHee = v989
+        StopTween(_G.AutoDooHee)
+    end
+})
+local l_VirtualInputManager_4 = game:GetService("VirtualInputManager")
+spawn(function()
+    while wait() do
+        pcall(function()
+            if getgenv()._G.AutoDooHee then
+                local l_MoonDirection_0 = game.Lighting:GetMoonDirection()
+                local v992 = game.Workspace.CurrentCamera.CFrame.p + l_MoonDirection_0 * 100
+                game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.p, v992)
+                wait(2)
+                l_VirtualInputManager_4:SendKeyEvent(true, "T", false, game)
+                wait(0.1)
+                l_VirtualInputManager_4:SendKeyEvent(false, "T", false, game)
+            end
+        end)
+    end
+end)
+v489:AddToggle({
+    Name = "Auto Tween To Gear",
+    Description = "",
+    Default = false,
+    Callback = function(v993)
+        _G.TweenMGear = v993
+        StopTween(_G.TweenMGear)
+    end
+})
+spawn(function()
+    pcall(function()
+        while wait() do
+            if _G.TweenMGear and game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                for _, v995 in pairs(game:GetService("Workspace").Map.MysticIsland:GetChildren()) do
+                    if v995:IsA("MeshPart") and v995.Material == Enum.Material.Neon then
+                        topos(v995.CFrame)
+                    end
+                end
+            end
+        end
+    end)
+end)
 local _ = v488:AddSection({"Volcanic Island"})
 v488:AddButton({
     Title = "Tween Dragon Dojo",
@@ -8144,194 +8318,6 @@ spawn(function()
         end
     end
 end)
-local _ = v489:AddSection({"Kitsune Island"})
-local v939 = v489:AddParagraph({Title = "Check Kitsune Island", Content = "Loading..."})
-task.spawn(function()
-    while task.wait(1) do
-        pcall(function()
-            if game:GetService("Workspace").Map:FindFirstChild("KitsuneIsland") then
-                v939:Set("Kitsune Island Spawning    ")
-            else
-                v939:Set("Kitsune Island Not Spawn    ")
-            end
-        end)
-    end
-end)
-v489:AddToggle({
-    Name = "Auto Tween Kitsune island",
-    Description = "",
-    Default = false,
-    Callback = function(v940)
-        _G.TweenToKitsune = v940
-        StopTween(_G.TweenToKitsune)
-    end
-})
-spawn(function()
-    local v941 = nil
-    while not v941 do
-        v941 = game:GetService("Workspace").Map:FindFirstChild("KitsuneIsland")
-        wait(1)
-    end
-    while wait() do
-        if _G.TweenToKitsune then
-            local v942 = v941.FindFirstChild(v941, "ShrineActive")
-            if v942 then
-                for _, v944 in pairs(v942:GetDescendants()) do
-                    if v944:IsA("BasePart") and v944.Name:find("NeonShrinePart") then
-                        Tween(v944.CFrame)
-                    end
-                end
-            end
-        end
-    end
-end)
-spawn(function()
-    pcall(function()
-        while wait() do
-            if _G.TweenToKitsune then
-                topos(game.Workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0, 0, 10))
-            end
-        end
-    end)
-end)
-v489:AddToggle({
-    Title = "Esp Kitsune Island",
-    Value = false,
-    Callback = function(v945)
-        KitsuneIslandEsp = v945
-        if KitsuneIslandEsp then
-            task.spawn(function()
-                while KitsuneIslandEsp do
-                    UpdateIslandKisuneESP()
-                    task.wait(1)
-                end
-            end)
-        else
-            UpdateIslandKisuneESP()
-        end
-    end
-})
-v489:AddToggle({
-    Name = "Auto Azuer Ember",
-    Description = "",
-    Default = false,
-    Callback = function(v946)
-        _G.AutoAzuerEmber = v946
-        StopTween(_G.AutoAzuerEmber)
-    end
-})
-spawn(function()
-    while wait() do
-        if _G.AutoAzuerEmber then
-            pcall(function()
-                if game:GetService("Workspace"):FindFirstChild("AttachedAzureEmber") then
-                    TP1(game.Workspace.EmberTemplate.Part.CFrame)
-                end
-            end)
-        end
-    end
-end)
-local _ = v489:AddSection({"Mirage Island"})
-local v984 = v489:AddParagraph({Title = "Check Mirage Island", Content = "Loading..."})
-task.spawn(function()
-    while task.wait(1) do
-        pcall(function()
-            if not game.Workspace._WorldOrigin.Locations:FindFirstChild("Mirage Island") then
-                v984:Set("Mirage Island Not Spawn    ")
-            else
-                v984:Set("Mirage Island Spawning    ")
-            end
-        end)
-    end
-end)
-v489:AddToggle({
-    Name = "Tween Mirage Island",
-    Description = "",
-    Default = false,
-    Callback = function(v985)
-        _G.AutoMysticIsland = v985
-        StopTween(_G.AutoMysticIsland)
-    end
-})
-spawn(function()
-    while task.wait(0.1) do
-        pcall(function()
-            if _G.AutoMysticIsland then
-                for _, v987 in pairs(game:GetService("Workspace")._WorldOrigin.Locations:GetChildren()) do
-                    if v987.Name == "Mirage Island" then
-                        topos(v987.CFrame * CFrame.new(0, 333, 0))
-                    end
-                end
-            end
-        end)
-    end
-end)
-v489:AddToggle({
-    Title = "Esp Mirage Island",
-    Description = "",
-    Value = false,
-    Callback = function(v988)
-        MirageIslandESP = v988
-        if MirageIslandESP then
-            task.spawn(function()
-                while MirageIslandESP do
-                    UpdateIslandMirageESP()
-                    task.wait(1)
-                end
-            end)
-        else
-            UpdateIslandMirageESP()
-        end
-    end
-})
-v489:AddToggle({
-    Name = "Look Moon + Auto V3",
-    Description = "",
-    Default = false,
-    Callback = function(v989)
-        _G.AutoDooHee = v989
-        StopTween(_G.AutoDooHee)
-    end
-})
-local l_VirtualInputManager_4 = game:GetService("VirtualInputManager")
-spawn(function()
-    while wait() do
-        pcall(function()
-            if getgenv()._G.AutoDooHee then
-                local l_MoonDirection_0 = game.Lighting:GetMoonDirection()
-                local v992 = game.Workspace.CurrentCamera.CFrame.p + l_MoonDirection_0 * 100
-                game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.p, v992)
-                wait(2)
-                l_VirtualInputManager_4:SendKeyEvent(true, "T", false, game)
-                wait(0.1)
-                l_VirtualInputManager_4:SendKeyEvent(false, "T", false, game)
-            end
-        end)
-    end
-end)
-v489:AddToggle({
-    Name = "Auto Tween To Gear",
-    Description = "",
-    Default = false,
-    Callback = function(v993)
-        _G.TweenMGear = v993
-        StopTween(_G.TweenMGear)
-    end
-})
-spawn(function()
-    pcall(function()
-        while wait() do
-            if _G.TweenMGear and game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-                for _, v995 in pairs(game:GetService("Workspace").Map.MysticIsland:GetChildren()) do
-                    if v995:IsA("MeshPart") and v995.Material == Enum.Material.Neon then
-                        topos(v995.CFrame)
-                    end
-                end
-            end
-        end
-    end)
-end)
-
 local _ = v491:AddSection({"Fruits"})
 v491:AddToggle({
     Name = "Auto Random Fruits",
