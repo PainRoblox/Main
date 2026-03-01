@@ -7996,35 +7996,6 @@ spawn(function()
         end
     end
 end)
-local _ = v489:AddSection({"Auto Skill"})
-v489:AddToggle({
-    Name = "Auto Use Melee",
-    Description = "",
-    Default = false,
-    Callback = function(v918)
-        _G.UseMelee = v918
-        StopTween(_G.UseMelee)
-    end
-})
-v489:AddToggle({
-    Name = "Auto Use Sword",
-    Description = "",
-    Default = false,
-    Callback = function(v919)
-        _G.UseSword = v919
-        StopTween(_G.UseSword)
-    end
-})
-v489:AddToggle({
-    Name = "Auto Use Gun",
-    Description = "",
-    Default = false,
-    Callback = function(v920)
-        _G.UseGun = v920
-        StopTween(_G.UseGun)
-    end
-})
-local _ = v489:AddSection({"Auto Kill Golem"})
 v489:AddToggle({
     Name = "Auto Kill Golem",
     Description = "",
@@ -8103,7 +8074,6 @@ spawn(function()
         end
     end)
 end)
-local _ = v489:AddSection({"Auto Collect Bone,Egg"})
 v489:AddToggle({
     Name = "Auto Collect Bone",
     Description = "",
@@ -8142,6 +8112,35 @@ spawn(function()
         end
     end
 end)
+local _ = v489:AddSection({"Auto Skill"})
+v489:AddToggle({
+    Name = "Auto Use Melee",
+    Description = "",
+    Default = false,
+    Callback = function(v918)
+        _G.UseMelee = v918
+        StopTween(_G.UseMelee)
+    end
+})
+v489:AddToggle({
+    Name = "Auto Use Sword",
+    Description = "",
+    Default = false,
+    Callback = function(v919)
+        _G.UseSword = v919
+        StopTween(_G.UseSword)
+    end
+})
+v489:AddToggle({
+    Name = "Auto Use Gun",
+    Description = "",
+    Default = false,
+    Callback = function(v920)
+        _G.UseGun = v920
+        StopTween(_G.UseGun)
+    end
+})
+local _ = v489:AddSection({"Kitsune Island"})
 v489:AddToggle({
     Name = "Auto Tween Kitsune island",
     Description = "",
@@ -8315,45 +8314,6 @@ spawn(function()
             end
         end
     end)
-end)
-local _ = v489:AddSection({"Auto Collect Bone,Egg"})
-v489:AddToggle({
-    Name = "Auto Collect Bone",
-    Description = "",
-    Default = false,
-    Callback = function(v934)
-        _G.AutoCollectBone = v934
-        StopTween(_G.AutoCollectBone)
-    end
-})
-spawn(function()
-    while wait() do
-        if _G.AutoCollectBone then
-            for _, v936 in pairs(workspace:GetDescendants()) do
-                if v936:IsA("BasePart") and v936.Name == "DinoBone" then
-                    topos(CFrame.new(v936.Position))
-                end
-            end
-        end
-    end
-end)
-v489:AddToggle({
-    Name = "Auto Collect Egg",
-    Description = "",
-    Default = false,
-    Callback = function(v937)
-        _G.CollectEgg = v937
-        StopTween(_G.CollectEgg)
-    end
-})
-spawn(function()
-    while wait() do
-        if _G.CollectEgg then
-            pcall(function()
-                game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RE/CollectedDragonEgg"):FireServer()
-            end)
-        end
-    end
 end)
 local _ = v491:AddSection({"Fruits"})
 v491:AddToggle({
@@ -8694,8 +8654,34 @@ task.spawn(function()
         end
     end
 end)
-end
-
+v491:AddToggle({
+    Title = "Kill Aura",
+    Description = "",
+    Default = false
+})
+Q:OnChanged(function(Value)
+    _G.KillH = Value
+end)
+spawn(function()
+    while wait(Sec) do
+        if _G.KillH then
+            for _, v in pairs(workspace.Enemies:GetChildren()) do
+                if Attack.Alive(v) then
+                    pcall(function()
+                        repeat
+                            wait(Sec)
+                            sethiddenproperty(plr, "SimulationRadius", math.huge)
+                            v:BreakJoints()
+                            v.Humanoid.Health = 0
+                            v.HumanoidRootPart.CanCollide = false
+                        until not _G.KillH or not v.Parent or v.Humanoid.Health <= 0
+                    end)
+                end
+            end
+        end
+    end
+end)
+local Q = Tabs.Raids:AddToggle("Q", {
 if not World2 then
     v491:AddParagraph({
         Title = "Raid Law Only Sea 2",
