@@ -8654,27 +8654,24 @@ task.spawn(function()
         end
     end
 end)
+local Sec = 0.1
+_G.KillH = false
+
 v491:AddToggle({
     Name = "Kill aura",
     Default = false,
-    Callback = function(v)
+    Callback = function(Value)
+        _G.KillH = Value
+    end
 })
-Q:OnChanged(function(Value)
-    _G.KillH = Value
-end)
+
 spawn(function()
     while wait(Sec) do
         if _G.KillH then
             for _, v in pairs(workspace.Enemies:GetChildren()) do
-                if Attack.Alive(v) then
+                if v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                     pcall(function()
-                        repeat
-                            wait(Sec)
-                            sethiddenproperty(plr, "SimulationRadius", math.huge)
-                            v:BreakJoints()
-                            v.Humanoid.Health = 0
-                            v.HumanoidRootPart.CanCollide = false
-                        until not _G.KillH or not v.Parent or v.Humanoid.Health <= 0
+                        v.Humanoid.Health = 0
                     end)
                 end
             end
