@@ -1,4 +1,41 @@
+Settings = Settings or {}
 
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local HttpService = game:GetService("HttpService")
+
+local Plr = Players.LocalPlayer
+
+if Settings.Translator == true then
+    pcall(function()
+        _G.RedzTranslator = HttpService:JSONDecode(game:HttpGet("https://raw.githubusercontent.com/PlockScripts/newredz/refs/heads/main/NewTranslator/NewBloxFruits/NewPortuguese.json"))
+    end)
+end
+
+local function JoinTeam()
+    local targetTeam = "Marines"
+    if Settings.JoinTeam == "Pirates" then
+        targetTeam = "Pirates"
+    end
+
+    if not Plr.Team or (Plr.Team.Name ~= "Marines" and Plr.Team.Name ~= "Pirates") then
+        pcall(function()
+            ReplicatedStorage
+                :WaitForChild("Remotes")
+                :WaitForChild("CommF_")
+                :InvokeServer("SetTeam", targetTeam)
+        end)
+    end
+end
+
+JoinTeam()
+
+hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Death), function()
+    -- empty block
+end)
+hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Respawn), function()
+    -- empty block
+end)
 if game.PlaceId == 2753915549 or game.PlaceId == 85211729168715 then
     World1 = true
 elseif game.PlaceId == 4442272183 or game.PlaceId == 79091703265657 then
