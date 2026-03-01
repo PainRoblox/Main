@@ -10140,7 +10140,7 @@ while true do
 end
 
 task.spawn(function()
-    while task.wait(0.0001) do
+    while task.wait(0.001) do
         -- Só executa se o toggle estiver ativado
         if _G.AutoAttack then
             local _Character = game.Players.LocalPlayer.Character
@@ -10202,7 +10202,10 @@ task.spawn(function()
 
             local _Tool = _Character:FindFirstChildOfClass('Tool')
 
-            if #u17 > 0 and (_Tool and (_Tool:GetAttribute('WeaponType') == 'Melee' or _Tool:GetAttribute('WeaponType') == 'Sword')) then
+            if #u17 > 0 and (_Tool and 
+   (_Tool:GetAttribute('WeaponType') == 'Melee' 
+    or _Tool:GetAttribute('WeaponType') == 'Sword'
+    or _Tool:GetAttribute('WeaponType') == 'Fruit')) then
                 pcall(function()
                     require(game.ReplicatedStorage.Modules.Net):RemoteEvent('RegisterHit', true)
                     game.ReplicatedStorage.Modules.Net['RE/RegisterAttack']:FireServer()
