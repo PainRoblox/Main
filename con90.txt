@@ -10190,7 +10190,7 @@ v495:AddButton({
 })
 
 local _ = v496:AddSection({"Server"})
-v494:AddTextBox({
+v496:AddTextBox({
         Name = "Job ID",
         PlaceholderText = "Paste the Job ID here...",
         Callback = function(p215)
@@ -10222,7 +10222,7 @@ v496:AddButton({
         game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
     end
 })
-v494:AddButton({Title = "Server Hop", Callback = function()
+v496:AddButton({Title = "Server Hop", Callback = function()
     Hop()
 end})
 
@@ -10564,123 +10564,6 @@ v496:AddButton({
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(v1209))
         game.Players.localPlayer.PlayerGui.Main.Titles.Visible = true
     end
-})
-
-v496:AddSection("Local-Player")
-
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
-local SPEED_SAVE_FILE = "walkspeed_save.txt"
-local JUMP_SAVE_FILE = "jump_save.txt"
-local TOGGLE_SAVE_FILE = "movement_toggle_save.txt"
-
-local MovementEnabled = false
-
-if isfile(TOGGLE_SAVE_FILE) then
-	MovementEnabled = readfile(TOGGLE_SAVE_FILE) == "true"
-else
-	writefile(TOGGLE_SAVE_FILE, "false")
-end
-
-local WalkSpeedValue = 58
-local JumpValue = 58
-
-if isfile(SPEED_SAVE_FILE) then
-	WalkSpeedValue = tonumber(readfile(SPEED_SAVE_FILE)) or 58
-else
-	writefile(SPEED_SAVE_FILE, "58")
-end
-
-if isfile(JUMP_SAVE_FILE) then
-	JumpValue = tonumber(readfile(JUMP_SAVE_FILE)) or 58
-else
-	writefile(JUMP_SAVE_FILE, "58")
-end
-
-local function ApplyMovement(char)
-	local hum = char:WaitForChild("Humanoid",5)
-	if not hum then return end
-
-	if MovementEnabled then
-		hum.WalkSpeed = WalkSpeedValue
-		hum.JumpPower = JumpValue
-	end
-
-	hum:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
-		if MovementEnabled then
-			hum.WalkSpeed = WalkSpeedValue
-		end
-	end)
-
-	hum:GetPropertyChangedSignal("JumpPower"):Connect(function()
-		if MovementEnabled then
-			hum.JumpPower = JumpValue
-		end
-	end)
-end
-
-LocalPlayer.CharacterAdded:Connect(function(char)
-	task.wait(0.2)
-	ApplyMovement(char)
-end)
-
-if LocalPlayer.Character then
-	ApplyMovement(LocalPlayer.Character)
-end
-
-v496:AddToggle({
-	Title = "Enable WalkSpeed and Jump",
-	Default = MovementEnabled,
-	Callback = function(v)
-		MovementEnabled = v
-		writefile(TOGGLE_SAVE_FILE, tostring(v))
-
-		local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid")
-		if hum then
-			if v then
-				hum.WalkSpeed = WalkSpeedValue
-				hum.JumpPower = JumpValue
-			else
-				hum.WalkSpeed = 16
-				hum.JumpPower = 50
-			end
-		end
-	end
-})
-v496:AddSlider({
-	Title = "Speed",
-	Min = 26,
-	Max = 300,
-	Default = WalkSpeedValue,
-	Callback = function(v)
-		WalkSpeedValue = v
-		writefile(SPEED_SAVE_FILE, tostring(v))
-
-		if MovementEnabled then
-			local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid")
-			if hum then
-				hum.WalkSpeed = v
-			end
-		end
-	end
-})
-v496:AddSlider({
-	Title = "Jump",
-	Min = 50,
-	Max = 500,
-	Default = JumpValue,
-	Callback = function(v)
-		JumpValue = v
-		writefile(JUMP_SAVE_FILE, tostring(v))
-
-		if MovementEnabled then
-			local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid")
-			if hum then
-				hum.JumpPower = v
-			end
-		end
-	end
 })
 
 v496:AddSection("Visual")
