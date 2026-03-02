@@ -7052,6 +7052,8 @@ v492:AddButton({
         end
     end
 })
+local _ = v492:AddSection({"Teleport V4"})
+v492:AddButton({
     Title = "Teleport To Top GreatTree",
     Value = false,
     Callback = function()
@@ -7062,7 +7064,7 @@ v492:AddButton({
     Title = "Teleport Temple Of Time",
     Value = false,
     Callback = function()
-        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
+        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
     end
 })
 v492:AddButton({
