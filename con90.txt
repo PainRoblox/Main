@@ -7063,13 +7063,6 @@ v492:AddButton({
 })
 
 v492:AddButton({
-    Title = "Teleport Temple Of Time",
-    Value = false,
-    Callback = function()
-        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
-    end
-})
-v492:AddButton({
     Title = "Teleport Lever Pull",
     Value = false,
     Callback = function()
