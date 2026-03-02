@@ -7030,6 +7030,18 @@ if World3 then
 local _ = v492:AddSection({"Teleport V4"})
 v492:AddButton({
     Title = "Teleport To Top GreatTree",
+    Callback = function()
+        local player = game:GetService("Players").LocalPlayer
+        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            player.Character.HumanoidRootPart.CFrame =
+                CFrame.new(3030.39453125, 2280.6171875, -7320.18359375)
+        end
+    end
+})
+
+
+v492:AddButton({
+    Title = "Teleport To Top GreatTree",
     Value = false,
     Callback = function()
         Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3030.39453125, 2280.6171875, -7320.18359375)
