@@ -7063,25 +7063,7 @@ v492:AddButton({
     Title = "Teleport Lever Pull",
     Value = false,
     Callback = function()
-    local player = game:GetService("Players").LocalPlayer
-        local workspace = game:GetService("Workspace")
-        local replicatedStorage = game:GetService("ReplicatedStorage")
-
-        -- Load Temple nếu chưa có
-        if workspace:FindFirstChild("Map") and 
-           not workspace.Map:FindFirstChild("Temple of Time") then
-            
-            local mapStash = replicatedStorage:FindFirstChild("MapStash")
-            if mapStash and mapStash:FindFirstChild("Temple of Time") then
-                mapStash["Temple of Time"].Parent = workspace.Map
-            end
-        end
-
-        -- Teleport
-        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-            player.Character.HumanoidRootPart.CFrame =
-                CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734)
-        end
+         topos(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
     end
 })
 v492:AddButton({
