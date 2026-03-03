@@ -7027,6 +7027,7 @@ if World3 then
             end
         end)
     end
+if World3 then
 local _ = v492:AddSection({"Teleport V4"})
 v492:AddButton({
     Title = "Teleport To Top GreatTree",
