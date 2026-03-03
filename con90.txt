@@ -9483,7 +9483,7 @@ end)
 
 
 
- v497:AddSection("Visual")
+    v497:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
 v497:AddButton({
