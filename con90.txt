@@ -7309,7 +7309,6 @@ v492:AddToggle({
         StopTween(_G.XaiSkillC)
     end
 })
-end
 local _ = v489:AddSection({"Sea Events"})
 v489:AddToggle({
     Name = "Auto Drive Boats",
