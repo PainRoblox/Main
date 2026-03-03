@@ -6741,34 +6741,7 @@ if World3 then
                 end
             end
         end)
-        local TweenService = game:GetService("TweenService")
-local plr = game.Players.LocalPlayer
-
-function FlyTo(cf)
-    local char = plr.Character
-    if not char or not char:FindFirstChild("HumanoidRootPart") then return end
-
-    local hrp = char.HumanoidRootPart
-    local distance = (hrp.Position - cf.Position).Magnitude
-    local speed = 300 -- chỉnh tốc độ ở đây
-
-    local tween = TweenService:Create(
-        hrp,
-        TweenInfo.new(distance / speed, Enum.EasingStyle.Linear),
-        {CFrame = cf}
-    )
-
-    tween:Play()
-end
-v491:AddButton({
-    Title = "Fly To Sharkman Master",
-    Callback = function()
-        FlyTo(CFrame.new(-2605.5, 234.6, -10315.7))
-    end
-})
-        
-        
-        
+      
         local _ = v487:AddSection({"Auto CDK"})
         v487:AddToggle({
             Name = "Auto Cdk [Beta]",
