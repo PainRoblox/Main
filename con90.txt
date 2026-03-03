@@ -7029,6 +7029,13 @@ if World3 then
     end
 local _ = v492:AddSection({"Teleport V4"})
 v492:AddButton({
+    Title = "Teleport To Top GreatTree",
+    Value = false,
+    Callback = function()
+        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3030.39453125, 2280.6171875, -7320.18359375)
+    end
+})
+v492:AddButton({
     Title = "Teleport Temple Of Time",
     Callback = function()
         local player = game:GetService("Players").LocalPlayer
@@ -7050,21 +7057,6 @@ v492:AddButton({
             player.Character.HumanoidRootPart.CFrame =
                 CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
         end
-    end
-})
-local _ = v492:AddSection({"Teleport V4"})
-v492:AddButton({
-    Title = "Teleport To Top GreatTree",
-    Value = false,
-    Callback = function()
-        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3030.39453125, 2280.6171875, -7320.18359375)
-    end
-})
-v492:AddButton({
-    Title = "Teleport Temple Of Time",
-    Value = false,
-    Callback = function()
-        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
     end
 })
 v492:AddButton({
@@ -9380,109 +9372,6 @@ v497:AddToggle({
         end
     end
 })
-local FlowerESP = v497:AddToggle({
-    Title = "ESP Flower (Colored)",
-    Description = "",
-    Default = false
-})
-
-_G.FlowerESP = false
-
-FlowerESP:OnChanged(function(Value)
-    _G.FlowerESP = Value
-
-    if not Value then
-        for _,v in pairs(workspace:GetDescendants()) do
-            if v:IsA("Highlight") and v.Name == "FlowerESP" then
-                v:Destroy()
-            end
-        end
-    end
-end)
-
-spawn(function()
-    while task.wait(1) do
-        if _G.FlowerESP then
-            for _,v in pairs(workspace:GetDescendants()) do
-                
-                if v:IsA("Model")
-                and v:FindFirstChildWhichIsA("BasePart") -- thêm dòng này
-                and not v:FindFirstChild("FlowerESP") then
-                    
-                    local name = string.lower(v.Name)
-                    local color
-                    
-                    if string.find(name,"red") then
-                        color = Color3.fromRGB(255,0,0)
-
-                    elseif string.find(name,"blue") then
-                        color = Color3.fromRGB(0,170,255)
-
-                    elseif string.find(name,"yellow") then
-                        color = Color3.fromRGB(255,255,0)
-                    end
-
-                    if color then
-                        local h = Instance.new("Highlight")
-                        h.Name = "FlowerESP"
-                        h.FillColor = color
-                        h.OutlineColor = Color3.new(1,1,1)
-                        h.FillTransparency = 0.35
-                        h.Parent = v
-                    end
-                end
-            end
-        end
-    end
-end)
-local PreIslandESP = v497:AddToggle({
-    Title = "ESP Prehistoric Islands",
-    Description = "",
-    Default = false
-})
-
-_G.PreIslandESP = false
-
-PreIslandESP:OnChanged(function(Value)
-    _G.PreIslandESP = Value
-
-    if not Value then
-        -- Xóa ESP khi tắt
-        for _,v in pairs(workspace:GetDescendants()) do
-            if v:IsA("Highlight") and v.Name == "PreIslandESP" then
-                v:Destroy()
-            end
-        end
-    end
-end)
-
-spawn(function()
-    while task.wait(2) do
-        if _G.PreIslandESP then
-            for _,v in pairs(workspace:GetChildren()) do
-                
-                if v:IsA("Model")
-                and v:FindFirstChildWhichIsA("BasePart")
-                and string.find(string.lower(v.Name),"prehistoric")
-                and not v:FindFirstChild("PreIslandESP") then
-                    
-                    pcall(function()
-                        local h = Instance.new("Highlight")
-                        h.Name = "PreIslandESP"
-                        h.FillColor = Color3.fromRGB(0,255,0)
-                        h.OutlineColor = Color3.fromRGB(255,255,255)
-                        h.FillTransparency = 0.25
-                        h.Parent = v
-                    end)
-
-                end
-            end
-        end
-    end
-end)
-
-
-
     v497:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
