@@ -9380,8 +9380,60 @@ v497:AddToggle({
         end
     end
 })
+v497:AddToggle({
+    Title = "ESP Flower (Colored)",
+    Description = "",
+    Default = false
+})
 
-    v497:AddSection("Visual")
+_G.FlowerESP = false
+
+FlowerESP:OnChanged(function(Value)
+    _G.FlowerESP = Value
+
+    if not Value then
+        -- Xóa toàn bộ ESP khi tắt
+        for _,v in pairs(workspace:GetDescendants()) do
+            if v:IsA("Highlight") and v.Name == "FlowerESP" then
+                v:Destroy()
+            end
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(1) do
+        if _G.FlowerESP then
+            for _,v in pairs(workspace:GetDescendants()) do
+                
+                if v:IsA("Model") and not v:FindFirstChild("FlowerESP") then
+                    
+                    local color
+                    
+                    if string.find(v.Name,"Red") then
+                        color = Color3.fromRGB(255,0,0)
+
+                    elseif string.find(v.Name,"Blue") then
+                        color = Color3.fromRGB(0,170,255)
+
+                    elseif string.find(v.Name,"Yellow") then
+                        color = Color3.fromRGB(255,255,0)
+                    end
+
+                    if color then
+                        local h = Instance.new("Highlight")
+                        h.Name = "FlowerESP"
+                        h.FillColor = color
+                        h.OutlineColor = Color3.new(1,1,1)
+                        h.FillTransparency = 0.35
+                        h.Parent = v
+                    end
+                end
+            end
+        end
+    end
+end)
+ v497:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
 v497:AddButton({
@@ -9417,7 +9469,7 @@ v497:AddButton({
         end
     end
 })
-local _ = v494:AddSection({"Aimbot Nearest"})
+v494:AddSection({"Aimbot Nearest"})
 
 local v1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/PlockScripts/Aimbot-skill-config/refs/heads/main/Aimbot.lua"))()
 
@@ -10567,6 +10619,19 @@ spawn(function()
                     end
                 end
             end)
+        end
+    end
+end)
+v496:AddToggle({
+     Title = "Infinite Soru", 
+     Value = false, 
+     Callback = function(v1170)
+    _G.AutoHaki = v1170
+end})
+spawn(function()
+    while task.wait(0.1) do
+        if _G.AutoHaki then
+            pcall(AutoHaki)
         end
     end
 end)
