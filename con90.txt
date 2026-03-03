@@ -9380,7 +9380,7 @@ v497:AddToggle({
         end
     end
 })
-v497:AddToggle({
+local FlowerESP = v497:AddToggle({
     Title = "ESP Flower (Colored)",
     Description = "",
     Default = false
@@ -9392,7 +9392,6 @@ FlowerESP:OnChanged(function(Value)
     _G.FlowerESP = Value
 
     if not Value then
-        -- Xóa toàn bộ ESP khi tắt
         for _,v in pairs(workspace:GetDescendants()) do
             if v:IsA("Highlight") and v.Name == "FlowerESP" then
                 v:Destroy()
@@ -9406,17 +9405,19 @@ spawn(function()
         if _G.FlowerESP then
             for _,v in pairs(workspace:GetDescendants()) do
                 
-                if v:IsA("Model") and not v:FindFirstChild("FlowerESP") then
+                if v:IsA("Model") 
+                and not v:FindFirstChild("FlowerESP") then
                     
+                    local name = string.lower(v.Name)
                     local color
                     
-                    if string.find(v.Name,"Red") then
+                    if string.find(name,"red") then
                         color = Color3.fromRGB(255,0,0)
 
-                    elseif string.find(v.Name,"Blue") then
+                    elseif string.find(name,"blue") then
                         color = Color3.fromRGB(0,170,255)
 
-                    elseif string.find(v.Name,"Yellow") then
+                    elseif string.find(name,"yellow") then
                         color = Color3.fromRGB(255,255,0)
                     end
 
@@ -9433,6 +9434,51 @@ spawn(function()
         end
     end
 end)
+local PreIslandESP = v497:AddToggle({
+    Title = "ESP Prehistoric Islands",
+    Description = "",
+    Default = false
+})
+
+_G.PreIslandESP = false
+
+PreIslandESP:OnChanged(function(Value)
+    _G.PreIslandESP = Value
+
+    if not Value then
+        -- Xóa ESP khi tắt
+        for _,v in pairs(workspace:GetDescendants()) do
+            if v:IsA("Highlight") and v.Name == "PreIslandESP" then
+                v:Destroy()
+            end
+        end
+    end
+end)
+
+spawn(function()
+    while task.wait(2) do
+        if _G.PreIslandESP then
+            for _,v in pairs(workspace:GetChildren()) do
+                
+                if v:IsA("Model")
+                and string.find(string.lower(v.Name),"prehistoric")
+                and not v:FindFirstChild("PreIslandESP") then
+                    
+                    local h = Instance.new("Highlight")
+                    h.Name = "PreIslandESP"
+                    h.FillColor = Color3.fromRGB(0,255,0)
+                    h.OutlineColor = Color3.fromRGB(255,255,255)
+                    h.FillTransparency = 0.25
+                    h.Parent = v
+                end
+            end
+        end
+    end
+end)
+end)
+
+
+
  v497:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
