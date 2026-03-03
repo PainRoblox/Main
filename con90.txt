@@ -8543,6 +8543,35 @@ else
 
 local _ = v491:AddSection({"Raid Fruits"})
 
+local Q = Tabs.Raids:AddToggle("Q", {
+    Title = "Kill Aura",
+    Description = "",
+    Default = false
+})
+Q:OnChanged(function(Value)
+    _G.KillH = Value
+end)
+spawn(function()
+    while wait(Sec) do
+        if _G.KillH then
+            for _, v in pairs(workspace.Enemies:GetChildren()) do
+                if Attack.Alive(v) then
+                    pcall(function()
+                        repeat
+                            wait(Sec)
+                            sethiddenproperty(plr, "SimulationRadius", math.huge)
+                            v:BreakJoints()
+                            v.Humanoid.Health = 0
+                            v.HumanoidRootPart.CanCollide = false
+                        until not _G.KillH or not v.Parent or v.Humanoid.Health <= 0
+                    end)
+                end
+            end
+        end
+    end
+end)
+
+
 _G.SelectChip = "Flame"
 _G.AutoBuyChip = false
 _G.StartRaid = false
