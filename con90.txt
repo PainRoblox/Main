@@ -9405,7 +9405,8 @@ spawn(function()
         if _G.FlowerESP then
             for _,v in pairs(workspace:GetDescendants()) do
                 
-                if v:IsA("Model") 
+                if v:IsA("Model")
+                and v:FindFirstChildWhichIsA("BasePart") -- thêm dòng này
                 and not v:FindFirstChild("FlowerESP") then
                     
                     local name = string.lower(v.Name)
