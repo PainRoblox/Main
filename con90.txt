@@ -9462,20 +9462,23 @@ spawn(function()
             for _,v in pairs(workspace:GetChildren()) do
                 
                 if v:IsA("Model")
+                and v:FindFirstChildWhichIsA("BasePart")
                 and string.find(string.lower(v.Name),"prehistoric")
                 and not v:FindFirstChild("PreIslandESP") then
                     
-                    local h = Instance.new("Highlight")
-                    h.Name = "PreIslandESP"
-                    h.FillColor = Color3.fromRGB(0,255,0)
-                    h.OutlineColor = Color3.fromRGB(255,255,255)
-                    h.FillTransparency = 0.25
-                    h.Parent = v
+                    pcall(function()
+                        local h = Instance.new("Highlight")
+                        h.Name = "PreIslandESP"
+                        h.FillColor = Color3.fromRGB(0,255,0)
+                        h.OutlineColor = Color3.fromRGB(255,255,255)
+                        h.FillTransparency = 0.25
+                        h.Parent = v
+                    end)
+
                 end
             end
         end
     end
-end)
 end)
 
 
