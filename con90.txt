@@ -7027,6 +7027,7 @@ if World3 then
             end
         end)
     end
+if World3 then
 local _ = v492:AddSection({"Teleport V4"})
 v492:AddButton({
     Title = "Teleport To Top GreatTree",
@@ -10562,8 +10563,8 @@ spawn(function()
     end
 end)
 v496:AddToggle({
-     Title = "Infinite Soru", 
-     Value = false, 
+     Title = "Auto buso", 
+     Value = true, 
      Callback = function(v1170)
     _G.AutoHaki = v1170
 end})
@@ -10574,7 +10575,23 @@ spawn(function()
         end
     end
 end)
+local InfiniteSoru = v496:AddToggle({
+    Title = "Infinite Soru",
+    Value = false,
+    Callback = function(v)
+        _G.InfiniteSoru = v
+    end
+})
 
+spawn(function()
+    while task.wait(0.1) do
+        if _G.InfiniteSoru then
+            pcall(function()
+                game:GetService("VirtualInputManager"):SendKeyEvent(true, "Q", false, game)
+            end)
+        end
+    end
+end)
 v496:AddSection("Menu")
 v496:AddButton({
     Title = "Open Title Name",
