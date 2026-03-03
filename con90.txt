@@ -6741,6 +6741,18 @@ if World3 then
                 end
             end
         end)
+        
+      v487:AddButton({
+    Title = "Teleport Sharkman Master",
+    Callback = function()
+        local plr = game.Players.LocalPlayer
+        local hrp = plr.Character:WaitForChild("HumanoidRootPart")
+        hrp.CFrame = CFrame.new(-2605.5, 234.6, -10315.7)
+    end
+})
+        
+        
+        
         local _ = v487:AddSection({"Auto CDK"})
         v487:AddToggle({
             Name = "Auto Cdk [Beta]",
