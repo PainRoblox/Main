@@ -7028,7 +7028,7 @@ if World3 then
         end)
     end
 local _ = v492:AddSection({"Teleport V4"})
-v492:AddButton({
+v487:AddButton({
     Title = "Teleport To Top GreatTree",
     Value = false,
     Callback = function()
@@ -7073,7 +7073,7 @@ v492:AddButton({
         topos(CFrame.new(29553.7812, 15066.6133, -88.2750015, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end
 })
-local _ = v492:AddSection({"Trial V4"})
+local _ = v487:AddSection({"Trial V4"})
 v492:AddButton({
     Title = "Auto Race Door",
     Value = false,
@@ -7309,6 +7309,7 @@ v492:AddToggle({
         StopTween(_G.XaiSkillC)
     end
 })
+end
 local _ = v489:AddSection({"Sea Events"})
 v489:AddToggle({
     Name = "Auto Drive Boats",
