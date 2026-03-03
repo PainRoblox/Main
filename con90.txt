@@ -10562,7 +10562,7 @@ spawn(function()
 end)
 v496:AddToggle({
      Title = "Auto buso", 
-     Value = true, 
+     Default = true, 
      Callback = function(v1170)
     _G.AutoHaki = v1170
 end})
