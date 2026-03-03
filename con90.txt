@@ -6783,7 +6783,7 @@ if World3 then
                                     if not l_Character_7:FindFirstChild("Tushita") and not l_Backpack_1:FindFirstChild("Tushita") then
                                         if not v798 then
                                             game.StarterGui:SetCore("SendNotification", {
-                                                Title = "Tu   n Anh IOS",
+                                                Title = "OKO",
                                                 Text = "Use! - Yama or Tushita",
                                                 con = "rbxassetid://131185267344742",
                                                 Duration = 10
