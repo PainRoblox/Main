@@ -8705,6 +8705,43 @@ task.spawn(function()
     end
 end)
 end
+
+
+v491:AddToggle({
+    Name = "Auto Farm Raid Next Island",
+    Default = false,
+    Callback = function(v)
+        _G.Dungeon = v
+        if v then startRaidLoop() end
+    end
+})
+
+function startRaidLoop()
+    spawn(function()
+        while _G.Dungeon do
+            task.wait(.2)
+            local p = plr.Character:WaitForChild"HumanoidRootPart"
+            local isl,idx,done
+            for _,i in ipairs(workspace.Enemies:GetChildren()) do
+                if i:FindFirstChild"HumanoidRootPart" and i.Humanoid.Health>0 and (i.HumanoidRootPart.Position-p.Position).Magnitude<1000 then
+                    EquipWeapon(_G.SelectWeapon)
+                    repeat topos(i.HumanoidRootPart.CFrame*CFrame.new(0,30,0)) task.wait(.1) until i.Humanoid.Health<=0 or not _G.Dungeon
+                    done=true; break
+                end
+            end
+            if not done then
+                for _,id in ipairs{5,4,3,2,1} do
+                    local t=workspace._WorldOrigin.Locations:FindFirstChild("Island "..id)
+                    if t and (t.Position-p.Position).Magnitude<4500 then isl,idx=t,id; break end
+                end
+                if isl then topos(isl.CFrame*CFrame.new(0,60,0)); _G.KillH=(idx>=4) else _G.KillH=false end
+            end
+        end
+        _G.KillH=false
+    end)
+end
+```
+
 if not World2 then
     v491:AddParagraph({
         Title = "Raid Law Only Sea 2",
