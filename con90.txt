@@ -8543,19 +8543,22 @@ else
 
 local _ = v491:AddSection({"Raid Fruits"})
 
-local Q = Tabs.Raids:AddToggle("Q", {
-    Title = "Kill Aura",
-    Description = "",
-    Default = false
+local plr = game.Players.LocalPlayer
+local Sec = 0.1
+
+local Q = v491:AddToggle({
+    Name = "Kill aura",
+    Default = false,
+    Callback = function(Value)
+        _G.KillH = Value
+    end
 })
-Q:OnChanged(function(Value)
-    _G.KillH = Value
-end)
+
 spawn(function()
     while wait(Sec) do
         if _G.KillH then
             for _, v in pairs(workspace.Enemies:GetChildren()) do
-                if Attack.Alive(v) then
+                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
                     pcall(function()
                         repeat
                             wait(Sec)
@@ -8563,7 +8566,9 @@ spawn(function()
                             v:BreakJoints()
                             v.Humanoid.Health = 0
                             v.HumanoidRootPart.CanCollide = false
-                        until not _G.KillH or not v.Parent or v.Humanoid.Health <= 0
+                        until not _G.KillH 
+                            or not v.Parent 
+                            or v.Humanoid.Health <= 0
                     end)
                 end
             end
