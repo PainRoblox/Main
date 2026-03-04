@@ -3736,23 +3736,19 @@ function CheckItemBPCRBPCR(v463)
         end
     end
 end
-local vu32 = loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/ui-redz-v5/refs/heads/main/MythicUI.txt"))() 
+local vu32 = loadstring(game:HttpGet("https://raw.githubusercontent.com/PlockScripts/Library-ui/refs/heads/main/redz-V5-remake/main.luau"))()
 local v466 = vu32:MakeWindow({
-    Title = "OKO hub: Blox Fruits",
-    SubTitle = "remake version",
-    SaveFolder = "OKO| redz lib v5.lua"
+    Title = "OKO hub | Blox Fruits",
+    SubTitle = "",
+    SaveFolder = "OKO | redz lib v5.lua"
 })
 
 v466:AddMinimizeButton({
-    Button = { 
-        Image = "rbxassetid://105823881528425", 
-        BackgroundTransparency = 0
-    },
-    Size = UDim2.new(0, 100, 0, 100), -- vừa phải, không quá to
-    Corner = { 
-        CornerRadius = UDim.new(0, 0) -- bo mềm kiểu Redz
-    },
+    Button = { Image = "rbxassetid://105823881528425", BackgroundTransparency = 0 },
+    Size = UDim2.new(0, 35, 0, 35),
+    Corner = { CornerRadius = UDim.new(0 , 0) },
 })
+
 local v484 = v466:MakeTab({"Discord", "info"})
 local v485 = v466:MakeTab({"Farm", "home"})
 local v487 = v466:MakeTab({"Quest | Items", "swords"})
@@ -3766,10 +3762,10 @@ local v494 = v466:MakeTab({"Visual", "user"})
 local v495 = v466:MakeTab({"Shop", "shoppingCart"})
 local v496 = v466:MakeTab({"Misc", "settings"})
 v484:AddDiscordInvite({
-    Name = "OKO",
+    Name = "OKO Hub | Community",
     Description = "",
     Logo = "rbxassetid://105823881528425",
-    Invite = "có con cặc"
+    Invite = ""
 })
 _G.SelectWeapon = "Melee"
 task.spawn(function()
@@ -6883,53 +6879,37 @@ if World3 then
             end
         end)
     end
-local _ = v494:AddSection({"Teleport V4"})
-v494:AddButton({
+local _ = v487:AddSection({"Teleport V4"})
+v487:AddButton({
     Title = "Teleport To Top GreatTree",
     Value = false,
     Callback = function()
         Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3030.39453125, 2280.6171875, -7320.18359375)
     end
 })
-v494:AddButton({
-    Title = "Teleport Temple Of Time",
-    Callback = function()
-        local player = game:GetService("Players").LocalPlayer
-        local workspace = game:GetService("Workspace")
-        local replicatedStorage = game:GetService("ReplicatedStorage")
-
-        -- Load Temple nếu chưa có
-        if workspace:FindFirstChild("Map") and 
-           not workspace.Map:FindFirstChild("Temple of Time") then
-            
-            local mapStash = replicatedStorage:FindFirstChild("MapStash")
-            if mapStash and mapStash:FindFirstChild("Temple of Time") then
-                mapStash["Temple of Time"].Parent = workspace.Map
-            end
-        end
-
-        -- Teleport
-        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-            player.Character.HumanoidRootPart.CFrame =
-                CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
-        end
-    end
+v487:AddButton({
+    Title = "Teleport Temple Of Time",
+    Value = false,
+    Callback = function()
+        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
+    end
 })
+v487:AddButton({
     Title = "Teleport Lever Pull",
     Value = false,
     Callback = function()
         topos(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
     end
 })
-v494:AddButton({
+v487:AddButton({
     Title = "Teleport To The Clock",
     Value = false,
     Callback = function()
         topos(CFrame.new(29553.7812, 15066.6133, -88.2750015, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end
 })
-local _ = v494:AddSection({"Trial V4"})
-v494:AddButton({
+local _ = v487:AddSection({"Trial V4"})
+v487:AddButton({
     Title = "Auto Race Door",
     Value = false,
     Callback = function()
@@ -6960,14 +6940,14 @@ v494:AddButton({
         end
     end
 })
-v494:AddButton({
+v487:AddButton({
     Title = "Buy Acient One Quest",
     Value = false,
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("UpgradeRace", "Buy")
     end
 })
-v494:AddToggle({
+v487:AddToggle({
     Name = "Auto Trial Human Ghost",
     Description = "",
     Default = false,
@@ -6976,7 +6956,7 @@ v494:AddToggle({
         StopTween(_G.Kill_Aura)
     end
 })
-v494:AddToggle({
+v487:AddToggle({
     Name = "Auto Trial All Race",
     Description = "",
     Default = false,
@@ -7104,7 +7084,7 @@ spawn(function()
         end
     end)
 end)
-v494:AddToggle({
+v487:AddToggle({
     Name = "Auto Kill Player after Trial  V4",
     Description = "",
     Default = false,
@@ -7136,8 +7116,8 @@ spawn(function()
         end
     end
 end)
-local _ = v494:AddSection({"Auto Skill"})
-v494:AddToggle({
+local _ = v487:AddSection({"Auto Skill"})
+v487:AddToggle({
     Name = "Auto Skill Z",
     Description = "",
     Default = false,
@@ -7146,7 +7126,7 @@ v494:AddToggle({
         StopTween(_G.XaiSkillZ)
     end
 })
-v494:AddToggle({
+v487:AddToggle({
     Name = "Auto Skill X",
     Description = "",
     Default = false,
@@ -7155,7 +7135,7 @@ v494:AddToggle({
         StopTween(_G.XaiSkillX)
     end
 })
-v494:AddToggle({
+v487:AddToggle({
     Name = "Auto Skill C",
     Description = "",
     Default = false,
