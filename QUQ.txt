@@ -3751,7 +3751,7 @@ v466:AddMinimizeButton({
 
 local v484 = v466:MakeTab({"Discord", "info"})
 local v485 = v466:MakeTab({"Farm", "home"})
-local v487 = v466:MakeTab({"Quest | Items | Race", "swords"})
+local v487 = v466:MakeTab({"Quest Items | Race", "swords"})
 local v486 = v466:MakeTab({"Auto Fishing", "rbxassetid://127664059821666"})
 local v489 = v466:MakeTab({"Sea Event", "waves"})
 local v491 = v466:MakeTab({"Raid/Fruits", "cherry"})
