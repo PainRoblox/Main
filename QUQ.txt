@@ -5317,24 +5317,31 @@ local _ = v485:AddSection({"Boss Farm"})
 
 local v657 = v485:AddParagraph({
     Title = "Boss Spawn Status",
-    Content = "Status: "
+    Content = "Initializing..."
 })
 
 local Enemies = game:GetService("Workspace"):WaitForChild("Enemies")
+local RS = game:GetService("ReplicatedStorage")
 
 task.spawn(function()
     while task.wait(1) do
         pcall(function()
-            if _G.SelectBoss and Enemies:FindFirstChild(_G.SelectBoss) then
+            if _G.SelectBoss and 
+               (RS:FindFirstChild(_G.SelectBoss) 
+               or Enemies:FindFirstChild(_G.SelectBoss)) then
+
                 v657:Set({
                     Title = "Boss Spawn Status",
-                    Content = "Status: ✅ Spawned"
+                    Content = "Status: ✅"
                 })
+
             else
+
                 v657:Set({
                     Title = "Boss Spawn Status",
-                    Content = "Status: ❌ Not Spawned"
+                    Content = "Status: ❌"
                 })
+
             end
         end)
     end
