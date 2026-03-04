@@ -5317,7 +5317,7 @@ local _ = v485:AddSection({"Boss Farm"})
 
 local v657 = v485:AddParagraph({
     Title = "Boss Spawn Status",
-    Content = "Initializing..."
+    Content = "Status: "
 })
 
 task.spawn(function()
