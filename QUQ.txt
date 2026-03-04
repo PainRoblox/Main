@@ -10589,29 +10589,6 @@ spawn(function()
         end
     end
 end)
-v496:AddToggle({Title = "Infinite Soru", Value = false, Callback = function(v1173)
-    InfiniteSoru = v1173
-end})
-spawn(function()
-    while task.wait(1) do
-        if InfiniteSoru and game:GetService("Players").LocalPlayer.Character::FindFirstChild("HumanoidRootPart") ~= "HumanoidRootPart" then
-            pcall(function()
-                for _, v1175 in next, getgc() do
-                    if getfenv(v1175).script == game.Players.LocalPlayer.Character:WaitForChild("Soru") then
-                        for v1176, v1177 in pairs(debug.getupvalues(v1175)) do
-                            if type(v1177) == "table" and v1177.LastUse then
-                                repeat
-                                    task.wait(0.1)
-                                    setupvalue(v1175, v1176, {LastAfter = 0, LastUse = 0})
-                                until not InfiniteSoru or game:GetService("Players").LocalPlayer.Character.Humanoid.Health <= 0
-                            end
-                        end
-                    end
-                end
-            end)
-        end
-    end
-end)
 v496:AddToggle({
     Title = "Walk on Water",
     Default = true,
