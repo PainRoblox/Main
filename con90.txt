@@ -3764,7 +3764,7 @@ if World3 then
     v492 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
 end
 
-local v492 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
+local v498 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
 local v494 = v466:MakeTab({"Visual", "user"})
 local v495 = v466:MakeTab({"Shop", "shoppingCart"})
 local v496 = v466:MakeTab({"Misc", "settings"})
