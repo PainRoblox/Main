@@ -7028,8 +7028,10 @@ if World3 then
             end
         end)
     end
-local _ = v492:AddSection({"Teleport V4"})
-v492:AddButton({
+ end
+if World3 then
+   local _ = v487:AddSection({"Teleport V4"})
+  v487:AddButton({
     Title = "Teleport To Top GreatTree",
     Value = false,
     Callback = function()
@@ -7037,37 +7039,37 @@ v492:AddButton({
     end
 })
 v492:AddButton({
-    Title = "Teleport Temple Of Time",
-    Callback = function()
-        local player = game:GetService("Players").LocalPlayer
-        local workspace = game:GetService("Workspace")
-        local replicatedStorage = game:GetService("ReplicatedStorage")
+    Title = "Teleport Temple Of Time",
+    Callback = function()
+        local player = game:GetService("Players").LocalPlayer
+        local workspace = game:GetService("Workspace")
+        local replicatedStorage = game:GetService("ReplicatedStorage")
 
-        -- Load Temple nếu chưa có
-        if workspace:FindFirstChild("Map") and 
-           not workspace.Map:FindFirstChild("Temple of Time") then
-            
-            local mapStash = replicatedStorage:FindFirstChild("MapStash")
-            if mapStash and mapStash:FindFirstChild("Temple of Time") then
-                mapStash["Temple of Time"].Parent = workspace.Map
-            end
-        end
+        -- Load Temple nếu chưa có
+        if workspace:FindFirstChild("Map") and 
+           not workspace.Map:FindFirstChild("Temple of Time") then
+            
+            local mapStash = replicatedStorage:FindFirstChild("MapStash")
+            if mapStash and mapStash:FindFirstChild("Temple of Time") then
+                mapStash["Temple of Time"].Parent = workspace.Map
+            end
+        end
 
-        -- Teleport
-        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-            player.Character.HumanoidRootPart.CFrame =
-                CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
-        end
-    end
+        -- Teleport
+        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            player.Character.HumanoidRootPart.CFrame =
+                CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
+        end
+    end
 })
-v492:AddButton({
+v487:AddButton({
     Title = "Teleport Lever Pull",
     Value = false,
     Callback = function()
-         topos(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
+        topos(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
     end
 })
-v492:AddButton({
+v487:AddButton({
     Title = "Teleport To The Clock",
     Value = false,
     Callback = function()
@@ -7075,7 +7077,7 @@ v492:AddButton({
     end
 })
 local _ = v487:AddSection({"Trial V4"})
-v492:AddButton({
+v487:AddButton({
     Title = "Auto Race Door",
     Value = false,
     Callback = function()
@@ -7106,14 +7108,14 @@ v492:AddButton({
         end
     end
 })
-v492:AddButton({
+v487:AddButton({
     Title = "Buy Acient One Quest",
     Value = false,
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("UpgradeRace", "Buy")
     end
 })
-v492:AddToggle({
+v487:AddToggle({
     Name = "Auto Trial Human Ghost",
     Description = "",
     Default = false,
@@ -7122,7 +7124,7 @@ v492:AddToggle({
         StopTween(_G.Kill_Aura)
     end
 })
-v492:AddToggle({
+v487:AddToggle({
     Name = "Auto Trial All Race",
     Description = "",
     Default = false,
@@ -7250,7 +7252,7 @@ spawn(function()
         end
     end)
 end)
-v492:AddToggle({
+v487:AddToggle({
     Name = "Auto Kill Player after Trial  V4",
     Description = "",
     Default = false,
@@ -7282,8 +7284,8 @@ spawn(function()
         end
     end
 end)
-local _ = v492:AddSection({"Auto Skill"})
-v492:AddToggle({
+local _ = v487:AddSection({"Auto Skill"})
+v487:AddToggle({
     Name = "Auto Skill Z",
     Description = "",
     Default = false,
@@ -7292,7 +7294,7 @@ v492:AddToggle({
         StopTween(_G.XaiSkillZ)
     end
 })
-v492:AddToggle({
+v487:AddToggle({
     Name = "Auto Skill X",
     Description = "",
     Default = false,
@@ -7301,7 +7303,7 @@ v492:AddToggle({
         StopTween(_G.XaiSkillX)
     end
 })
-v492:AddToggle({
+v487:AddToggle({
     Name = "Auto Skill C",
     Description = "",
     Default = false,
