@@ -10612,53 +10612,38 @@ spawn(function()
         end
     end
 end)
-PosY = 30
-v496:AddToggle({Title = "Dodge No CD", Value = false, Callback = function(v1178)
-    DodgewithoutCool = v1178
-end})
-function NoCooldown()
-    for _, v1180 in next, getgc() do
-        if typeof(v1180) == "function" and getfenv(v1180).script == game.Players.LocalPlayer.Character:WaitForChild("Dodge") then
-            for v1181, v1182 in next, getupvalues(v1180) do
-                if tostring(v1182) == "0.4" then
-                    setupvalue(v1180, v1181, 0)
+local DodgeFunc
+local DodgeIndex
+
+v496:AddToggle({
+    Title = "Dodge No CD",
+    Value = false,
+    Callback = function(v)
+        DodgewithoutCool = v
+
+        if v and not DodgeFunc then
+            -- Chỉ tìm 1 lần
+            for _, f in next, getgc() do
+                if typeof(f) == "function" and getfenv(f).script == game.Players.LocalPlayer.Character:WaitForChild("Dodge") then
+                    for i, up in next, getupvalues(f) do
+                        if tostring(up) == "0.4" then
+                            DodgeFunc = f
+                            DodgeIndex = i
+                            break
+                        end
+                    end
                 end
             end
         end
     end
-end
-spawn(function()
-    while wait() do
-        if DodgewithoutCool then
+})
+
+-- Vòng lặp nhẹ hơn
+task.spawn(function()
+    while task.wait(0.5) do -- giảm tần suất
+        if DodgewithoutCool and DodgeFunc and DodgeIndex then
             pcall(function()
-                NoCooldown()
-            end)
-        end
-    end
-end)
-v496:AddToggle({Title = "Infinite Geppo", Value = false, Callback = function(v1183)
-    InfiniteGeppo = v1183
-end})
-spawn(function()
-    while task.wait(1) do
-        if InfiniteGeppo then
-            pcall(function()
-                for _, v1185 in next, getgc() do
-                    if getfenv(v1185).script == game.Players.LocalPlayer.Character:WaitForChild("Geppo") then
-                        for v1186, v1187 in next, getupvalues(v1185) do
-                            if tostring(v1187) == "0" then
-                                repeat
-                                    wait(0.1)
-                                    setupvalue(v1185, v1186, 0)
-                                until not InfiniteGeppo or game:GetService("Players").LocalPlayer.Character.Humanoid.Health <= 0
-                            end
-                        end
-                    end
-                end
-            end)
-        end
-    end
-end)
+                setupvalue(DodgeFunc, DodgeIndex, 0)
 v496:AddToggle({
     Title = "Walk on Water",
     Default = true,
