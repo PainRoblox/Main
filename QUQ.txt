@@ -5423,6 +5423,39 @@ task.spawn(function()
         end
     end
 end)
+_G.AutoBossQuest = false
+
+v485:AddToggle({
+    Title = "Auto Take Boss Quest",
+    Value = false,
+    Callback = function(v)
+        _G.AutoBossQuest = v
+    end
+})
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local LocalPlayer = Players.LocalPlayer
+
+task.spawn(function()
+    while task.wait(1) do
+        if _G.AutoBossQuest and _G.SelectBoss then
+            pcall(function()
+
+                -- Nếu chưa có quest
+                if not LocalPlayer.PlayerGui.Main.Quest.Visible then
+                    
+                    ReplicatedStorage.Remotes.CommF_:InvokeServer(
+                        "StartQuest",
+                        _G.SelectBoss,
+                        1
+                    )
+
+                end
+
+            end)
+        end
+    end
+end)
 local _ = v485:AddSection({"Material"})
 local v664 = {}
 if not World1 then
