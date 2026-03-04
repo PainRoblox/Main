@@ -7079,7 +7079,6 @@ v487:AddButton({
         topos(CFrame.new(29553.7812, 15066.6133, -88.2750015, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end
 })
-local _ = v487:AddSection({"Trial V4"})
 v487:AddButton({
     Title = "Auto Race Door",
     Value = false,
@@ -7118,6 +7117,8 @@ v487:AddButton({
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("UpgradeRace", "Buy")
     end
 })
+
+local _ = v487:AddSection({"Trial V4"})
 v487:AddToggle({
     Name = "Auto Trial Human Ghost",
     Description = "",
