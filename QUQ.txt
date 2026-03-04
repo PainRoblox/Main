@@ -10594,7 +10594,7 @@ v496:AddToggle({Title = "Infinite Soru", Value = false, Callback = function(v117
 end})
 spawn(function()
     while task.wait(1) do
-        if InfiniteSoru and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") ~= "HumanoidRootPart" then
+        if InfiniteSoru and game:GetService("Players").LocalPlayer.Character::FindFirstChild("HumanoidRootPart") ~= "HumanoidRootPart" then
             pcall(function()
                 for _, v1175 in next, getgc() do
                     if getfenv(v1175).script == game.Players.LocalPlayer.Character:WaitForChild("Soru") then
@@ -10612,38 +10612,6 @@ spawn(function()
         end
     end
 end)
-local DodgeFunc
-local DodgeIndex
-
-v496:AddToggle({
-    Title = "Dodge No CD",
-    Value = false,
-    Callback = function(v)
-        DodgewithoutCool = v
-
-        if v and not DodgeFunc then
-            -- Chỉ tìm 1 lần
-            for _, f in next, getgc() do
-                if typeof(f) == "function" and getfenv(f).script == game.Players.LocalPlayer.Character:WaitForChild("Dodge") then
-                    for i, up in next, getupvalues(f) do
-                        if tostring(up) == "0.4" then
-                            DodgeFunc = f
-                            DodgeIndex = i
-                            break
-                        end
-                    end
-                end
-            end
-        end
-    end
-})
-
--- Vòng lặp nhẹ hơn
-task.spawn(function()
-    while task.wait(0.5) do -- giảm tần suất
-        if DodgewithoutCool and DodgeFunc and DodgeIndex then
-            pcall(function()
-                setupvalue(DodgeFunc, DodgeIndex, 0)
 v496:AddToggle({
     Title = "Walk on Water",
     Default = true,
