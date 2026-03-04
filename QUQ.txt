@@ -5320,25 +5320,21 @@ local v657 = v485:AddParagraph({
     Content = "Status: "
 })
 
+local Enemies = game:GetService("Workspace"):WaitForChild("Enemies")
+
 task.spawn(function()
     while task.wait(1) do
         pcall(function()
-            if _G.SelectBoss and 
-               (game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) 
-               or game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss)) then
-
+            if _G.SelectBoss and Enemies:FindFirstChild(_G.SelectBoss) then
                 v657:Set({
                     Title = "Boss Spawn Status",
-                    Content = "Status: ✅️ "
+                    Content = "Status: ✅ Spawned"
                 })
-
             else
-
                 v657:Set({
                     Title = "Boss Spawn Status",
-                    Content = "Status: ❌️"
+                    Content = "Status: ❌ Not Spawned"
                 })
-
             end
         end)
     end
