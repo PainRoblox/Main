@@ -5329,14 +5329,14 @@ task.spawn(function()
 
                 v657:Set({
                     Title = "Boss Spawn Status",
-                    Content = "Status: Boss Spawn"
+                    Content = "Status: ✅️ "
                 })
 
             else
 
                 v657:Set({
                     Title = "Boss Spawn Status",
-                    Content = "Status: Boss Not Spawn"
+                    Content = "Status: ❌️"
                 })
 
             end
