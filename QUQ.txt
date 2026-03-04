@@ -3767,6 +3767,144 @@ v484:AddDiscordInvite({
     Logo = "rbxassetid://105823881528425",
     Invite = ""
 })
+local TyrantStatus = v484:AddParagraph({
+    Title = "Tyrant of the Skies",
+    Desc = "Status: "
+})
+spawn(function()
+    pcall(function()
+        while wait() do
+            if game:GetService("Workspace").Enemies:FindFirstChild("Tyrant of the Skies") then
+                TyrantStatus:SetDesc("Status : ✅️")
+            else
+                TyrantStatus:SetDesc("Status : ❌️")
+            end
+        end
+    end)
+end)
+local CheckRip = v484:AddParagraph({
+    Title = "Rip_Indra",
+    Desc = "Status: "
+})
+spawn(function()
+    while wait() do
+        pcall(function()
+            if game:GetService("ReplicatedStorage"):FindFirstChild("rip_indra True Form") 
+            or game:GetService("Workspace").Enemies:FindFirstChild("rip_indra") then
+                CheckRip:SetDesc("Status : ✅️")
+            else
+                CheckRip:SetDesc("Status : ❌️")
+            end
+        end)
+    end
+end)
+local CheckDoughKing = v484:AddParagraph({
+    Title = "Dough King",
+    Desc = "Status: "
+})
+spawn(function()
+    while wait() do
+        pcall(function()
+            if game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") 
+            or game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
+                CheckDoughKing:SetDesc("Status : ✅️")
+            else
+                CheckDoughKing:SetDesc("Status : ❌️")
+            end
+        end)
+    end
+end)
+local EliteHunter = v484:AddParagraph({
+    Title = "Elite Hunter",
+    Desc = "Status: "
+})
+spawn(function()
+    while wait() do
+        pcall(function()
+            local rs = game:GetService("ReplicatedStorage")
+            local ws = game:GetService("Workspace").Enemies
+            local progress = rs.Remotes.CommF_:InvokeServer("EliteHunter", "Progress")
+            if rs:FindFirstChild("Diablo") or rs:FindFirstChild("Deandre") or rs:FindFirstChild("Urban")
+            or ws:FindFirstChild("Diablo") or ws:FindFirstChild("Deandre") or ws:FindFirstChild("Urban") then
+                EliteHunter:SetDesc("Status : ✅️ | Killed: " .. progress)
+            else
+                EliteHunter:SetDesc("Status : ❌️ | Killed: " .. progress)
+            end
+        end)
+    end
+end)
+local Pullever = v484:AddParagraph({
+    Title = "Pull Lever",
+    Desc = "Status: "
+})
+spawn(function()
+    while wait() do
+        pcall(function()
+            if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CheckTempleDoor") then
+                Pullever:SetDesc("✅")
+            else
+                Pullever:SetDesc("❌")
+            end
+        end)
+    end
+end)
+local FM = v484:AddParagraph({
+    Title = "Full Moon",
+    Desc = ""
+})
+spawn(function()
+    while wait() do
+        pcall(function()
+            local moonId = game:GetService("Lighting").Sky.MoonTextureId
+            if moonId == "http://www.roblox.com/asset/?id=9709149431" then
+                FM:SetDesc("Moon: 5/5")
+            elseif moonId == "http://www.roblox.com/asset/?id=9709149052" then
+                FM:SetDesc("Moon: 4/5")
+            elseif moonId == "http://www.roblox.com/asset/?id=9709143733" then
+                FM:SetDesc("Moon: 3/5")
+            elseif moonId == "http://www.roblox.com/asset/?id=9709150401" then
+                FM:SetDesc("Moon: 2/5")
+            elseif moonId == "http://www.roblox.com/asset/?id=9709149680" then
+                FM:SetDesc("Moon: 1/5")
+            else
+                FM:SetDesc("Moon: 0/5")
+            end
+        end)
+    end
+end)
+local LegendarySword = v484:AddParagraph({
+    Title = "Legendary Sword",
+    Desc = "Status: "
+})
+spawn(function()
+    pcall(function()
+        while wait() do
+            local rs = game:GetService("ReplicatedStorage").Remotes.CommF_   
+            if rs:InvokeServer("LegendarySwordDealer", "1") then
+                LegendarySword:SetDesc("Shisui")
+            elseif rs:InvokeServer("LegendarySwordDealer", "2") then
+                LegendarySword:SetDesc("Wando")
+            elseif rs:InvokeServer("LegendarySwordDealer", "3") then
+                LegendarySword:SetDesc("Saddi")
+            else
+                LegendarySword:SetDesc("Not Found Legend Swords")
+            end
+        end
+    end)
+end)
+local Bone = v484:AddParagraph({
+    Title = "Bone",
+    Desc = ""
+})
+spawn(function()
+    pcall(function()
+        while wait() do
+            local bones = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
+            Bone:SetDesc("You Have : " .. tostring(bones) .. " Bones")
+        end
+    end)
+end)
+
 _G.SelectWeapon = "Melee"
 task.spawn(function()
     while task.wait() do
@@ -8821,146 +8959,6 @@ v493:AddButton({
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
     end
 })
-
-
-local TyrantStatus = v499:AddParagraph({
-    Title = "Tyrant of the Skies",
-    Desc = "Status: "
-})
-spawn(function()
-    pcall(function()
-        while wait() do
-            if game:GetService("Workspace").Enemies:FindFirstChild("Tyrant of the Skies") then
-                TyrantStatus:SetDesc("Status : ✅️")
-            else
-                TyrantStatus:SetDesc("Status : ❌️")
-            end
-        end
-    end)
-end)
-local CheckRip = v499:AddParagraph({
-    Title = "Rip_Indra",
-    Desc = "Status: "
-})
-spawn(function()
-    while wait() do
-        pcall(function()
-            if game:GetService("ReplicatedStorage"):FindFirstChild("rip_indra True Form") 
-            or game:GetService("Workspace").Enemies:FindFirstChild("rip_indra") then
-                CheckRip:SetDesc("Status : ✅️")
-            else
-                CheckRip:SetDesc("Status : ❌️")
-            end
-        end)
-    end
-end)
-local CheckDoughKing = v499:AddParagraph({
-    Title = "Dough King",
-    Desc = "Status: "
-})
-spawn(function()
-    while wait() do
-        pcall(function()
-            if game:GetService("ReplicatedStorage"):FindFirstChild("Dough King") 
-            or game:GetService("Workspace").Enemies:FindFirstChild("Dough King") then
-                CheckDoughKing:SetDesc("Status : ✅️")
-            else
-                CheckDoughKing:SetDesc("Status : ❌️")
-            end
-        end)
-    end
-end)
-local EliteHunter = v499:AddParagraph({
-    Title = "Elite Hunter",
-    Desc = "Status: "
-})
-spawn(function()
-    while wait() do
-        pcall(function()
-            local rs = game:GetService("ReplicatedStorage")
-            local ws = game:GetService("Workspace").Enemies
-            local progress = rs.Remotes.CommF_:InvokeServer("EliteHunter", "Progress")
-            if rs:FindFirstChild("Diablo") or rs:FindFirstChild("Deandre") or rs:FindFirstChild("Urban")
-            or ws:FindFirstChild("Diablo") or ws:FindFirstChild("Deandre") or ws:FindFirstChild("Urban") then
-                EliteHunter:SetDesc("Status : ✅️ | Killed: " .. progress)
-            else
-                EliteHunter:SetDesc("Status : ❌️ | Killed: " .. progress)
-            end
-        end)
-    end
-end)
-local Pullever = v499:AddParagraph({
-    Title = "Pull Lever",
-    Desc = "Status: "
-})
-spawn(function()
-    while wait() do
-        pcall(function()
-            if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CheckTempleDoor") then
-                Pullever:SetDesc("✅")
-            else
-                Pullever:SetDesc("❌")
-            end
-        end)
-    end
-end)
-local FM = v499:AddParagraph({
-    Title = "Full Moon",
-    Desc = ""
-})
-spawn(function()
-    while wait() do
-        pcall(function()
-            local moonId = game:GetService("Lighting").Sky.MoonTextureId
-            if moonId == "http://www.roblox.com/asset/?id=9709149431" then
-                FM:SetDesc("Moon: 5/5")
-            elseif moonId == "http://www.roblox.com/asset/?id=9709149052" then
-                FM:SetDesc("Moon: 4/5")
-            elseif moonId == "http://www.roblox.com/asset/?id=9709143733" then
-                FM:SetDesc("Moon: 3/5")
-            elseif moonId == "http://www.roblox.com/asset/?id=9709150401" then
-                FM:SetDesc("Moon: 2/5")
-            elseif moonId == "http://www.roblox.com/asset/?id=9709149680" then
-                FM:SetDesc("Moon: 1/5")
-            else
-                FM:SetDesc("Moon: 0/5")
-            end
-        end)
-    end
-end)
-local LegendarySword = v499:AddParagraph({
-    Title = "Legendary Sword",
-    Desc = "Status: "
-})
-spawn(function()
-    pcall(function()
-        while wait() do
-            local rs = game:GetService("ReplicatedStorage").Remotes.CommF_   
-            if rs:InvokeServer("LegendarySwordDealer", "1") then
-                LegendarySword:SetDesc("Shisui")
-            elseif rs:InvokeServer("LegendarySwordDealer", "2") then
-                LegendarySword:SetDesc("Wando")
-            elseif rs:InvokeServer("LegendarySwordDealer", "3") then
-                LegendarySword:SetDesc("Saddi")
-            else
-                LegendarySword:SetDesc("Not Found Legend Swords")
-            end
-        end
-    end)
-end)
-local Bone = v499:AddParagraph({
-    Title = "Bone",
-    Desc = ""
-})
-spawn(function()
-    pcall(function()
-        while wait() do
-            local bones = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
-            Bone:SetDesc("You Have : " .. tostring(bones) .. " Bones")
-        end
-    end)
-end)
-
 
 -- // AUTO STATS SYSTEM
 local Replicated = game:GetService("ReplicatedStorage")
