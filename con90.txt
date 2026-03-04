@@ -7027,7 +7027,6 @@ if World3 then
             end
         end)
     end
-if World3 then
 local v492 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
 local _ = v492:AddSection({"Teleport V4"})
 v492:AddButton({
