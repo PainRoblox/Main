@@ -7029,6 +7029,36 @@ v487:AddButton({
 })
 v487:AddButton({
     Title = "Teleport Temple Of Time",
+    Callback = function()
+
+        local Players = game:GetService("Players")
+        local Workspace = game:GetService("Workspace")
+        local player = Players.LocalPlayer
+        local char = player.Character
+
+        if not char then return end
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if not hrp then return end
+
+        -- Kiểm tra Map đã load chưa
+        local map = Workspace:FindFirstChild("Map")
+
+        if map and map:FindFirstChild("Temple of Time") then
+            print("Temple already loaded")
+        else
+            warn("Temple not loaded (server-side map)")
+        end
+
+        -- Teleport
+        hrp.CFrame = CFrame.new(28286.355,14895.301,102.624)
+
+    end
+})
+
+
+
+v487:AddButton({
+    Title = "Teleport Temple Of Time",
     Value = false,
     Callback = function()
         Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
