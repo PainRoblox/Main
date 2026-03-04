@@ -7027,22 +7027,11 @@ v487:AddButton({
         Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3030.39453125, 2280.6171875, -7320.18359375)
     end
 })
-v492:AddButton({
+v487:AddButton({
     Title = "Teleport Temple Of Time",
+    Value = false,
     Callback = function()
-
-        local player = game:GetService("Players").LocalPlayer
-        local workspace = game:GetService("Workspace")
-
-        local char = player.Character
-        if not char then return end
-        
-        local hrp = char:FindFirstChild("HumanoidRootPart")
-        if not hrp then return end
-
-        -- Teleport trực tiếp
-        hrp.CFrame = CFrame.new(28286.355,14895.301,102.624)
-
+        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
     end
 })
 v487:AddButton({
