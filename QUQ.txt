@@ -7021,13 +7021,6 @@ if World3 then
     end
 local _ = v487:AddSection({"Teleport V4"})
 v487:AddButton({
-    Title = "Teleport To Top GreatTree",
-    Value = false,
-    Callback = function()
-        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3030.39453125, 2280.6171875, -7320.18359375)
-    end
-})
-v487:AddButton({
     Title = "Teleport Temple Of Time",
     Callback = function()
         local player = game:GetService("Players").LocalPlayer
@@ -7050,6 +7043,13 @@ v487:AddButton({
                 CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
         end
     end
+})
+v487:AddButton({
+    Title = "Teleport To Top GreatTree",
+    Value = false,
+    Callback = function()
+        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3030.39453125, 2280.6171875, -7320.18359375)
+    end
 })
 v487:AddButton({
     Title = "Teleport Lever Pull",
