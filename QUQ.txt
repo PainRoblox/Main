@@ -7119,6 +7119,7 @@ v487:AddButton({
 })
 
 local _ = v487:AddSection({"Trial V4"})
+
 v487:AddToggle({
     Name = "Auto Trial Human Ghost",
     Description = "",
