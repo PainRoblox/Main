@@ -7029,7 +7029,7 @@ if World3 then
     end
 local v492
 if World3 then
-local v492 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
+v492 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
 local _ = v492:AddSection({"Teleport V4"})
 v492:AddButton({
     Title = "Teleport To Top GreatTree",
