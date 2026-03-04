@@ -7028,41 +7028,28 @@ v487:AddButton({
     end
 })
 v487:AddButton({
-    Title = "Teleport Temple Of Time",
-    Callback = function()
+    Title = "Teleport Temple Of Time",
+    Callback = function()
+        local player = game:GetService("Players").LocalPlayer
+        local workspace = game:GetService("Workspace")
+        local replicatedStorage = game:GetService("ReplicatedStorage")
 
-        local Players = game:GetService("Players")
-        local Workspace = game:GetService("Workspace")
-        local player = Players.LocalPlayer
-        local char = player.Character
+        -- Load Temple nếu chưa có
+        if workspace:FindFirstChild("Map") and 
+           not workspace.Map:FindFirstChild("Temple of Time") then
+            
+            local mapStash = replicatedStorage:FindFirstChild("MapStash")
+            if mapStash and mapStash:FindFirstChild("Temple of Time") then
+                mapStash["Temple of Time"].Parent = workspace.Map
+            end
+        end
 
-        if not char then return end
-        local hrp = char:FindFirstChild("HumanoidRootPart")
-        if not hrp then return end
-
-        -- Kiểm tra Map đã load chưa
-        local map = Workspace:FindFirstChild("Map")
-
-        if map and map:FindFirstChild("Temple of Time") then
-            print("Temple already loaded")
-        else
-            warn("Temple not loaded (server-side map)")
-        end
-
-        -- Teleport
-        hrp.CFrame = CFrame.new(28286.355,14895.301,102.624)
-
-    end
-})
-
-
-
-v487:AddButton({
-    Title = "Teleport Temple Of Time",
-    Value = false,
-    Callback = function()
-        Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-    end
+        -- Teleport
+        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            player.Character.HumanoidRootPart.CFrame =
+                CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
+        end
+    end
 })
 v487:AddButton({
     Title = "Teleport Lever Pull",
