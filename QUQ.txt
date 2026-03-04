@@ -8385,10 +8385,6 @@ if World1 then
 else
 
 local _ = v491:AddSection({"Raid Fruits"})
-
--- =========================
--- SELECT CHIP
--- =========================
 _G.SelectChip = "Flame"
 _G.AutoBuyChip = false
 _G.StartRaid = false
@@ -8471,10 +8467,39 @@ task.spawn(function()
         end)
     end
 end)
+local plr = game.Players.LocalPlayer
+local Sec = 0.1
 
--- =========================
--- AUTO FARM RAID NEXT ISLAND
--- =========================
+local Q = v491:AddToggle({
+    Name = "Kill aura",
+    Default = false,
+    Callback = function(Value)
+        _G.KillH = Value
+    end
+})
+
+spawn(function()
+    while wait(Sec) do
+        if _G.KillH then
+            for _, v in pairs(workspace.Enemies:GetChildren()) do
+                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
+                    pcall(function()
+                        repeat
+                            wait(Sec)
+                            sethiddenproperty(plr, "SimulationRadius", math.huge)
+                            v:BreakJoints()
+                            v.Humanoid.Health = 0
+                            v.HumanoidRootPart.CanCollide = false
+                        until not _G.KillH 
+                            or not v.Parent 
+                            or v.Humanoid.Health <= 0
+                    end)
+                end
+            end
+        end
+    end
+end)
+
 v491:AddToggle({
     Name = "Auto Farm Raid Next Island",
     Default = false,
