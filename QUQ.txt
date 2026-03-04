@@ -7021,28 +7021,42 @@ if World3 then
     end
 local _ = v487:AddSection({"Teleport V4"})
 v487:AddButton({
-    Title = "Teleport Temple Of Time",
-    Callback = function()
-        local player = game:GetService("Players").LocalPlayer
-        local workspace = game:GetService("Workspace")
-        local replicatedStorage = game:GetService("ReplicatedStorage")
+    Title = "Teleport Temple Of Time",
+    Callback = function()
 
-        -- Load Temple nếu chưa có
-        if workspace:FindFirstChild("Map") and 
-           not workspace.Map:FindFirstChild("Temple of Time") then
-            
-            local mapStash = replicatedStorage:FindFirstChild("MapStash")
-            if mapStash and mapStash:FindFirstChild("Temple of Time") then
-                mapStash["Temple of Time"].Parent = workspace.Map
-            end
-        end
+        local Players = game:GetService("Players")
+        local Workspace = game:GetService("Workspace")
+        local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-        -- Teleport
-        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-            player.Character.HumanoidRootPart.CFrame =
-                CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-        end
-    end
+        local player = Players.LocalPlayer
+        local char = player.Character
+        if not char then return end
+
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if not hrp then return end
+
+        -- Teleport trước
+        hrp.CFrame = CFrame.new(28286.355,14895.301,102.624)
+
+        -- Chỉ thử load nếu ở World 3
+        if World3 then
+
+            local map = Workspace:FindFirstChild("Map")
+            if not map then return end
+
+            if not map:FindFirstChild("Temple of Time") then
+
+                local mapStash = ReplicatedStorage:FindFirstChild("MapStash")
+                if mapStash and mapStash:FindFirstChild("Temple of Time") then
+                    mapStash["Temple of Time"].Parent = map
+                else
+                    warn("Temple not found in MapStash")
+                end
+
+            end
+        end
+
+    end
 })
 v487:AddButton({
     Title = "Teleport To Top GreatTree",
