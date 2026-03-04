@@ -3759,7 +3759,7 @@ local v491 = v466:MakeTab({"Raid/Fruits", "cherry"})
 local v489 = v466:MakeTab({"Sea Event/Dragon", "waves"})
 local v497 = v466:MakeTab({"Stats/ESP", "Signal"})
 local v493 = v466:MakeTab({"Teleport", "locate"})
-local v498 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
+local v492 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
 local v494 = v466:MakeTab({"Visual", "user"})
 local v495 = v466:MakeTab({"Shop", "shoppingCart"})
 local v496 = v466:MakeTab({"Misc", "settings"})
@@ -7028,12 +7028,6 @@ if World3 then
             end
         end)
     end
-local v492
-if World3 then
-    v492 = v466:MakeTab({"Race v4", "rbxassetid://10723425539"})
-end
-
-if World3 then
 local _ = v492:AddSection({"Teleport V4"})
 v492:AddButton({
     Title = "Teleport To Top GreatTree",
