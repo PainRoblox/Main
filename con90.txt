@@ -9317,7 +9317,7 @@ local function StartFruitESP()
                     local fruitPos = basePart.Position
                     local distance = math.floor((rootPos - fruitPos).Magnitude)
 
-                    basePart.FruitESP.Label.Text = "Fruit | ??? | < "..distance.." >"
+                    basePart.FruitESP.Label.Text = obj.Name.." | < "..distance.." >"
                 end
             end
 
