@@ -3759,7 +3759,6 @@ local v491 = v466:MakeTab({"Raid/Fruits", "cherry"})
 local v489 = v466:MakeTab({"Sea Event/Dragon", "waves"})
 local v497 = v466:MakeTab({"Stats/ESP", "Signal"})
 local v493 = v466:MakeTab({"Teleport", "locate"})
-if World3 then
 local v492 = v466:MakeTab({"Race V4", "rbxassetid://10723425539"})
 local v494 = v466:MakeTab({"Visual", "user"})
 local v495 = v466:MakeTab({"Shop", "shoppingCart"})
