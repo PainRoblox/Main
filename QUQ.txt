@@ -7040,7 +7040,7 @@ v487:AddButton({
         -- Teleport
         if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
             player.Character.HumanoidRootPart.CFrame =
-                CFrame.new(28286.35546875, 14895.301757812, 102.62469482422)
+                CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
         end
     end
 })
