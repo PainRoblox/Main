@@ -4377,7 +4377,8 @@ spawn(function()
         end
     end
 end)
-local _ = v485:AddSection({"Valentine"})
+local ValentineSection = v485:AddSection({"Valentine"})
+ValentineSection.Visible = false -- Ẩn ngay khi tạo
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF = Remotes:WaitForChild("CommF_")
