@@ -7623,7 +7623,7 @@ spawn(function()
         end
     end
 end)
-
+if World3 then
 local _ = v489:AddSection({"Volcanic Island"})
 v489:AddButton({
     Title = "Tween Dragon Dojo",
@@ -8355,7 +8355,7 @@ spawn(function()
         end
     end)
 end)
-
+end
 local _ = v491:AddSection({"Fruits"})
 v491:AddButton({
     Name = "Auto Random Fruits",
