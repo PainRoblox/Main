@@ -3737,6 +3737,11 @@ function CheckItemBPCRBPCR(v463)
     end
 end
 local vu32 = loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/Main/refs/heads/main/MythicUI%20(1).txt"))() 
+local v466 = vu32:MakeWindow({
+    Title = "OKO hub | Blox Fruits",
+    SubTitle = "",
+    SaveFolder = "OKO | redz lib v5.lua"
+})
 
 local v484 = v466:MakeTab({"Discord", "info"})
 local v485 = v466:MakeTab({"Farm", "home"})
