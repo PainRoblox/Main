@@ -9639,7 +9639,29 @@ v494:AddToggle({
     end
 })
 end
-
+v494:AddToggle({
+    Title = "ESP Master of Enhancement",
+    Value = false,
+    Callback = function(state)
+        AuraESP = state
+        
+        if not AuraESP then
+            -- Xoá ESP khi tắt
+            for _, v in pairs(workspace.NPCs:GetChildren()) do
+                if v:FindFirstChild("NameEsp") then
+                    v.NameEsp:Destroy()
+                end
+            end
+        else
+            task.spawn(function()
+                while AuraESP do
+                    UpdateAuraESP()
+                    task.wait(1)
+                end
+            end)
+        end
+    end
+})
     v494:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
