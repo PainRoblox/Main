@@ -9662,6 +9662,31 @@ v494:AddToggle({
         end
     end
 })
+if World2 then
+v494:AddToggle({
+    Title = "ESP Legendary Sword Dealer",
+    Value = false,
+    Callback = function(state)
+        LADESP = state
+        
+        if not LADESP then
+            for _, v in pairs(workspace.NPCs:GetChildren()) do
+                if v:FindFirstChild("NameEsp") then
+                    v.NameEsp:Destroy()
+                end
+            end
+        else
+            task.spawn(function()
+                while LADESP do
+                    UpdateLSDESP()
+                    task.wait(1)
+                end
+            end)
+        end
+    end
+})
+end
+
     v494:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
