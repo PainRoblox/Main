@@ -9613,13 +9613,18 @@ v494:AddToggle({
     end
 })
 v494:AddToggle({
-    Title = "ESP Real Fruits",
+    Title = "ESP Real Fruit",
     Value = false,
     Callback = function(state)
         RealFruitESP = state
         
         if not RealFruitESP then
-            UpdateRealFruitChams()
+            -- Xoá toàn bộ ESP khi tắt
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v.Name == "NameEsp" .. Number then
+                    v:Destroy()
+                end
+            end
         else
             task.spawn(function()
                 while RealFruitESP do
