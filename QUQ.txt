@@ -3738,9 +3738,20 @@ function CheckItemBPCRBPCR(v463)
 end
 local vu32 = loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/Main/refs/heads/main/MythicUI%20(1).txt"))() 
 local v466 = vu32:MakeWindow({
-    Title = "OKO hub | Blox Fruits",
-    SubTitle = "",
-    SaveFolder = "OKO | redz lib v5.lua"
+    Title = "OKO hub: Blox Fruits",
+    SubTitle = "remake version",
+    SaveFolder = "OKO| redz lib v5.lua"
+})
+
+v466:AddMinimizeButton({
+    Button = { 
+        Image = "rbxassetid://105823881528425", 
+        BackgroundTransparency = 0
+    },
+    Size = UDim2.new(0, 100, 0, 100), -- vừa phải, không quá to
+    Corner = { 
+        CornerRadius = UDim.new(0, 0) -- bo mềm kiểu Redz
+    },
 })
 
 local v484 = v466:MakeTab({"Discord", "info"})
