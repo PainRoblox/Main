@@ -9541,7 +9541,7 @@ v494:AddToggle({
                             if not basePart:FindFirstChild("FruitESP") then
                                 local gui = Instance.new("BillboardGui")
                                 gui.Name = "FruitESP"
-                                gui.Size = UDim2.new(0,200,0,50)
+                                gui.Size = UDim2.new(0,150,0,40)
                                 gui.StudsOffset = Vector3.new(0,2,0)
                                 gui.AlwaysOnTop = true
                                 gui.Adornee = basePart
