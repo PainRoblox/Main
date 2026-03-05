@@ -89,7 +89,7 @@ local redzlib = {
 	Save = {
 		UISize = {460, 340},
 		TabSize = 160,
-		Theme = "Purple"
+		Theme = "Red"
 	},
 	Settings = {},
 	Connection = {},
@@ -1641,7 +1641,7 @@ function redzlib:MakeWindow(Configs)
 	function Window:CloseBtn()
 		local Dialog = Window:Dialog({
 			Title = "Close",
-			Text = "You Want Close Ui?",
+			Text = "Bạn muốn đóng UI không?",
 			Options = {
 				{"Confirm", function()
 					ScreenGui:Destroy()
