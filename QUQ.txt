@@ -4762,6 +4762,7 @@ task.spawn(function()
     end
 end)
 end
+if World3 then
 local _ = v485:AddSection({"Farm Bones"})
 local v589 = v485:AddParagraph({Title = "Check Bone", Content = "Loading..."})
 task.spawn(function()
@@ -5180,6 +5181,7 @@ spawn(function()
         end
     end
 end)
+end
 local _ = v485:AddSection({"Auto Farm Chest And Berry"})
 
 v485:AddToggle({
