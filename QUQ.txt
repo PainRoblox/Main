@@ -9593,7 +9593,7 @@ v494:AddToggle({
         end
     end
 })
-
+if World2 then
 v494:AddToggle({
     Title = "ESP Flower",
     Value = false,
@@ -9612,6 +9612,8 @@ v494:AddToggle({
         end
     end
 })
+end
+if World3 then
 v494:AddToggle({
     Title = "ESP Real Fruit",
     Value = false,
@@ -9635,6 +9637,7 @@ v494:AddToggle({
         end
     end
 })
+end
     v494:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
