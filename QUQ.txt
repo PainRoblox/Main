@@ -3743,11 +3743,6 @@ local v466 = vu32:MakeWindow({
     SaveFolder = "OKO | redz lib v5.lua"
 })
 
-v466:AddMinimizeButton({
-    Button = { Image = "rbxassetid://105823881528425", BackgroundTransparency = 0 },
-    Size = UDim2.new(0, 35, 0, 35),
-    Corner = { CornerRadius = UDim.new(0 , 0) },
-})
 
 local v484 = v466:MakeTab({"Discord", "info"})
 local v485 = v466:MakeTab({"Farm", "home"})
