@@ -4377,22 +4377,14 @@ spawn(function()
         end
     end
 end)
-local ValentineSection = v485:AddSection({"Valentine"})
-ValentineSection.Visible = false -- Ẩn ngay khi tạo
+-- ẨN HOÀN TOÀN UI VALENTINE
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:WaitForChild("Remotes")
 local CommF = Remotes:WaitForChild("CommF_")
 
-_G.AutoValentineGacha = false
-
-v485:AddToggle({
-    Name = "Auto Valentine Random",
-    Description = "Auto Gacha Valentine Roll",
-    Default = false,
-    Callback = function(Value)
-        _G.AutoValentineGacha = Value
-    end
-})
+-- Muốn bật auto thì đổi thành true
+_G.AutoValentineGacha = false 
 
 local function fireActivity()
     local reportRemote = ReplicatedStorage:FindFirstChild("ReportActivity", true)
