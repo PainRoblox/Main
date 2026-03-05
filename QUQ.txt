@@ -8461,32 +8461,63 @@ v491:AddToggle({
         getgenv().AutoDropFruit = v1076
     end
 })
+
 spawn(function()
     while task.wait(0.2) do
         if getgenv().AutoDropFruit then
             pcall(function()
-                local l_LocalPlayer = game:GetService("Players").LocalPlayer
-                local l_Character = l_LocalPlayer.Character or l_LocalPlayer.CharacterAdded:Wait()
-                local l_Backpack = l_LocalPlayer:WaitForChild("Backpack")
+                local player = game:GetService("Players").LocalPlayer
+                local character = player.Character or player.CharacterAdded:Wait()
+                local backpack = player:WaitForChild("Backpack")
 
                 for _, v in ipairs({
-                    "Rocket Fruit","Spin Fruit","Blade Fruit","Spring Fruit",
-                    "Bomb Fruit","Smoke Fruit","Spike Fruit","Flame Fruit",
-                    "Eagle Fruit","Ice Fruit","Sand Fruit","Dark Fruit",
-                    "Diamond Fruit","Light Fruit","Rubber Fruit","Creation Fruit",
-                    "Ghost Fruit","Magma Fruit","Quake Fruit","Buddha Fruit",
-                    "Love Fruit","Spider Fruit","Sound Fruit","Phoenix Fruit",
-                    "Portal Fruit","Lightning Fruit","Pain Fruit","Blizzard Fruit",
-                    "Gravity Fruit","Mammoth Fruit","T-Rex Fruit","Dough Fruit",
-                    "Shadow Fruit","Venom Fruit","Gas Fruit","Control Fruit",
-                    "Spirit Fruit","Leopard Fruit","Yeti Fruit","Kitsune Fruit",
-                    "Dragon Fruit"
+                    {"Rocket Fruit", "Rocket-Rocket"},
+                    {"Spin Fruit", "Spin-Spin"},
+                    {"Blade Fruit", "Blade-Blade"},
+                    {"Spring Fruit", "Spring-Spring"},
+                    {"Bomb Fruit", "Bomb-Bomb"},
+                    {"Smoke Fruit", "Smoke-Smoke"},
+                    {"Spike Fruit", "Spike-Spike"},
+                    {"Flame Fruit", "Flame-Flame"},
+                    {"Eagle Fruit", "Eagle-Eagle"},
+                    {"Ice Fruit", "Ice-Ice"},
+                    {"Sand Fruit", "Sand-Sand"},
+                    {"Dark Fruit", "Dark-Dark"},
+                    {"Diamond Fruit", "Diamond-Diamond"},
+                    {"Light Fruit", "Light-Light"},
+                    {"Rubber Fruit", "Rubber-Rubber"},
+                    {"Creation Fruit", "Creation-Creation"},
+                    {"Ghost Fruit", "Ghost-Ghost"},
+                    {"Magma Fruit", "Magma-Magma"},
+                    {"Quake Fruit", "Quake-Quake"},
+                    {"Buddha Fruit", "Buddha-Buddha"},
+                    {"Love Fruit", "Love-Love"},
+                    {"Spider Fruit", "Spider-Spider"},
+                    {"Sound Fruit", "Sound-Sound"},
+                    {"Phoenix Fruit", "Phoenix-Phoenix"},
+                    {"Portal Fruit", "Portal-Portal"},
+                    {"Lightning Fruit", "Lightning-Lightning"},
+                    {"Pain Fruit", "Pain-Pain"},
+                    {"Blizzard Fruit", "Blizzard-Blizzard"},
+                    {"Gravity Fruit", "Gravity-Gravity"},
+                    {"Mammoth Fruit", "Mammoth-Mammoth"},
+                    {"T-Rex Fruit", "T-Rex-T-Rex"},
+                    {"Dough Fruit", "Dough-Dough"},
+                    {"Shadow Fruit", "Shadow-Shadow"},
+                    {"Venom Fruit", "Venom-Venom"},
+                    {"Gas Fruit", "Gas-Gas"},
+                    {"Control Fruit", "Control-Control"},
+                    {"Spirit Fruit", "Spirit-Spirit"},
+                    {"Leopard Fruit", "Leopard-Leopard"},
+                    {"Yeti Fruit", "Yeti-Yeti"},
+                    {"Kitsune Fruit", "Kitsune-Kitsune"},
+                    {"Dragon Fruit", "Dragon-Dragon"}
                 }) do
 
-                    local Fruit = l_Backpack:FindFirstChild(v) or l_Character:FindFirstChild(v)
+                    local Fruit = backpack:FindFirstChild(v) or character:FindFirstChild(v)
 
                     if Fruit then
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", Fruit)
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", v)
                         break
                     end
                 end
