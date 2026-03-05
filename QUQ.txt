@@ -1352,7 +1352,7 @@ function UpdateChestESP()
                             v81.TextYAlignment = "Top"
                             v81.BackgroundTransparency = 1
                             v81.TextStrokeTransparency = 0.5
-                            v81.TextColor3 = Color3.fromRGB(255, 215, 0)
+                            v81.TextColor3 = Color3.fromRGB(255, 255, 255)
                         end
                     end
                 elseif l_v77_0:FindFirstChild("ChestEsp") then
@@ -1647,7 +1647,7 @@ function UpdateChestESP()
                             v125.TextYAlignment = "Top"
                             v125.BackgroundTransparency = 1
                             v125.TextStrokeTransparency = 0.5
-                            v125.TextColor3 = Color3.fromRGB(255, 215, 0)
+                            v125.TextColor3 = Color3.fromRGB(255, 255, 255)
                         end
                     end
                 elseif l_v121_0:FindFirstChild("ChestEsp") then
@@ -1932,7 +1932,7 @@ function UpdateChestESP()
                             v169.TextYAlignment = "Top"
                             v169.BackgroundTransparency = 1
                             v169.TextStrokeTransparency = 0.5
-                            v169.TextColor3 = Color3.fromRGB(255, 215, 0)
+                            v169.TextColor3 = Color3.fromRGB(255, 255, 255)
                         end
                     end
                 elseif l_v165_0:FindFirstChild("ChestEsp") then
@@ -2214,7 +2214,7 @@ function UpdateChestESP()
                             v212.TextYAlignment = "Top"
                             v212.BackgroundTransparency = 1
                             v212.TextStrokeTransparency = 0.5
-                            v212.TextColor3 = Color3.fromRGB(255, 215, 0)
+                            v212.TextColor3 = Color3.fromRGB(255, 255, 255)
                         else
                             local v213 = v202((game:GetService("Players").LocalPlayer.Character.Head.Position - l_v209_0:GetPivot().Position).Magnitude / 3)
                             l_v209_0.ChestEsp.TextLabel.Text = "Chest\n" .. v213 .. " M"
@@ -2502,7 +2502,7 @@ function UpdateChestESP()
                             v257.TextYAlignment = "Top"
                             v257.BackgroundTransparency = 1
                             v257.TextStrokeTransparency = 0.5
-                            v257.TextColor3 = Color3.fromRGB(255, 215, 0)
+                            v257.TextColor3 = Color3.fromRGB(255, 255, 255)
                         end
                     end
                 elseif l_v253_0:FindFirstChild("ChestEsp") then
