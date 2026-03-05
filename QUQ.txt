@@ -9639,6 +9639,7 @@ v494:AddToggle({
     end
 })
 end
+
     v494:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
