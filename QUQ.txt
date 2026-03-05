@@ -8454,6 +8454,47 @@ spawn(function()
     end
 end)
 v491:AddToggle({
+    Title = "Auto Drop Fruits",
+    Description = "",
+    Value = false,
+    Callback = function(v1076)
+        getgenv().AutoDropFruit = v1076
+    end
+})
+spawn(function()
+    while task.wait(0.2) do
+        if getgenv().AutoDropFruit then
+            pcall(function()
+                local l_LocalPlayer = game:GetService("Players").LocalPlayer
+                local l_Character = l_LocalPlayer.Character or l_LocalPlayer.CharacterAdded:Wait()
+                local l_Backpack = l_LocalPlayer:WaitForChild("Backpack")
+
+                for _, v in ipairs({
+                    "Rocket Fruit","Spin Fruit","Blade Fruit","Spring Fruit",
+                    "Bomb Fruit","Smoke Fruit","Spike Fruit","Flame Fruit",
+                    "Eagle Fruit","Ice Fruit","Sand Fruit","Dark Fruit",
+                    "Diamond Fruit","Light Fruit","Rubber Fruit","Creation Fruit",
+                    "Ghost Fruit","Magma Fruit","Quake Fruit","Buddha Fruit",
+                    "Love Fruit","Spider Fruit","Sound Fruit","Phoenix Fruit",
+                    "Portal Fruit","Lightning Fruit","Pain Fruit","Blizzard Fruit",
+                    "Gravity Fruit","Mammoth Fruit","T-Rex Fruit","Dough Fruit",
+                    "Shadow Fruit","Venom Fruit","Gas Fruit","Control Fruit",
+                    "Spirit Fruit","Leopard Fruit","Yeti Fruit","Kitsune Fruit",
+                    "Dragon Fruit"
+                }) do
+
+                    local Fruit = l_Backpack:FindFirstChild(v) or l_Character:FindFirstChild(v)
+
+                    if Fruit then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", Fruit)
+                        break
+                    end
+                end
+            end)
+        end
+    end
+end)
+v491:AddToggle({
     Name = "Teleport To Fruit Spawn",
     Description = "",
     Default = false,
