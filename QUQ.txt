@@ -8994,6 +8994,144 @@ v493:AddButton({
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
     end
 })
+local _ = v493:AddSection({"Join Server"})
+v496:AddTextBox({
+        Name = "Job ID",
+        PlaceholderText = "Paste the Job ID here...",
+        Callback = function(p215)
+            if p215 ~= "" then
+                game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, p215)
+            end
+        end
+    })
+v493:AddButton({
+    Title = "Join Clipboard",
+    Description = "Join server from copied JobId",
+    Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+
+        local jobId = tostring(getclipboard())
+
+        if jobId and jobId ~= "" then
+            TeleportService:TeleportToPlaceInstance(game.PlaceId, jobId, LocalPlayer)
+        else
+            warn("Clipboard vazio ou inválido")
+        end
+    end
+})
+v493:AddButton({
+    Title = "Rejoin Server",
+    Callback = function()
+        game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+    end
+})
+v493:AddButton({
+     Title = "Server hop",
+     Callback = function()
+    Hop()
+end})
+
+print("--[[Hop Server If You Meet Game Admin]]--")
+
+local Admins = {
+    red_game43 = true,
+    rip_indra = true,
+    Axiore = true,
+    Polkster = true,
+    wenlocktoad = true,
+    Daigrock = true,
+    toilamvidamme = true,
+    oofficialnoobie = true,
+    Uzoth = true,
+    Azarth = true,
+    arlthmetic = true,
+    Death_King = true,
+    Lunoven = true,
+    TheGreateAced = true,
+    rip_fud = true,
+    drip_mama = true,
+    layandikit12 = true,
+    Hingoi = true,
+}
+
+task.spawn(function()
+    while task.wait(1) do
+        for _, player in pairs(game.Players:GetPlayers()) do
+            if Admins[player.Name] then
+                Hop()
+                break
+            end
+        end
+    end
+end)
+
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+
+local Player = Players.LocalPlayer
+local PlaceId = game.PlaceId
+local JobId = game.JobId
+
+_G.AutoRejoin30m = false
+local RejoinRunning = false
+
+-- ===== PEGAR SERVIDOR DIFERENTE =====
+function GetNewServer()
+    local Servers = {}
+    
+    local req = game:HttpGet(
+        "https://games.roblox.com/v1/games/"..PlaceId.."/servers/Public?sortOrder=Asc&limit=100"
+    )
+    
+    local data = HttpService:JSONDecode(req)
+
+    for _, server in pairs(data.data) do
+        if server.playing < server.maxPlayers and server.id ~= JobId then
+            table.insert(Servers, server.id)
+        end
+    end
+
+    if #Servers > 0 then
+        return Servers[math.random(1, #Servers)]
+    end
+end
+
+-- ===== TOGGLE REDZLIB =====
+v493:AddToggle({
+    Name = "Anti-reset",
+    Description = "Server hop every 30 minutes",
+    Default = false,
+    Callback = function(Value)
+        _G.AutoRejoin30m = Value
+        
+        if Value and not RejoinRunning then
+            RejoinRunning = true
+            
+            task.spawn(function()
+                while _G.AutoRejoin30m do
+                    task.wait(1800) -- 30 minutos
+                    
+                    if not _G.AutoRejoin30m then break end
+                    
+                    local NewServer = GetNewServer()
+                    
+                    if NewServer then
+                        TeleportService:TeleportToPlaceInstance(PlaceId, NewServer, Player)
+                    else
+                        TeleportService:Teleport(PlaceId, Player)
+                    end
+                end
+                
+                RejoinRunning = false
+            end)
+        end
+    end
+})
+
+
 
 -- // AUTO STATS SYSTEM
 local Replicated = game:GetService("ReplicatedStorage")
@@ -10178,141 +10316,6 @@ v495:AddButton({
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "2")
-    end
-})
-
-local _ = v496:AddSection({"Join Server"})
-v496:AddTextBox({
-        Name = "Job ID",
-        PlaceholderText = "Paste the Job ID here...",
-        Callback = function(p215)
-            if p215 ~= "" then
-                game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, p215)
-            end
-        end
-    })
-v496:AddButton({
-    Title = "Join Clipboard",
-    Description = "Join server from copied JobId",
-    Callback = function()
-        local TeleportService = game:GetService("TeleportService")
-        local Players = game:GetService("Players")
-        local LocalPlayer = Players.LocalPlayer
-
-        local jobId = tostring(getclipboard())
-
-        if jobId and jobId ~= "" then
-            TeleportService:TeleportToPlaceInstance(game.PlaceId, jobId, LocalPlayer)
-        else
-            warn("Clipboard vazio ou inválido")
-        end
-    end
-})
-v496:AddButton({
-    Title = "Rejoin Server",
-    Callback = function()
-        game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
-    end
-})
-v496:AddButton({Title = "Server Hop", Callback = function()
-    Hop()
-end})
-
-print("--[[Hop Server If You Meet Game Admin]]--")
-
-local Admins = {
-    red_game43 = true,
-    rip_indra = true,
-    Axiore = true,
-    Polkster = true,
-    wenlocktoad = true,
-    Daigrock = true,
-    toilamvidamme = true,
-    oofficialnoobie = true,
-    Uzoth = true,
-    Azarth = true,
-    arlthmetic = true,
-    Death_King = true,
-    Lunoven = true,
-    TheGreateAced = true,
-    rip_fud = true,
-    drip_mama = true,
-    layandikit12 = true,
-    Hingoi = true,
-}
-
-task.spawn(function()
-    while task.wait(1) do
-        for _, player in pairs(game.Players:GetPlayers()) do
-            if Admins[player.Name] then
-                Hop()
-                break
-            end
-        end
-    end
-end)
-
-local Players = game:GetService("Players")
-local TeleportService = game:GetService("TeleportService")
-local HttpService = game:GetService("HttpService")
-
-local Player = Players.LocalPlayer
-local PlaceId = game.PlaceId
-local JobId = game.JobId
-
-_G.AutoRejoin30m = false
-local RejoinRunning = false
-
--- ===== PEGAR SERVIDOR DIFERENTE =====
-function GetNewServer()
-    local Servers = {}
-    
-    local req = game:HttpGet(
-        "https://games.roblox.com/v1/games/"..PlaceId.."/servers/Public?sortOrder=Asc&limit=100"
-    )
-    
-    local data = HttpService:JSONDecode(req)
-
-    for _, server in pairs(data.data) do
-        if server.playing < server.maxPlayers and server.id ~= JobId then
-            table.insert(Servers, server.id)
-        end
-    end
-
-    if #Servers > 0 then
-        return Servers[math.random(1, #Servers)]
-    end
-end
-
--- ===== TOGGLE REDZLIB =====
-v496:AddToggle({
-    Name = "Anti-reset",
-    Description = "Server hop every 30 minutes",
-    Default = false,
-    Callback = function(Value)
-        _G.AutoRejoin30m = Value
-        
-        if Value and not RejoinRunning then
-            RejoinRunning = true
-            
-            task.spawn(function()
-                while _G.AutoRejoin30m do
-                    task.wait(1800) -- 30 minutos
-                    
-                    if not _G.AutoRejoin30m then break end
-                    
-                    local NewServer = GetNewServer()
-                    
-                    if NewServer then
-                        TeleportService:TeleportToPlaceInstance(PlaceId, NewServer, Player)
-                    else
-                        TeleportService:Teleport(PlaceId, Player)
-                    end
-                end
-                
-                RejoinRunning = false
-            end)
-        end
     end
 })
 local _ = v496:AddSection({"Settings"})
