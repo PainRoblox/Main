@@ -9295,7 +9295,7 @@ end
 -- ===============================
 v494:AddToggle({
     Name = "Aimbot Gun",
-    Default = false,
+    Default = true,
     Callback = function(v)
         AimbotEnabled = v
 
@@ -9314,7 +9314,7 @@ v494:AddToggle({
 -- ===============================
 v494:AddToggle({
     Name = "Aimbot Tap",
-    Default = false,
+    Default = true,
     Callback = function(v)
         AimPlayers = v
 
@@ -9331,7 +9331,7 @@ v494:AddToggle({
 -- ===============================
 v494:AddToggle({
     Name = "Aimbot Skills",
-    Default = false,
+    Default = true,
     Callback = function(v)
         AimMobs = v
 
@@ -9364,7 +9364,7 @@ local AimMobs = false
 
 v494:AddToggle({
     Name = "Enable Aimbot Skill",
-    Default = false,
+    Default = true,
     Callback = function(v)
         AimbotEnabled = v
 
