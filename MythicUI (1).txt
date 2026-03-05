@@ -1159,30 +1159,6 @@ local function ConnectSave(Instance, func)
 	end)
 end
 
-local ScreenGui1 = Instance.new("ScreenGui")
-local ImageButton1 = Instance.new("ImageButton")
-local UICorner = Instance.new("UICorner")
-ScreenGui1.Name = "ELGATO HUB ON/OFF"
-ScreenGui1.Parent = game.CoreGui
-ScreenGui1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ImageButton1.Parent = ScreenGui1
-ImageButton1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ImageButton1.BorderSizePixel = 0
-ImageButton1.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-ImageButton1.Size = UDim2.new(0, 50, 0, 50)
-ImageButton1.Draggable = true
-ImageButton1.Image = "rbxassetid://105823881528425"
-local CoreGui = game:GetService("CoreGui")
-ImageButton1.MouseButton1Down:connect(function()
-CoreGui["redz Library V5"].Enabled = not CoreGui["redz Library V5"].Enabled
-end)
-
-UICorner.Parent = ImageButton1
-do local GUI = game.CoreGui:FindFirstChild("SOMEXHUB");if GUI then GUI:Destroy();end;if _G.Color == nil then
-    _G.Color = Color3.fromRGB(230, 5, 12)
-   end 
-end
-
 local function CreateTween(Configs)
 	local Instance = Configs[1] or Configs.Instance
 	local Prop = Configs[2] or Configs.Prop
@@ -1462,7 +1438,7 @@ end
 
 function redzlib:MakeWindow(Configs)
 	local WTitle = Configs[1] or Configs.Name or Configs.Title or "redz Library V5"
-	local WMiniText = Configs[2] or Configs.SubTitle or "By OKO"
+	local WMiniText = Configs[2] or Configs.SubTitle or "by : redz9999"
 	
 	Settings.ScriptFile = Configs[3] or Configs.SaveFolder or false
 	
@@ -1641,7 +1617,7 @@ function redzlib:MakeWindow(Configs)
 	function Window:CloseBtn()
 		local Dialog = Window:Dialog({
 			Title = "Close",
-			Text = "Bạn muốn đóng UI không?",
+			Text = "You Want Close Ui?",
 			Options = {
 				{"Confirm", function()
 					ScreenGui:Destroy()
@@ -1899,6 +1875,8 @@ function redzlib:MakeWindow(Configs)
 		
 		if not FirstTab then Container.Parent = Containers end
 		
+		local Tab = { Enabled = (FirstTab == false) }
+		
 		local function Tabs()
 			if Container.Parent then return end
 			for _,Frame in pairs(ContainerList) do
@@ -1913,6 +1891,7 @@ function redzlib:MakeWindow(Configs)
 					Tab.func:Disable()
 				end
 			end)
+			Tab.Enabled = true
 			CreateTween({Container, "Size", UDim2.new(1, 0, 1, 0), 0.3})
 			CreateTween({LabelTitle, "TextTransparency", 0, 0.35})
 			CreateTween({LabelIcon, "ImageTransparency", 0, 0.35})
@@ -1922,11 +1901,11 @@ function redzlib:MakeWindow(Configs)
 		TabSelect.Activated:Connect(Tabs)
 		
 		FirstTab = true
-		local Tab = {}
 		table.insert(redzlib.Tabs, {TabInfo = {Name = TName, Icon = TIcon}, func = Tab, Cont = Container})
 		Tab.Cont = Container
 		
 		function Tab:Disable()
+		  self.Enabled = false
 			Container.Parent = nil
 			CreateTween({LabelTitle, "TextTransparency", 0.3, 0.35})
 			CreateTween({LabelIcon, "ImageTransparency", 0.3, 0.35})
