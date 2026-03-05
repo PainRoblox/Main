@@ -1009,7 +1009,7 @@ function UpdateChestESP()
                             v36.TextYAlignment = "Top"
                             v36.BackgroundTransparency = 1
                             v36.TextStrokeTransparency = 0.5
-                            v36.TextColor3 = Color3.fromRGB(255, 215, 0)
+                            v36.TextColor3 = Color3.fromRGB(255, 255, 255)
                         else
                             local v37 = v26((game:GetService("Players").LocalPlayer.Character.Head.Position - l_v33_0:GetPivot().Position).Magnitude / 3)
                             l_v33_0.ChestEsp.TextLabel.Text = "Chest\n" .. v37 .. " M"
@@ -9590,6 +9590,25 @@ v494:AddToggle({
             end
         else
             UpdateBerriesESP()
+        end
+    end
+})
+
+v494:AddToggle({
+    Title = "ESP Flower",
+    Value = false,
+    Callback = function(state)
+        FlowerESP = state
+
+        if not FlowerESP then
+            UpdateFlowerChams()
+        else
+            task.spawn(function()
+                while FlowerESP do
+                    UpdateFlowerChams()
+                    task.wait(1)
+                end
+            end)
         end
     end
 })
