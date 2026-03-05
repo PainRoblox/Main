@@ -9612,7 +9612,24 @@ v494:AddToggle({
         end
     end
 })
-
+v494:AddToggle({
+    Title = "ESP Real Fruits",
+    Value = false,
+    Callback = function(state)
+        RealFruitESP = state
+        
+        if not RealFruitESP then
+            UpdateRealFruitChams()
+        else
+            task.spawn(function()
+                while RealFruitESP do
+                    UpdateRealFruitChams()
+                    task.wait(1)
+                end
+            end)
+        end
+    end
+})
     v494:AddSection("Visual")
 local vu14 = game.Players.LocalPlayer
 
