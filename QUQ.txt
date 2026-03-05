@@ -8995,7 +8995,7 @@ v493:AddButton({
     end
 })
 local _ = v493:AddSection({"Join Server"})
-v496:AddTextBox({
+v493:AddTextBox({
         Name = "Job ID",
         PlaceholderText = "Paste the Job ID here...",
         Callback = function(p215)
