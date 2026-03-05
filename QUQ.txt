@@ -3753,10 +3753,6 @@ local v484 = v466:MakeTab({"Discord", "info"})
 local v485 = v466:MakeTab({"Farm", "home"})
 local v487 = v466:MakeTab({"Quest | Race V4", "swords"})
 local v486 = v466:MakeTab({"Auto Fishing", "rbxassetid://127664059821666"})
-local v489
-if World3 then 
- v489 = v466:MakeTab({"Sea Event", "waves"})
- end
 local v491 = v466:MakeTab({"Raid | Fruits", "cherry"})
 local v497 = v466:MakeTab({"Stats", "Signal"})
 local v493 = v466:MakeTab({"Teleport", "locate"})
@@ -7321,6 +7317,10 @@ v487:AddToggle({
     end
 })
 end
+local v489
+if World3 then 
+ v489 = v466:MakeTab({"Sea Event", "waves"})
+ end
 local _ = v489:AddSection({"Sea Events"})
 v489:AddToggle({
     Name = "Auto Drive Boats",
