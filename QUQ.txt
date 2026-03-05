@@ -8357,7 +8357,7 @@ spawn(function()
 end)
 
 local _ = v491:AddSection({"Fruits"})
-v491:AddToggle({
+v491:AddButton({
     Name = "Auto Random Fruits",
     Description = "",
     Default = false,
