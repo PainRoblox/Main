@@ -8454,38 +8454,6 @@ spawn(function()
     end
 end)
 v491:AddToggle({
-    Title = "Auto Drop Fruits",
-    Value = false,
-    Callback = function(state)
-        getgenv().AutoDropFruit = state
-    end
-})
-
-spawn(function()
-    while task.wait(0.3) do
-        if getgenv().AutoDropFruit then
-            pcall(function()
-
-                local player = game:GetService("Players").LocalPlayer
-                local character = player.Character
-                local backpack = player.Backpack
-
-                for _,tool in pairs(backpack:GetChildren()) do
-                    if string.find(tool.Name,"Fruit") then
-                        
-                        tool.Parent = character
-                        task.wait(0.2)
-
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", tool.Name)
-                        break
-                    end
-                end
-
-            end)
-        end
-    end
-end)
-v491:AddToggle({
     Name = "Teleport To Fruit Spawn",
     Description = "",
     Default = false,
