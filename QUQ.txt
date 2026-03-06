@@ -8514,10 +8514,10 @@ spawn(function()
                     {"Dragon Fruit", "Dragon-Dragon"}
                 }) do
 
-                    local Fruit = backpack:FindFirstChild(v) or character:FindFirstChild(v)
+                    local Fruit = backpack:FindFirstChild(v[1]) or character:FindFirstChild(v[1])
 
                     if Fruit then
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", v)
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", v[2])
                         break
                     end
                 end
