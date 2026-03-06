@@ -10400,11 +10400,11 @@ v495:AddButton({
 local _ = v496:AddSection({"Settings"})
 v496:AddToggle({
     Title = "Unban Fast Attack - M1 Fruit",
-    Default = false,
+    Default = true,
     Callback = function(state)
         if state then
             getgenv().FastAttackFruit = true
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/Main/refs/heads/main/koby.txt"))()
         else
             getgenv().FastAttackFruit = false
         end
