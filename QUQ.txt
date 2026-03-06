@@ -8455,10 +8455,9 @@ spawn(function()
 end)
 v491:AddToggle({
     Title = "Auto Drop Fruits",
-    Description = "",
     Value = false,
-    Callback = function(v1076)
-        getgenv().AutoDropFruit = v1076
+    Callback = function(state)
+        getgenv().AutoDropFruit = state
     end
 })
 
@@ -8471,7 +8470,7 @@ spawn(function()
                 local backpack = player:WaitForChild("Backpack")
 
                 for _, v in ipairs({
-                    {"Rocket Fruit", "Rocket-Rocket"},
+{"Rocket Fruit", "Rocket-Rocket"},
                     {"Spin Fruit", "Spin-Spin"},
                     {"Blade Fruit", "Blade-Blade"},
                     {"Spring Fruit", "Spring-Spring"},
@@ -8514,9 +8513,9 @@ spawn(function()
                     {"Dragon Fruit", "Dragon-Dragon"}
                 }) do
 
-                    local Fruit = backpack:FindFirstChild(v[1]) or character:FindFirstChild(v[1])
+                    local fruit = backpack:FindFirstChild(v[1]) or character:FindFirstChild(v[1])
 
-                    if Fruit then
+                    if fruit then
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", v[2])
                         break
                     end
