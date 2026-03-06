@@ -3757,7 +3757,7 @@ Button.BorderSizePixel = 0
 Button.Image = "rbxassetid://105823881528425"
 
 local Corner = Instance.new("UICorner")
-Corner.CornerRadius = UDim.new(1,0)
+Corner.CornerRadius = UDim.new(0,20)
 Corner.Parent = Button
 
 -- drag
