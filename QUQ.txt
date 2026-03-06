@@ -3750,7 +3750,7 @@ ScreenGui.ResetOnSpawn = false
 
 local Button = Instance.new("ImageButton")
 Button.Parent = ScreenGui
-Button.Size = UDim2.new(0,60,0,60)
+Button.Size = UDim2.new(0,40,0,40)
 Button.Position = UDim2.new(0.1,0,0.2,0)
 Button.BackgroundColor3 = Color3.fromRGB(255,200,0)
 Button.BorderSizePixel = 0
