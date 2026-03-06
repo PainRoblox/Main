@@ -10936,7 +10936,7 @@ v496:AddButton({
         end
     end
 })
-
+if World3 then
 v496:AddSection({"Draco Trial"});
 GetQuestDracoLevel = function()
 		local I = { [1] = { NPC = "Dragon Wizard", Command = "Upgrade" } };
