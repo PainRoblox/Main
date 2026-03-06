@@ -8462,64 +8462,25 @@ v491:AddToggle({
 })
 
 spawn(function()
-    while task.wait(0.2) do
+    while task.wait(0.3) do
         if getgenv().AutoDropFruit then
             pcall(function()
+
                 local player = game:GetService("Players").LocalPlayer
-                local character = player.Character or player.CharacterAdded:Wait()
-                local backpack = player:WaitForChild("Backpack")
+                local character = player.Character
+                local backpack = player.Backpack
 
-                for _, v in ipairs({
-{"Rocket Fruit", "Rocket-Rocket"},
-                    {"Spin Fruit", "Spin-Spin"},
-                    {"Blade Fruit", "Blade-Blade"},
-                    {"Spring Fruit", "Spring-Spring"},
-                    {"Bomb Fruit", "Bomb-Bomb"},
-                    {"Smoke Fruit", "Smoke-Smoke"},
-                    {"Spike Fruit", "Spike-Spike"},
-                    {"Flame Fruit", "Flame-Flame"},
-                    {"Eagle Fruit", "Eagle-Eagle"},
-                    {"Ice Fruit", "Ice-Ice"},
-                    {"Sand Fruit", "Sand-Sand"},
-                    {"Dark Fruit", "Dark-Dark"},
-                    {"Diamond Fruit", "Diamond-Diamond"},
-                    {"Light Fruit", "Light-Light"},
-                    {"Rubber Fruit", "Rubber-Rubber"},
-                    {"Creation Fruit", "Creation-Creation"},
-                    {"Ghost Fruit", "Ghost-Ghost"},
-                    {"Magma Fruit", "Magma-Magma"},
-                    {"Quake Fruit", "Quake-Quake"},
-                    {"Buddha Fruit", "Buddha-Buddha"},
-                    {"Love Fruit", "Love-Love"},
-                    {"Spider Fruit", "Spider-Spider"},
-                    {"Sound Fruit", "Sound-Sound"},
-                    {"Phoenix Fruit", "Phoenix-Phoenix"},
-                    {"Portal Fruit", "Portal-Portal"},
-                    {"Lightning Fruit", "Lightning-Lightning"},
-                    {"Pain Fruit", "Pain-Pain"},
-                    {"Blizzard Fruit", "Blizzard-Blizzard"},
-                    {"Gravity Fruit", "Gravity-Gravity"},
-                    {"Mammoth Fruit", "Mammoth-Mammoth"},
-                    {"T-Rex Fruit", "T-Rex-T-Rex"},
-                    {"Dough Fruit", "Dough-Dough"},
-                    {"Shadow Fruit", "Shadow-Shadow"},
-                    {"Venom Fruit", "Venom-Venom"},
-                    {"Gas Fruit", "Gas-Gas"},
-                    {"Control Fruit", "Control-Control"},
-                    {"Spirit Fruit", "Spirit-Spirit"},
-                    {"Leopard Fruit", "Leopard-Leopard"},
-                    {"Yeti Fruit", "Yeti-Yeti"},
-                    {"Kitsune Fruit", "Kitsune-Kitsune"},
-                    {"Dragon Fruit", "Dragon-Dragon"}
-                }) do
+                for _,tool in pairs(backpack:GetChildren()) do
+                    if string.find(tool.Name,"Fruit") then
+                        
+                        tool.Parent = character
+                        task.wait(0.2)
 
-                    local fruit = backpack:FindFirstChild(v[1]) or character:FindFirstChild(v[1])
-
-                    if fruit then
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", v[2])
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DropFruit", tool.Name)
                         break
                     end
                 end
+
             end)
         end
     end
