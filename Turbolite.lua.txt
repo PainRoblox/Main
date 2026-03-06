@@ -2379,8 +2379,8 @@ QuestNeta = function()
 			[6] = PosQ,
 		};
 	end;
-	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/refs/heads/main/RedzLib.lua"))():MakeWindow({
-    Title = "Turbo Lite Hub",
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/Main/refs/heads/main/MythicUI(1).txt(1).txt"))():MakeWindow({
+    Title = "OKO Lite Hub",
     SubTitle = "UI V2 | Blox Fruit",
     SaveFolder = "turbolite.json"
 })
@@ -2393,7 +2393,7 @@ screenGui.Parent = game.CoreGui
 local imageButton = Instance.new("ImageButton")
 imageButton.Size = UDim2.new(0, 35, 0, 35)
 imageButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-imageButton.Image = "rbxassetid://18919385586"
+imageButton.Image = "rbxassetid://105823881528425"
 imageButton.BackgroundTransparency = 1
 imageButton.Parent = screenGui
 
