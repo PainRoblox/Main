@@ -10495,7 +10495,23 @@ end)
 if l_LocalPlayer_18.Character then
 	v1135(l_LocalPlayer_18.Character)
 end
+getgenv().FarmHeight = 10
 
+v487:AddSlider({
+    Name = "Farm Height",
+    Min = 0,
+    Max = 50,
+    Default = 10,
+    Increment = 1,
+    Callback = function(value)
+        getgenv().FarmHeight = value
+    end
+})
+if Enemy and Enemy:FindFirstChild("HumanoidRootPart") then
+    local pos = Enemy.HumanoidRootPart.Position
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+        CFrame.new(pos.X, pos.Y + getgenv().FarmHeight, pos.Z)
+end
 v496:AddSlider({
 	Title = "Speed",
 	Min = 26,
