@@ -3750,14 +3750,14 @@ ScreenGui.ResetOnSpawn = false
 
 local Button = Instance.new("ImageButton")
 Button.Parent = ScreenGui
-Button.Size = UDim2.new(0,40,0,40)
+Button.Size = UDim2.new(0,50,0,50)
 Button.Position = UDim2.new(0.1,0,0.2,0)
 Button.BackgroundColor3 = Color3.fromRGB(255,200,0)
 Button.BorderSizePixel = 0
-Button.Image = "rbxassetid://80732719802587"
+Button.Image = "rbxassetid://119808410478573"
 
 local Corner = Instance.new("UICorner")
-Corner.CornerRadius = UDim.new(0,20)
+Corner.CornerRadius = UDim.new(0,0)
 Corner.Parent = Button
 
 -- drag
@@ -3820,7 +3820,7 @@ local v496 = v466:MakeTab({"Misc", "settings"})
 v484:AddDiscordInvite({
     Name = "KO Hub | Community",
     Description = "",
-    Logo = "rbxassetid://80732719802587",
+    Logo = "rbxassetid://119808410478573",
     Invite = ""
 })
 local TyrantStatus = v484:AddParagraph({
