@@ -63,7 +63,7 @@ local ShootGunEvent = Net:WaitForChild("RE/ShootGunEvent")
 local GunValidator = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("Validator2")
 
 local Config = {
-    AttackDistance = 65,
+    AttackDistance = 70,
     AttackMobs = true,
     AttackPlayers = true,
     AttackCooldown = 0.2,
