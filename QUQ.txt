@@ -3738,9 +3738,9 @@ function CheckItemBPCRBPCR(v463)
 end
 local vu32 = loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/Main/refs/heads/main/MythicUI(1).txt"))() 
 local v466 = vu32:MakeWindow({
-    Title = "OKO hub: Blox Fruits",
+    Title = "KO hub: Blox Fruits",
     SubTitle = "remake version",
-    SaveFolder = "OKO| redz lib v5.lua"
+    SaveFolder = "KO| redz lib v5.lua"
 })
 
 local ScreenGui = Instance.new("ScreenGui")
@@ -3754,7 +3754,7 @@ Button.Size = UDim2.new(0,40,0,40)
 Button.Position = UDim2.new(0.1,0,0.2,0)
 Button.BackgroundColor3 = Color3.fromRGB(255,200,0)
 Button.BorderSizePixel = 0
-Button.Image = "rbxassetid://105823881528425"
+Button.Image = "rbxassetid://80732719802587"
 
 local Corner = Instance.new("UICorner")
 Corner.CornerRadius = UDim.new(0,20)
@@ -3818,9 +3818,9 @@ local v494 = v466:MakeTab({"Visual", "user"})
 local v495 = v466:MakeTab({"Shop", "shoppingCart"})
 local v496 = v466:MakeTab({"Misc", "settings"})
 v484:AddDiscordInvite({
-    Name = "OKO Hub | Community",
+    Name = "KO Hub | Community",
     Description = "",
-    Logo = "rbxassetid://105823881528425",
+    Logo = "rbxassetid://80732719802587",
     Invite = ""
 })
 local TyrantStatus = v484:AddParagraph({
