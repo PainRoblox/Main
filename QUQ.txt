@@ -7392,9 +7392,12 @@ v489:AddToggle({
 spawn(function()
     while wait() do
         pcall(function()
-            if _G.SailBoat and (not game:GetService("Workspace").Enemies:FindFirstChild("Shark") or not game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") or not game:GetService("Workspace").Enemies:FindFirstChild("Piranha") or not game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member")) then
+            if _G.SailBoat and 
+not game:GetService("Workspace").Enemies:FindFirstChild("Shark") and
+not game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and
+not game:GetService("Workspace").Enemies:FindFirstChild("Piranha") and
+not game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") then
                 if game:GetService("Workspace").Boats:FindFirstChild("PirateBrigade") then
-                    if game:GetService("Workspace").Boats:FindFirstChild("PirateBrigade") then
                         if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == false then
                             TPP(game:GetService("Workspace").Boats.PirateBrigade.VehicleSeat.CFrame * CFrame.new(0, 1, 0))
                         else
@@ -8505,14 +8508,6 @@ spawn(function()
         end
     end
 end)
-v491:AddToggle({
-    Title = "Auto Drop Fruit",
-    Description = "",
-    Value = false,
-    Callback = function(state)
-        getgenv().DropFruit = state
-    end
-})
 function DropFruits()
     local plr = game.Players.LocalPlayer
 
@@ -8522,6 +8517,24 @@ function DropFruits()
         end
     end
 end
+
+v491:AddToggle({
+    Title = "Auto Drop Fruit",
+    Value = false,
+    Callback = function(state)
+        getgenv().DropFruit = state
+    end
+})
+
+spawn(function()
+    while task.wait(0.5) do
+        if getgenv().DropFruit then
+            pcall(function()
+                DropFruits()
+            end)
+        end
+    end
+end)
 v491:AddToggle({
     Name = "Teleport To Fruit Spawn",
     Description = "",
@@ -10527,7 +10540,7 @@ v496:AddSlider({
 })
 getgenv().FarmHeight = 10
 
-v487:AddSlider({
+v496:AddSlider({
     Name = "Farm Height",
     Min = 0,
     Max = 50,
