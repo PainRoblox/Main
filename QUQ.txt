@@ -7398,6 +7398,7 @@ not game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") and
 not game:GetService("Workspace").Enemies:FindFirstChild("Piranha") and
 not game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") then
                 if game:GetService("Workspace").Boats:FindFirstChild("PirateBrigade") then
+                  if game:GetService("Workspace").Boats:FindFirstChild("PirateBrigade") then
                         if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == false then
                             TPP(game:GetService("Workspace").Boats.PirateBrigade.VehicleSeat.CFrame * CFrame.new(0, 1, 0))
                         else
