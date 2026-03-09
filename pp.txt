@@ -7380,70 +7380,7 @@ v487:AddToggle({
 })
 end
 local _ = v489:AddSection({"Sea Events"})
-v489:AddToggle({
-Name = "Auto Drive Boats (Any Boat)",
-Default = false,
-Callback = function(v)
-_G.SailBoat = v
-StopTween(v)
 
-if not v then
-pcall(function()
-local char = game.Players.LocalPlayer.Character
-if char and char:FindFirstChild("Humanoid") then
-char.Humanoid.Sit = false
-end
-end)
-end
-
-end
-})
-
-spawn(function()
-while task.wait() do
-pcall(function()
-
-if _G.SailBoat then
-
-local plr = game.Players.LocalPlayer
-local char = plr.Character
-local enemies = game.Workspace.Enemies
-
-local SeaEnemy =
-enemies:FindFirstChild("Shark") or
-enemies:FindFirstChild("Terrorshark") or
-enemies:FindFirstChild("Piranha") or
-enemies:FindFirstChild("Fish Crew Member")
-
--- nếu không có quái biển thì lái thuyền
-if not SeaEnemy then
-
-local boatSeat = char and char:FindFirstChildOfClass("Humanoid").SeatPart
-
--- nếu chưa ngồi thuyền
-if not boatSeat then
-
-for _,boat in pairs(game.Workspace.Boats:GetChildren()) do
-if boat:FindFirstChild("VehicleSeat") then
-TPP(boat.VehicleSeat.CFrame * CFrame.new(0,1,0))
-break
-end
-end
-
--- nếu đang lái
-else
-
-TPB(CFrame.new(-37813,0,6105))
-
-end
-
-end
-
-end
-
-end)
-end
-end)
 v489:AddToggle({
 Name = "Auto Drive Boats",
 Description = "",
