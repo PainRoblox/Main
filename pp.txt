@@ -7453,7 +7453,27 @@ game.Workspace.Enemies:FindFirstChild("Piranha") or
 game.Workspace.Enemies:FindFirstChild("Fish Crew Member")
 ) then
 
-game.Players.LocalPlayer.Character.Humanoid.Sit = false
+local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+if char and char:FindFirstChild("Humanoid") then
+char.Humanoid.Sit = false
+end
+
+-- dừng thuyền
+if game.Workspace.Boats:FindFirstChild("PirateBrigade") then
+local boat = game.Workspace.Boats.PirateBrigade
+
+if boat:FindFirstChild("VehicleSeat") then
+boat.VehicleSeat.Velocity = Vector3.new(0,0,0)
+boat.VehicleSeat.RotVelocity = Vector3.new(0,0,0)
+end
+
+if boat:FindFirstChild("PrimaryPart") then
+boat.PrimaryPart.AssemblyLinearVelocity = Vector3.new(0,0,0)
+boat.PrimaryPart.AssemblyAngularVelocity = Vector3.new(0,0,0)
+end
+end
 
 end
 
@@ -7495,7 +7515,27 @@ spawn(function()
                                 topos(v956.HumanoidRootPart.CFrame * CFrame.new(5, 40, 10))
                                 MonFarm = v956.Name
                                 PosMon = v956.HumanoidRootPart.CFrame
-                                game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                                local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+if char and char:FindFirstChild("Humanoid") then
+char.Humanoid.Sit = false
+end
+
+-- dừng thuyền
+if game.Workspace.Boats:FindFirstChild("PirateBrigade") then
+local boat = game.Workspace.Boats.PirateBrigade
+
+if boat:FindFirstChild("VehicleSeat") then
+boat.VehicleSeat.Velocity = Vector3.new(0,0,0)
+boat.VehicleSeat.RotVelocity = Vector3.new(0,0,0)
+end
+
+if boat:FindFirstChild("PrimaryPart") then
+boat.PrimaryPart.AssemblyLinearVelocity = Vector3.new(0,0,0)
+boat.PrimaryPart.AssemblyAngularVelocity = Vector3.new(0,0,0)
+end
+end
                                 if game:GetService("Workspace")._WorldOrigin:FindFirstChild("Typhoon Splash") then
                                     topos(v956.HumanoidRootPart.CFrame * CFrame.new(0, 300, 0))
                                 else
@@ -7610,7 +7650,27 @@ spawn(function()
                                 topos(v972.HumanoidRootPart.CFrame * CFrame.new(5, 40, 10))
                                 MonFarm = v972.Name
                                 PosMon = v972.HumanoidRootPart.CFrame
-                                game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                                local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+if char and char:FindFirstChild("Humanoid") then
+char.Humanoid.Sit = false
+end
+
+-- dừng thuyền
+if game.Workspace.Boats:FindFirstChild("PirateBrigade") then
+local boat = game.Workspace.Boats.PirateBrigade
+
+if boat:FindFirstChild("VehicleSeat") then
+boat.VehicleSeat.Velocity = Vector3.new(0,0,0)
+boat.VehicleSeat.RotVelocity = Vector3.new(0,0,0)
+end
+
+if boat:FindFirstChild("PrimaryPart") then
+boat.PrimaryPart.AssemblyLinearVelocity = Vector3.new(0,0,0)
+boat.PrimaryPart.AssemblyAngularVelocity = Vector3.new(0,0,0)
+end
+end
                             until not _G.KillShark or not v972.Parent or v972.Humanoid.Health <= 0
                         end
                     end
@@ -7645,7 +7705,27 @@ spawn(function()
                                 topos(v975.HumanoidRootPart.CFrame * CFrame.new(5, 40, 10))
                                 MonFarm = v975.Name
                                 PosMon = v975.HumanoidRootPart.CFrame
-                                game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                                local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+if char and char:FindFirstChild("Humanoid") then
+char.Humanoid.Sit = false
+end
+
+-- dừng thuyền
+if game.Workspace.Boats:FindFirstChild("PirateBrigade") then
+local boat = game.Workspace.Boats.PirateBrigade
+
+if boat:FindFirstChild("VehicleSeat") then
+boat.VehicleSeat.Velocity = Vector3.new(0,0,0)
+boat.VehicleSeat.RotVelocity = Vector3.new(0,0,0)
+end
+
+if boat:FindFirstChild("PrimaryPart") then
+boat.PrimaryPart.AssemblyLinearVelocity = Vector3.new(0,0,0)
+boat.PrimaryPart.AssemblyAngularVelocity = Vector3.new(0,0,0)
+end
+end
                             until not _G.KillPiranha or not v975.Parent or v975.Humanoid.Health <= 0
                         end
                     end
@@ -7696,7 +7776,27 @@ spawn(function()
                                 topos(v982.HumanoidRootPart.CFrame * CFrame.new(5, 40, 10))
                                 MonFarm = v982.Name
                                 PosMon = v982.HumanoidRootPart.CFrame
-                                game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                                local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+if char and char:FindFirstChild("Humanoid") then
+char.Humanoid.Sit = false
+end
+
+-- dừng thuyền
+if game.Workspace.Boats:FindFirstChild("PirateBrigade") then
+local boat = game.Workspace.Boats.PirateBrigade
+
+if boat:FindFirstChild("VehicleSeat") then
+boat.VehicleSeat.Velocity = Vector3.new(0,0,0)
+boat.VehicleSeat.RotVelocity = Vector3.new(0,0,0)
+end
+
+if boat:FindFirstChild("PrimaryPart") then
+boat.PrimaryPart.AssemblyLinearVelocity = Vector3.new(0,0,0)
+boat.PrimaryPart.AssemblyAngularVelocity = Vector3.new(0,0,0)
+end
+end
                             until not _G.KillFishCrew or not v982.Parent or v982.Humanoid.Health <= 0
                         end
                     end
