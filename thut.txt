@@ -1,4 +1,4 @@
-local Services = setmetatable({}, {
+ Services = setmetatable({}, {
     __index = function(self, serviceName)
         local service = game:GetService(serviceName)
         rawset(self, serviceName, service)
@@ -2329,8 +2329,8 @@ local AttackDelays = {
     ["Normal Attack"] = 0.25,
     ["Fast Attack"] = 0.15,
     ["Super Attack"] = 0.05,
-    ["Bear Attack"] = 0.1,
-    ["Super Bear Attack"] = 0.01,
+    ["Thut Attack"] = 0.1,
+    ["Super Thut Attack"] = 0.01,
 }
 
 local function StopAllAttacks()
@@ -2639,22 +2639,67 @@ local function performClick()
     getgenv().AutoClickShootSettings.LastClickTime = currentTime
 end
 
-local 我lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/Main/refs/heads/main/MythicUI(1).txt"))() 
-local Window = 我lib:MakeWindow({
-    Title = "Main 我 hub | Farm",
-    SubTitle = "",
-    SaveFolder = true,
-    Image = "119808410478573"
+local vu32 = loadstring(game:HttpGet("https://raw.githubusercontent.com/PainRoblox/Main/refs/heads/main/MythicUI(1).txt"))() 
+local v466 = vu32:MakeWindow({
+    Title = "Main 我 hub: Blox Fruits",
+    SubTitle = "remake version",
+    SaveFolder = "redz lib v5.lua"
 })
 
--- Hiển thị thông báo UI đã tải xong
-task.spawn(function()
-    task.wait(2)
-    我lib:Notify({
-        Title = "Main 我 Hub",
-        Message = "Script Load Download Completed",
-        Duration = 10
-    })
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "MinimizeButton"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ResetOnSpawn = false
+
+local Button = Instance.new("ImageButton")
+Button.Parent = ScreenGui
+Button.Size = UDim2.new(0,50,0,50)
+Button.Position = UDim2.new(0.1,0,0.2,0)
+Button.BackgroundColor3 = Color3.fromRGB(255,200,0)
+Button.BorderSizePixel = 0
+Button.Image = "rbxassetid://119808410478573"
+
+local Corner = Instance.new("UICorner")
+Corner.CornerRadius = UDim.new(0,8)
+Corner.Parent = Button
+
+-- drag
+local UIS = game:GetService("UserInputService")
+local dragging = false
+local dragInput
+local dragStart
+local startPos
+
+Button.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = Button.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+Button.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UIS.InputChanged:Connect(function(input)
+	if dragging and input == dragInput then
+		local delta = input.Position - dragStart
+		Button.Position = UDim2.new(
+			startPos.X.Scale,
+			startPos.X.Offset + delta.X,
+			startPos.Y.Scale,
+			startPos.Y.Offset + delta.Y
+		)
+	end
 end)
 
 ------ Tab
@@ -3065,7 +3110,7 @@ v1:AddButton({
 
 v4:AddDropdown({
     Name = "Select Attack Mode",
-    Options = {"Normal Attack", "Fast Attack", "Super Attack", "Bear Attack", "Super Bear Attack"},
+    Options = {"Normal Attack", "Fast Attack", "Super Attack", "thutAttack", "Super thutAttack"},
     Default = "Fast Attack",
     Multi = false,
     Callback = function(mode)
@@ -5116,7 +5161,7 @@ task.spawn(function()
 end)
 
 -- =========================================================
--- AUTO FISHING SYSTEM (Ported from Bear Hub)
+-- AUTO FISHING SYSTEM (Ported from thutHub)
 -- =========================================================
 v5:AddSection({"Fishing"})
 
@@ -5260,8 +5305,8 @@ task.spawn(function()
                         char.Humanoid:EquipTool(rodInBag)
                         equippedTool = rodInBag
                     else
-                        -- Sử dụng thông báo của 我lib
-                        我lib:Notify({
+                        -- Sử dụng thông báo của vu32
+                        vu32:Notify({
                             Title = "Auto Fish",
                             Message = "please equip: " .. tostring(_G.SelectedRod),
                             Duration = 3
@@ -5295,8 +5340,8 @@ task.spawn(function()
                         task.wait(0.1)
                         FishingRequest:InvokeServer("Catch", 1)
                         
-                        -- Sử dụng thông báo của 我lib khi câu được cá
-                        我lib:Notify({
+                        -- Sử dụng thông báo của vu32 khi câu được cá
+                        vu32:Notify({
                             Title = "Auto Fish",
                             Message = "New item caught",
                             Duration = 3
@@ -6057,7 +6102,7 @@ if World3 then
         pcall(function()
             while wait(Sec) do
                 if _G.Auto_Rainbow_Haki then
-                    -- Copy logic Rainbow Haki từ file Bear hub.txt (dòng 2058-2154) vào đây nếu cần
+                    -- Copy logic Rainbow Haki từ file thuthub.txt (dòng 2058-2154) vào đây nếu cần
                     -- Đoạn này khá dài, bạn có thể thêm sau nếu muốn
                 end;
             end;
@@ -6847,7 +6892,7 @@ v6:AddButton({
             Lighting.FogEnd = 9000000000
             Lighting.Brightness = 2
             
-            我lib:Notify({
+            vu32:Notify({
                 Title = "Lighting",
                 Message = "Removed fog effects",
                 Duration = 3
@@ -6874,7 +6919,7 @@ v6:AddButton({
                     
                     replicated.Remotes.CommF_:InvokeServer("BuyBoat", _G.SelectedBoat)
                     
-                    我lib:Notify({
+                    vu32:Notify({
                         Title = "Boat Shop",
                         Message = "Purchased: " .. tostring(_G.SelectedBoat),
                         Duration = 3
@@ -6882,7 +6927,7 @@ v6:AddButton({
                 end
             end)
         else
-            我lib:Notify({
+            vu32:Notify({
                 Title = "Boat Shop",
                 Message = "Please select a boat first",
                 Duration = 3
@@ -7933,7 +7978,7 @@ v7:AddButton({
         pcall(function()
             local CraftRemote = replicated.Modules.Net["RF/Craft"]
             CraftRemote:InvokeServer("PossibleHardcode", "Volcanic Magnet")
-            我lib:Notify({
+            vu32:Notify({
                 Title = "Crafting",
                 Message = "Attempted to craft Volcanic Magnet",
                 Duration = 3
@@ -8796,7 +8841,7 @@ v8:AddButton({
             replicated.Remotes.CommF_:InvokeServer("RaceV4Progress", "Teleport")
             replicated.Remotes.CommF_:InvokeServer("RaceV4Progress", "Continue")
             
-            我lib:Notify({
+            vu32:Notify({
                 Title = "Race V4",
                 Message = "Talked with Stone",
                 Duration = 3
@@ -9437,7 +9482,7 @@ v9:AddButton({
     Callback = function()
         pcall(function()
             StockParagraph:SetDesc(GetFruitStock())
-            我lib:Notify({
+            vu32:Notify({
                 Title = "Fruit Stock",
                 Message = "Stock refreshed",
                 Duration = 2
@@ -9682,7 +9727,7 @@ v9:AddButton({
             local inStock, price = CheckSpecificFruit(_G.CheckFruit)
             if inStock then
                 FruitCheckResult:SetDesc("✅ " .. _G.CheckFruit .. " is in stock!\nPrice: $" .. formatNumber(price))
-                我lib:Notify({
+                vu32:Notify({
                     Title = "Fruit Stock",
                     Message = _G.CheckFruit .. " is in stock!",
                     Duration = 5
@@ -9713,7 +9758,7 @@ task.spawn(function()
                 local inStock, price = CheckSpecificFruit(_G.CheckFruit)
                 if inStock then
                     FruitCheckResult:SetDesc("✅ " .. _G.CheckFruit .. " is in stock!\nPrice: $" .. formatNumber(price))
-                    我lib:Notify({
+                    vu32:Notify({
                         Title = "Fruit Stock Alert!",
                         Message = _G.CheckFruit .. " is now in stock!\nPrice: $" .. formatNumber(price),
                         Duration = 10
@@ -11577,8 +11622,8 @@ v14:AddToggle({
 
                 local data = MeleeCoords[SelectedMelee]
                 if not data or not data.Pos then
-                    我lib:Notify({
-                        Title = "Bear Hub",
+                    vu32:Notify({
+                        Title = "thutHub",
                         Message = "Lỗi: Không tìm thấy toạ độ cho Melee này ở Sea hiện tại!",
                         Duration = 3
                     })
@@ -11603,8 +11648,8 @@ v14:AddToggle({
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(data.Key)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", data.Key)
                         
-                        我lib:Notify({
-                            Title = "Bear Hub",
+                        vu32:Notify({
+                            Title = "thutHub",
                             Message = "Đã mua: " .. SelectedMelee,
                             Duration = 2
                         })
@@ -11625,7 +11670,7 @@ v14:AddButton({
     Name = "Craft Dragonheart",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "Dragonheart")
-        我lib:Notify({Title = "Craft", Message = "Đã craft Dragonheart", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft Dragonheart", Duration = 2})
     end
 })
 
@@ -11633,7 +11678,7 @@ v14:AddButton({
     Name = "Craft Dragonstorm",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "Dragonstorm")
-        我lib:Notify({Title = "Craft", Message = "Đã craft Dragonstorm", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft Dragonstorm", Duration = 2})
     end
 })
 
@@ -11641,7 +11686,7 @@ v14:AddButton({
     Name = "Craft DinoHood",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "DinoHood")
-        我lib:Notify({Title = "Craft", Message = "Đã craft DinoHood", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft DinoHood", Duration = 2})
     end
 })
 
@@ -11649,7 +11694,7 @@ v14:AddButton({
     Name = "Craft SharkTooth",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "SharkTooth")
-        我lib:Notify({Title = "Craft", Message = "Đã craft SharkTooth", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft SharkTooth", Duration = 2})
     end
 })
 
@@ -11657,7 +11702,7 @@ v14:AddButton({
     Name = "Craft TerrorJaw",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "TerrorJaw")
-        我lib:Notify({Title = "Craft", Message = "Đã craft TerrorJaw", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft TerrorJaw", Duration = 2})
     end
 })
 
@@ -11665,7 +11710,7 @@ v14:AddButton({
     Name = "Craft SharkAnchor",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "SharkAnchor")
-        我lib:Notify({Title = "Craft", Message = "Đã craft SharkAnchor", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft SharkAnchor", Duration = 2})
     end
 })
 
@@ -11673,7 +11718,7 @@ v14:AddButton({
     Name = "Craft LeviathanCrown",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "LeviathanCrown")
-        我lib:Notify({Title = "Craft", Message = "Đã craft LeviathanCrown", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft LeviathanCrown", Duration = 2})
     end
 })
 
@@ -11681,7 +11726,7 @@ v14:AddButton({
     Name = "Craft LeviathanShield",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "LeviathanShield")
-        我lib:Notify({Title = "Craft", Message = "Đã craft LeviathanShield", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft LeviathanShield", Duration = 2})
     end
 })
 
@@ -11689,7 +11734,7 @@ v14:AddButton({
     Name = "Craft LeviathanBoat",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "LeviathanBoat")
-        我lib:Notify({Title = "Craft", Message = "Đã craft LeviathanBoat", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft LeviathanBoat", Duration = 2})
     end
 })
 
@@ -11697,7 +11742,7 @@ v14:AddButton({
     Name = "Craft LegendaryScroll",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "LegendaryScroll")
-        我lib:Notify({Title = "Craft", Message = "Đã craft LegendaryScroll", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft LegendaryScroll", Duration = 2})
     end
 })
 
@@ -11705,7 +11750,7 @@ v14:AddButton({
     Name = "Craft MythicalScroll",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CraftItem", "Craft", "MythicalScroll")
-        我lib:Notify({Title = "Craft", Message = "Đã craft MythicalScroll", Duration = 2})
+        vu32:Notify({Title = "Craft", Message = "Đã craft MythicalScroll", Duration = 2})
     end
 })
 
@@ -11718,7 +11763,7 @@ v14:AddButton({
     Name = "Buy Geppo $10,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Geppo")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Geppo", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Geppo", Duration = 2})
     end
 })
 
@@ -11726,7 +11771,7 @@ v14:AddButton({
     Name = "Buy Buso Haki $25,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Buso")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Buso Haki", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Buso Haki", Duration = 2})
     end
 })
 
@@ -11734,7 +11779,7 @@ v14:AddButton({
     Name = "Buy Soru $25,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Soru")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Soru", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Soru", Duration = 2})
     end
 })
 
@@ -11742,7 +11787,7 @@ v14:AddButton({
     Name = "Buy Observation Haki $750,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk", "Buy")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Observation Haki", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Observation Haki", Duration = 2})
     end
 })
 
@@ -11756,7 +11801,7 @@ v14:AddButton({
     Name = "Buy Cutlass $1,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Cutlass")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Cutlass", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Cutlass", Duration = 2})
     end
 })
 
@@ -11764,7 +11809,7 @@ v14:AddButton({
     Name = "Buy Katana $1,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Katana")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Katana", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Katana", Duration = 2})
     end
 })
 
@@ -11772,7 +11817,7 @@ v14:AddButton({
     Name = "Buy Iron Mace $25,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Iron Mace")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Iron Mace", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Iron Mace", Duration = 2})
     end
 })
 
@@ -11780,7 +11825,7 @@ v14:AddButton({
     Name = "Buy Dual Katana $12,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Duel Katana")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Dual Katana", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Dual Katana", Duration = 2})
     end
 })
 
@@ -11788,7 +11833,7 @@ v14:AddButton({
     Name = "Buy Triple Katana $60,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Triple Katana")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Triple Katana", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Triple Katana", Duration = 2})
     end
 })
 
@@ -11796,7 +11841,7 @@ v14:AddButton({
     Name = "Buy Pipe $100,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Pipe")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Pipe", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Pipe", Duration = 2})
     end
 })
 
@@ -11804,7 +11849,7 @@ v14:AddButton({
     Name = "Buy Dual-Headed Blade $400,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Dual-Headed Blade")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Dual-Headed Blade", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Dual-Headed Blade", Duration = 2})
     end
 })
 
@@ -11812,7 +11857,7 @@ v14:AddButton({
     Name = "Buy Bisento $1,200,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Bisento")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Bisento", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Bisento", Duration = 2})
     end
 })
 
@@ -11820,7 +11865,7 @@ v14:AddButton({
     Name = "Buy Soul Cane $750,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Soul Cane")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Soul Cane", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Soul Cane", Duration = 2})
     end
 })
 
@@ -11828,7 +11873,7 @@ v14:AddButton({
     Name = "Buy Pole V2 5,000F",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ThunderGodTalk")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Pole V2", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Pole V2", Duration = 2})
     end
 })
 
@@ -11837,7 +11882,7 @@ v14:AddButton({
     Name = "Buy Slingshot $5,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Slingshot")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Slingshot", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Slingshot", Duration = 2})
     end
 })
 
@@ -11845,7 +11890,7 @@ v14:AddButton({
     Name = "Buy Musket $8,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Musket")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Musket", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Musket", Duration = 2})
     end
 })
 
@@ -11853,7 +11898,7 @@ v14:AddButton({
     Name = "Buy Flintlock $10,500",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Flintlock")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Flintlock", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Flintlock", Duration = 2})
     end
 })
 
@@ -11861,7 +11906,7 @@ v14:AddButton({
     Name = "Buy Refined Slingshot $30,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Refined Flintlock") -- Sửa tên cho đúng
-        我lib:Notify({Title = "Shop", Message = "Đã mua Refined Slingshot", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Refined Slingshot", Duration = 2})
     end
 })
 
@@ -11869,7 +11914,7 @@ v14:AddButton({
     Name = "Buy Refined Flintlock $65,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Refined Flintlock")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Refined Flintlock", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Refined Flintlock", Duration = 2})
     end
 })
 
@@ -11877,7 +11922,7 @@ v14:AddButton({
     Name = "Buy Cannon $100,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Cannon")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Cannon", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Cannon", Duration = 2})
     end
 })
 
@@ -11886,7 +11931,7 @@ v14:AddButton({
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Slingshot", "1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Slingshot", "2")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Kabucha", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Kabucha", Duration = 2})
     end
 })
 
@@ -11894,7 +11939,7 @@ v14:AddButton({
     Name = "Buy Bizarre Rifle 250 Ectoplasm",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Ectoplasm", "Buy", 1)
-        我lib:Notify({Title = "Shop", Message = "Đã mua Bizarre Rifle", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Bizarre Rifle", Duration = 2})
     end
 })
 
@@ -11907,7 +11952,7 @@ v14:AddButton({
     Name = "Buy Black Cape $50,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Black Cape")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Black Cape", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Black Cape", Duration = 2})
     end
 })
 
@@ -11915,7 +11960,7 @@ v14:AddButton({
     Name = "Buy Swordsman Hat $150,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Swordsman Hat", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Swordsman Hat", Duration = 2})
     end
 })
 
@@ -11923,7 +11968,7 @@ v14:AddButton({
     Name = "Buy Tomoe Ring $500,000",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Tomoe Ring")
-        我lib:Notify({Title = "Shop", Message = "Đã mua Tomoe Ring", Duration = 2})
+        vu32:Notify({Title = "Shop", Message = "Đã mua Tomoe Ring", Duration = 2})
     end
 })
 
@@ -11936,7 +11981,7 @@ v14:AddButton({
     Name = "Đổi Tộc Ghoul",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Ectoplasm", "Change", 4)
-        我lib:Notify({Title = "Race", Message = "Đã đổi sang Ghoul", Duration = 2})
+        vu32:Notify({Title = "Race", Message = "Đã đổi sang Ghoul", Duration = 2})
     end
 })
 
@@ -11944,7 +11989,7 @@ v14:AddButton({
     Name = "Đổi Tộc Cyborg",
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CyborgTrainer", "Buy")
-        我lib:Notify({Title = "Race", Message = "Đã đổi sang Cyborg", Duration = 2})
+        vu32:Notify({Title = "Race", Message = "Đã đổi sang Cyborg", Duration = 2})
     end
 })
 
@@ -11953,7 +11998,7 @@ v14:AddButton({
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "2")
-        我lib:Notify({Title = "Stats", Message = "Đã Reset Stats", Duration = 2})
+        vu32:Notify({Title = "Stats", Message = "Đã Reset Stats", Duration = 2})
     end
 })
 
@@ -11962,7 +12007,7 @@ v14:AddButton({
     Callback = function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "1")
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "2")
-        我lib:Notify({Title = "Race", Message = "Đã Random Race", Duration = 2})
+        vu32:Notify({Title = "Race", Message = "Đã Random Race", Duration = 2})
     end
 })
 
@@ -11988,7 +12033,7 @@ v15:AddButton({
         }
         local RedeemRemote = replicated.Remotes:FindFirstChild("Redeem")
         if not RedeemRemote then
-            我lib:Notify({Title = "Error", Message = "Không tìm thấy remote Redeem", Duration = 3})
+            vu32:Notify({Title = "Error", Message = "Không tìm thấy remote Redeem", Duration = 3})
             return
         end
         for _, code in ipairs(Codes) do
@@ -12001,7 +12046,7 @@ v15:AddButton({
                 end
             end)
         end
-        我lib:Notify({Title = "Success", Message = "Đã thử nhập tất cả mã", Duration = 3})
+        vu32:Notify({Title = "Success", Message = "Đã thử nhập tất cả mã", Duration = 3})
     end
 })
 
@@ -12150,7 +12195,7 @@ v15:AddButton({
                 end
             end)
         end
-        我lib:Notify({Title = "Graphics", Message = "Đã chuyển sang chế độ Fast Mode", Duration = 2})
+        vu32:Notify({Title = "Graphics", Message = "Đã chuyển sang chế độ Fast Mode", Duration = 2})
     end
 })
 
@@ -12159,7 +12204,7 @@ v15:AddButton({
     Name = "Low CPU Mode",
     Callback = function()
         LowCpu()
-        我lib:Notify({Title = "Optimization", Message = "Đã bật chế độ Low CPU", Duration = 2})
+        vu32:Notify({Title = "Optimization", Message = "Đã bật chế độ Low CPU", Duration = 2})
     end
 })
 
@@ -12176,7 +12221,7 @@ v15:AddButton({
                 end
             end
         end)
-        我lib:Notify({Title = "Boats", Message = "Đã tăng tốc độ thuyền (phía client)", Duration = 2})
+        vu32:Notify({Title = "Boats", Message = "Đã tăng tốc độ thuyền (phía client)", Duration = 2})
     end
 })
 
@@ -12189,7 +12234,7 @@ v15:AddButton({
             if Lighting:FindFirstChild("SeaTerrorCC") then Lighting.SeaTerrorCC:Destroy() end
             if Lighting:FindFirstChild("FantasySky") then Lighting.FantasySky:Destroy() end
         end)
-        我lib:Notify({Title = "Fog", Message = "Đã xóa sương mù", Duration = 2})
+        vu32:Notify({Title = "Fog", Message = "Đã xóa sương mù", Duration = 2})
     end
 })
 
